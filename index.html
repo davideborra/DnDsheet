@@ -1,0 +1,324 @@
+<html>
+    <head>
+        <title>D&D - Scheda Personaggio</title>
+        <meta charset="utf-8">
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500&display=swap" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+        <script src="https://kit.fontawesome.com/d2ab5b4e79.js" crossorigin="anonymous"></script>
+        <link rel="shortcut icon" href="favicon.png">
+
+        <script type="text/x-template" id="modal-template">
+            <transition name="modal">
+              <div class="modal-mask">
+                <div class="modal-wrapper">
+                  <div class="modal-container">
+      
+                    <div class="modal-header">
+                      <slot name="header">
+                      </slot>
+                    </div>
+
+                    <div>
+                        <slot name="school">
+                        </slot>
+                      </div>
+      
+                    <div class="modal-body">
+                      <slot name="body">
+                      </slot>
+                    </div>
+      
+                    <div class="modal-footer">
+                      <slot name="footer">
+                        <button class="modal-default-button" @click="$emit('close')">
+                          Chiudi
+                        </button>
+                      </slot>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </transition>
+          </script>
+    </head>
+
+    <!-- template for the polygraph component. -->
+    <script type="text/x-template" id="polygraph-template">
+        <g>
+            <circle cx="200" cy="200" r="160"></circle>
+            <circle cx="200" cy="200" r="120"></circle>
+            <circle cx="200" cy="200" r="80"></circle>
+            <circle cx="200" cy="200" r="40"></circle>
+            <!-- <circle cx="200" cy="200" r="1"></circle> -->
+            <line x1="200" y1="360" x2="200" y2="40" />
+            <line x1="338.56" y1="280" x2="61.44" y2="120" />
+            <line x1="338.56" y1="120" x2="61.44" y2="280" />
+            <polygon class="graph" :points="points"></polygon>
+            <axis-label
+                v-for="(stat, index) in stats"
+                :stat="stat"
+                :index="index"
+                :total="stats.length">
+            </axis-label>
+        </g>
+      </script>
+  
+      <!-- template for the axis label component. -->
+      <script type="text/x-template" id="axis-label-template">
+        <text :x="point.x-22" :y="point.y+7 ">{{stat.label}}</text>
+      </script>
+
+    <body>
+        <div id="vueContainer">
+        <div class=loadBox v-if="filemodal">
+            Inserire il nome del file da caricare (senza estensione):<br><input type="text" v-model="filename" class="load" placeholder="Nome del file"><br><button @click="loadData(filename);" class="off" style="font-size: large;"> Carica </button> {{errorPrint}}
+        </div>
+        <div class="header" v-if="!filemodal">
+            <div class = "datasection">
+                <div class = "name"> {{pg.name}} </div>
+                <div class = "data"> Lv. {{pg.level}} </div>
+                <div class = "data"> {{pg.race}} </div>
+                <div class = "data"> {{pg.class}} </div>
+                <div class = "data"> {{pg.alignment}} </div>
+            </div>
+            <div class="tabs"> <div class="tab off" @click="api.saveData(JSON.stringify(pg), filename);"> Salva </div> <div class="tab off" @click="filemodal = true"> Carica </div> <div class="tab" @click="ToStats()" :class="stats_style"> Stats </div> <div class="tab" @click="ToSpells()" :class="spells_style"> Spells </div></div>
+        </div>
+        <div class="pageBody" id="stats" v-if="visible == 0 && !filemodal">
+            <div class="column" id="col1">
+                <div class = "left">
+                    <div class = "statbox" v-for="stat in statsPrint"> 
+                        <div class="statname">{{stat.label}}</div>
+                        <div class="statvalue">{{stat.value}}</div>
+                        <div class="statmodifier">{{modifier(stat.value)}}</div>
+                    </div>    
+                </div>
+                <div class = "right"> 
+                    <div id="graph" @click="graph=!graph">
+                        <svg width="400" height="400" v-if="graph">
+                            <polygraph :stats="stats"></polygraph>
+                        </svg>
+                        <img :src="'../saves/'+filename+'.png'" width="400" height="400" v-if="!graph" /> 
+                    </div>
+                    <div class = "competenze">
+                        <div class="bonus">
+                            {{pg.compBonus>0?"+"+pg.compBonus:pg.compBonus}}
+                        </div>
+                        <div>
+                            <div id="tiriSalvezza">
+                                <input class="comp" list=Tiri_salvezza placeholder="Tiri Salvezza" v-model="selected_ts">
+                                <datalist id="Tiri_salvezza">
+                                    <select multiple size=6 >
+                                    <option v-for="stat in ts" :value="stat.label" >{{stat.label}}
+                                    </select>
+                                </datalist> 
+                                <i class="fa-regular fa-circle" v-if="select_ts(selected_ts).image==0"></i>
+                                <i class="fa-solid fa-circle" v-if="select_ts(selected_ts).image==1"></i>
+                                <i class="fa-solid fa-circle-up" v-if="select_ts(selected_ts).image==2"></i>
+                                <i style="font-size: 30px; padding-left: 10px;">{{select_ts(selected_ts).value==-100?'':(select_ts(selected_ts).value>0?"+"+select_ts(selected_ts).value:select_ts(selected_ts).value)}}</i>
+                            </div>
+                            <div id="abilita">
+                                <input class = "comp" list=text_editors placeholder="Abilità" v-model="selected_skill">
+                                <datalist id="text_editors">
+                                    <select>
+                                    <option v-for="(skill,index) in skills" :value="skill.label">{{skill.label}}
+                                    </select>
+                                </datalist> 
+                                <i class="fa-regular fa-circle" v-if="select_skill(selected_skill).image==0"></i>
+                                <i class="fa-solid fa-circle" v-if="select_skill(selected_skill).image==1"></i>
+                                <i class="fa-solid fa-circle-up" v-if="select_skill(selected_skill).image==2"></i>
+                                <i style="font-size: 30px; padding-left: 10px;">{{select_skill(selected_skill).value==-100?'':(select_skill(selected_skill).value>0?"+"+select_skill(selected_skill).value:select_skill(selected_skill).value)}}</i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box nopaddingtop">
+                        <h6>
+                            Altre competenze
+                        </h6>
+                        <ul>
+                            <li v-for="comp in pg.other_comps">{{comp}}</li>
+                        </ul>
+                    </div>
+                    <div class="box nopaddingtop">
+                        <h6>
+                            Linguaggi
+                        </h6>
+                        <ul>
+                            <li v-for="lang in pg.languages">{{lang}}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="other_stats">
+                    <div class="caShield">
+                        <svg width="108" height="135">
+                            <polygon points="4 4, 104 4, 104 104,54 134, 4 104" class="shield" />
+                            <text x="29" y="60" class="statvalue">
+                                {{pg.ca}}
+                            </text>
+                            <text x="44" y="100" class="statname">
+                                ca
+                            </text>
+                          </svg>
+                    </div>
+                      <div class = "statbox other_stats_statbox"> 
+                          <div class="statvalue">{{pg.init>0?"+"+pg.init:pg.init}}</div>
+                          <div class="statname">iniziativa</div>
+                    </div>
+                    <div class = "statbox other_stats_statbox"> 
+                        <div class="statvalue">{{pg.vel}}</div>
+                        <div class="statname">velocità</div>
+                    </div>
+                </div>
+                <div class="life">
+                    <div id="hpbox">
+                        <i style="font-style: normal; font-size: x-large;">PF: <progress id="hpbar" :value="pg.hp" :max="pg.maxHP" ></progress><input v-model="pg.hp" id="hp" type="text" :value="pg.hp" @keyup="pg.hp>pg.maxHP?pg.hp=pg.maxHP:ph.hp=pg.hp">/{{pg.maxHP}}</i>
+                    </div>
+                    <br>
+                    <div class="other_stats">
+                        <div class="statbox other_stats_statbox">
+                            <div class="statvalue">{{pg.dadi_vita}}</div>
+                            <div class="statname">dadi vita</div>
+                        </div>
+                        <div class="bigtsmorte">
+                            <form class="tsMorte">
+                                <div class="bar">
+                                    <input class="bar-input" type="radio" name="inputa" id="input_0" value="3" v-model="pg.ts_morte.successi"/>
+                                    <div class="bar-view">
+                                        <label class="bar-button" for="input_0" ></label>
+                                    </div>
+                                    <input class="bar-input" type="radio" name="inputa" id="input_1" value="2" v-model="pg.ts_morte.successi"/>
+                                    <div class="bar-view">
+                                        <label class="bar-button" for="input_1"></label>
+                                    </div>
+                                    <input class="bar-input" type="radio" name="inputa" id="input_2" value="1" v-model="pg.ts_morte.successi"/>
+                                    <div class="bar-view">
+                                        <label class="bar-button" for="input_2"></label>
+                                    </div>
+                                </div>
+                                    <input class="tsbutton" type ="reset" value="successi" @click="pg.ts_morte.successi=0">
+                            </form>
+                            <form class="TSMorte">
+                                <div class="bar">
+                                    <input class="bar-input" type="radio" name="inputb" id="input_3" value="3" v-model="pg.ts_morte.fallimenti"/>
+                                    <div class="bar-view">
+                                        <label class="bar-button" for="input_3"></label>
+                                    </div>
+                                    <input class="bar-input" type="radio" name="inputb" id="input_4" value="2" v-model="pg.ts_morte.fallimenti"/>
+                                    <div class="bar-view">
+                                        <label class="bar-button" for="input_4"></label>
+                                    </div>
+                                    <input class="bar-input" type="radio" name="inputb" id="input_5" value="1" v-model="pg.ts_morte.fallimenti"/>
+                                    <div class="bar-view">
+                                        <label class="bar-button" for="input_5" ></label>
+                                    </div>
+                                </div>
+                                    <input class="tsbutton" type ="reset" value="fallimenti" @click="pg.ts_morte.fallimenti=0">
+                            </form>
+                    </div>
+                </div>
+                </div>
+                <div class="box inventory">
+                    <div class="wallet">
+                        <div class="money" v-for="money in pg.wallet"><div class="statname">{{money.label}}</div><input class="moneyvalue" type="text" v-model="money.value"></div>
+                    </div>
+                    <h6 class="title">
+                        Inventario <b @click="pg.inventory.push('')">⨁</b>
+                    </h6>
+                    <ul class="inv">
+                        <li v-for="(item,index) in pg.inventory" class="inv"><b @click="pg.inventory = removeFromArray(item, pg.inventory)">⊖</b> <input class="inv_element" type="text" v-model="pg.inventory[index]"></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="column">
+                <h6 class="title">Bonus Attacco</h6>
+                <div class="attackbonus">
+                    <div class="attack" v-for="attack in pg.attack_bonus">
+                        <div class="attackdata" style="width: 30%;">
+                            {{attack.name}}
+                        </div>
+                        <div class="attackdata" style="width: 10%;">
+                            {{attack.bonus>0?"+"+attack.bonus:attack.bonus}}
+                        </div>
+                        <div class="attackdata" style="width: 60%;">
+                            {{attack.danni}} <i v-if="attack.tipo!=''">( {{attack.tipo}} )</i>
+                        </div>
+                    </div>
+                </div>
+
+                <h6 class="title">Privilegi e tratti limitati</h6>
+                <div class="attackbonus">
+                    <div class="attack" v-for="(privilegio, index) in pg.PTL">
+                        <div class="attackdata" style="width: 60%;">
+                            {{privilegio.name}} <b class = "infobutton" @click="showInfoPTL(index)">ⓘ</b>
+                        </div>
+                        <div class="attackdata" style="width: 30%;text-align: center;">
+                            <b class = "inlinebutton" @click="if(privilegio.current_uses>0)privilegio.current_uses--">⊖</b> <i @click="privilegio.current_uses=0">{{privilegio.current_uses}} / {{privilegio.max_uses}}</i> <b class = "inlinebutton" @click="if(privilegio.current_uses<privilegio.max_uses)privilegio.current_uses++">⊕</b>
+                        </div>
+                        <div class="attackdata" style="width: 10%;">
+                            {{privilegio.charges}}
+                        </div>
+                        <modal v-if="showPTLDescription" @close="showPTLDescription = false">
+                            <h3 slot="header" class="nomarginbottom">{{pg.PTL[selected_PTL].name}} </h3>
+                            <h6 slot="school">
+                                <b class = "inlinebutton" @click="if(pg.PTL[selected_PTL].current_uses>0)pg.PTL[selected_PTL].current_uses--">⊖</b> <i @click="pg.PTL[selected_PTL].current_uses=0">{{pg.PTL[selected_PTL].current_uses}} / {{pg.PTL[selected_PTL].max_uses}}</i> <b class = "inlinebutton" @click="if(pg.PTL[selected_PTL].current_uses<pg.PTL[selected_PTL].max_uses)pg.PTL[selected_PTL].current_uses++">⊕</b>
+                            </h6>
+                            <div slot="body">
+                                <b class="spellitem">Ricarica ogni:</b> {{pg.PTL[selected_PTL].charges}} <br>
+                                <p v-for="row in pg.PTL[selected_PTL].description" class="spell_description">{{row}}</p>  
+                            </div>
+                        </modal>
+                    </div>
+                </div>
+
+                <div class="box nopaddingtop largebox">
+                    <h6>Privilegi e tratti</h6>
+                    <ul>
+                        <li v-for="item in pg.priv_tratti">{{item}}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="pageBody" id="spells" v-if="visible == 1 && !filemodal">
+            <div class="levelbox">
+                <h6 id="trucchetti">TRUCCHETTI</h6>
+                <div class="spellsbox">
+                    <div class = "spell" v-for="(spell,index) in spells_print" v-if="spell.level == 0">{{spell.name}} <b class = "infobutton" @click="showInfo(index);">ⓘ</b></div> 
+                </div>
+            </div>
+            <div class="levelbox" v-for="level in 9">
+                <form class="spellslots">
+                    <input class="spellbutton" type ="reset" :value="'Livello '+level" @click="pg.used_slots[level-1]=0;">
+                    <div class="slotsButtonArray">
+                        <input type="radio" :value="num" v-model="pg.used_slots[level-1]" class="slotsButton" v-for="num in pg.slots[level-1]"/>
+                    </div>
+                </form>
+                <div class="spellsbox">
+                    <div class = "spell" v-for="(spell,index) in spells_print" v-if="spell.level == level">{{spell.name}} <b class = "infobutton" @click="showInfo(index)">ⓘ</b></div> 
+                </div>
+            </div>
+            <modal v-if="showSpellDescription" @close="showSpellDescription = false">
+                <h3 slot="header" class="nomarginbottom">{{spells_print[selected_spell].name}} </h3>
+                <h6 slot="school">Scuola di {{spells_print[selected_spell].school}}</h6>
+                <div slot="body">
+                    <b class="spellitem">Livello:</b> {{spells_print[selected_spell].level}} <br>
+                    <b class="spellitem">Tempo di lancio:</b> {{spells_print[selected_spell].time}} <br>
+                    <b class="spellitem">Gittata:</b> {{spells_print[selected_spell].range}} <br>
+                    <b class="spellitem">Componenti:</b> {{spells_print[selected_spell].components}} <br>
+                    <b class="spellitem">Durata:</b> {{spells_print[selected_spell].duration}} <br>
+                    <b class="spellitem">Danno:</b> {{spells_print[selected_spell].damage}} <br>
+                    <p class="spell_description">{{spells_print[selected_spell].description}}</p>
+                    <p class="spell_description"><b class="spellitem">A livelli superiori:</b> {{spells_print[selected_spell].higher_lv}}</p>
+                    <b class="spellitem">Manuale:</b> {{spells_print[selected_spell].manual}} 
+                </div>
+            </modal>
+        </div>
+        </div>
+    <script src="script.js"></script>
+    </body>
+</html> 
