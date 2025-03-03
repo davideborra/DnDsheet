@@ -74,12 +74,14 @@
                     <div class = pginfo>
                         <div  class="fw-bolder text-primary navbar-brand" >D&D Character Sheet</div>
                     </div>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                    <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav ms-auto mb-2 mb-lg-0 small fw-bolder">
-                            <li class="nav-item clickable"><a class="nav-link" @click = "new_pg();">New</a></li>
+                            <div class="nav-item clickable"><a class="nav-link" @click = "new_pg();">New</a></div>
                         </ul>
-                    </div>
+                    </div> -->
+                    <div class="navbar-nav ms-auto mb-2 mb-lg-0 small fw-bolder nav-item clickable"><a class="nav-link" @click = "new_pg();">New</a></div>
+
                 </div>
             </nav>
             <div class = "pageContainer loadingPage" v-if = "loading">
