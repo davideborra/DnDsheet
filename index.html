@@ -289,11 +289,11 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="attack" v-for="item in pg.inventory" v-if="!hideInventory">
+                                        <div class="attack" v-for="(item,index) in pg.inventory" v-if="!hideInventory">
                                             <div class = "attackdata" > 
                                                 <i class="bi bi-x-circle clickable" @click= "pg.inventory = removeFromArray(item, pg.inventory)"></i>
                                             </div>
-                                            <input type = text class = "attackdata" v-model="item" style="width: 100%;">
+                                            <input type = text class = "attackdata" v-model="pg.inventory[index]" style="width: 100%;">
                                         </div>
                                     </div>
                                 </div>
