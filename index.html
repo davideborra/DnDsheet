@@ -375,11 +375,11 @@
                                                     <i class="bi bi-plus-circle" ></i>
                                                 </div>
                                             </div>
-                                            <div class="attack" v-for="comp in pg.other_comps">
+                                            <div class="attack" v-for="(comp,index) in pg.other_comps">
                                                 <div class = "attackdata clickable" @click= "pg.other_comps = removeFromArray(comp, pg.other_comps)"> 
                                                     <i class="bi bi-x-circle " ></i>
                                                 </div>
-                                                <input class = "attackdata clickable"  style="width: 100%;" v-model = "comp">
+                                                <input class = "attackdata clickable"  style="width: 100%;" v-model = "pg.other_comps[index]">
                                             </div>
                                         </div>
                                     </div>
