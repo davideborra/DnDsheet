@@ -306,7 +306,7 @@ var vueapp = new Vue({
         //     }
         // },
         loadSpells(){
-            fetch("data/spells.JSON")
+            fetch("data/spells.json")
                 .then((response) => response.json())
                     .then((json) => this.parseSpells(json));
         },
@@ -361,7 +361,7 @@ var vueapp = new Vue({
             this.loading = false;
         },
         parseData(json){
-            console.log(json);
+            // console.log(json);
             vueapp.pg=json;
             // this.parseStats();
             // this.loadTS();
