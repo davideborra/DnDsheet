@@ -527,9 +527,9 @@ Vue.component("modal", {
 
 
   // check if leaving without saving
-//   window.addEventListener("beforeunload", function (e) {
-//     var confirmationMessage = 'It looks like you have been editing something. '
-//                             + 'If you leave before saving, your changes will be lost.';
-//     (e || window.event).returnValue = confirmationMessage; //Gecko + IE
-//     return confirmationMessage; //Gecko + Webkit, Safari, Chrome etc.
-// });
+  window.addEventListener("beforeunload", function (e) {
+    var confirmationMessage = 'It looks like you have been editing something. '
+                            + 'If you leave before saving, your changes will be lost.';
+    (e || window.event).returnValue = confirmationMessage; //Gecko + IE
+    return confirmationMessage; //Gecko + Webkit, Safari, Chrome etc.
+});
