@@ -1,0 +1,20 @@
+@font-face {
+  font-family: CMU;
+  src: url(cmunrm.ttf);
+}
+@font-face {
+  font-family: CMU;
+  font-weight: bold;
+  src: url(cmunbx.ttf);
+}
+@font-face {
+  font-family: CMU;
+  font-style: italic;
+  src: url(cmunti.ttf);
+}
+@font-face {
+  font-family: CMU;
+  font-style: italic;
+  font-weight: bold;
+  src: url(cmunbi.ttf);
+}

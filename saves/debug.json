@@ -1,0 +1,375 @@
+{
+    "name": "Lord Doxos XLII Ioun",
+    "class": "Sapiente (Stratega) 8 - Mago (Divinatore) 2 ",
+    "level": 10,
+    "race": "Cangiante",
+    "alignment": "Caotico Buono",
+    "hp": "20",
+    "maxHP": 73,
+    "stats": {
+        "str": 8,
+        "dex": 12,
+        "con": 14,
+        "int": 20,
+        "wis": 10,
+        "cha": 8
+    },
+    "ca": 19,
+    "init": 6,
+    "vel": 9,
+    "dadi_vita": "8d8+2d6",
+    "ts_morte": {
+        "successi": 0,
+        "fallimenti": 0
+    },
+    "compBonus": 4,
+    "languages": [
+        "Comune",
+        "Elfico",
+        "Gnomesco",
+        "∫ᴇƒdµ",
+        "Matematichese",
+        "Draconico",
+        "Abissale",
+        "Primordiale",
+        "Infernale",
+        "Gergo delle profondità"
+    ],
+    "other_comps": [
+        "Armature leggere e medie",
+        "Scudi",
+        "Armi semplici, spade corte, stocchi, spade lunghe, scimitarre",
+        "Strumenti da Inventore"
+    ],
+    "inventory": [
+        "Tavoletta di Minera Ioun (sintonia 9 livelli)",
+        "Calamaio con pennino e coltellino",
+        "Lettera di un Collega con una congettura mai dimostrata",
+        "Pergamena",
+        "Studio rapido: Strumenti da fabbro",
+        "Elmo della telepatia (sintonia)",
+        "Dado del ciarlatano",
+        "ISPIRAZIONE x2",
+        "Portento: (15)",
+        "22 punti Aiden",
+        "Amuleto del passo velato (d6/alba - sintonia)",
+        "Golem gufo: 26pf",
+        "dadi vita da usare: tutti",
+        "1 ampolle di acqua della vita.",
+        "1 ampolla di sangue + 1 occhio di Kirin",
+        "HO BISOGNO DI UN FOCUS DA INCANTATORE",
+        "QUADRATINO con runa"
+    ],
+    "wallet": [
+        {
+            "label": "CP",
+            "value": "8"
+        },
+        {
+            "label": "SP",
+            "value": "14"
+        },
+        {
+            "label": "EP",
+            "value": 0
+        },
+        {
+            "label": "GP",
+            "value": "1484"
+        },
+        {
+            "label": "PP",
+            "value": "318"
+        }
+    ],
+    "attack_bonus": [
+        {
+            "name": "Stocco",
+            "bonus": "5/9",
+            "danni": "1d8+1/5",
+            "tipo": "perforanti"
+        },
+        {
+            "name": "Balestra",
+            "bonus": "5/9",
+            "danni": "1d6+1/5",
+            "tipo": "perforanti"
+        },
+        {
+            "name": "Incantesimi",
+            "bonus": "9",
+            "danni": "17",
+            "tipo": ""
+        }
+    ],
+    "priv_tratti": [
+        {"name" : "1", "description": "Se il Sapiente non è incapacitato, il Mark ha svantaggio nei tiri di attacco contro di lui."},
+        {"name" : "2", "description": "Quando compie una prova di caratteristica che richiede o un tiro salvezza su Saggezza o Intelligenza, o quando tira per i danni contro il Mark, aggiunge il proprio Dado Intelletto (d6) al tiro. Inoltre, quando una creatura che una creatura che il Sapiente vede colpisce il Mark con un attacco, il Sapiente può usare la sua reazione per aggiungere il proprio Dado Intelletto al danno dell'attacco."},
+        {"name" : "3", "description": "1 reazione extra"},
+        {"name" : "4", "description": "1 competenza che può essere cambiata in un'ora."},
+        {"name" : "5", "description": "Ambiti di studio: Scherma, Enigmi, Navigazione, Portento (1d20), Linguistica"},
+        {"name" : "6", "description": "Tavoletta: Stasys, Golem Gufo"},
+        {"name" : "7", "description": "Sa dove reperire le informazioni di cui ha bisogno"},
+        {"name" : "8", "description": "La posizione dello Stratega non gli permette di soccombere agli istinti. Ottiene vantaggio nei tiri per resistere incantesimi di Ammaliamento, ed è immune alla condizione di spaventato. Inoltre, quandi usa un’azione per dare un Ordine, può fare un attacco con arma come azione bonus."},
+        {"name" : "9", "description": "Il Sapiente non può essere sorpreso a meno che non sia incapacitato."},
+        {"name" : "10", "description": "Inoltre, quando tira per iniziativa, può compiere una delle seguenti azioni prima che le altre creature agiscano:\n • Usare Attenta Analisi per scegliere come Mark una creatura che può vedere.\n • Fare un tiro su Intelligenza per ottenere informazioni.\n • Fare una tra le azioni di Aiuto, Prepararsi o Cercare."},
+        {"name" : "11", "description": "Recupero arcano: durante un RB, posso recuperare slot spesi con livello totale pari o inferiore al livello da mago"}
+    ],
+    "PTL": [
+        {
+            "name": "Attenta Analisi",
+            "max_uses": 7,
+            "current_uses": 2,
+            "charges": "RB",
+            "description":
+                "Come azione bonus, un numero di volte pari al proprio bonusi di competenza ogni riposo breve, può analizzare una creatura che puoi vedere entro 18 metri, designandolo come suo Mark. Finché si concentra sul suo Mark, come se si stesse concentrando su un incantesimo, il Sapiente ottiene i seguenti benefici: \n • quando colpisce il Mark con un attacco o lo osserva per 1 minuto, può apprendere una delle seguenti caratteristiche a sua scelta: punteggio di caratteristica più alto, punteggio di caratteristica più basso, Classe Armatura, velocità, punti ferita massimi o tipo di creatura.\n • può usare Intelligenza, al posto di Forza o Destrezza, per i titi di attacco e danni contro il Mark. \n • ha vantaggio su prove di caratteristica su Intelligenza e Saggezza per ottenere informazioni sul Mark. \n • può fare un tiro salvezza su Intelligenza, anziché su Costituzione per mantenere la concentrazione sul Mark. \n La creatura rimane indefinitamente il Mark del Sapiente, almeno finché il Sapiente non perde la concentrazione, la creatura non esce dal suo campo  vista, o il Sapiente usa questo privilegio su un'altra creatura."
+        },
+        {
+            "name": "Elmo della Telepatia",
+            "max_uses": "-",
+            "current_uses": "-",
+            "charges": "--",
+            "description": [
+                "Mentre il personaggio indossa questo elmo, può usare un'azione per lanciare l'incantesimo individuazione dei pensieri (CD 13 del tiro salvezza). Finché mantiene la concentrazione sull'incantesimo, può usare un'azione bonus per inviare un messaggio telepatico a una creatura su cui è concentrato. Mentre il personaggio mantiene la concentrazione sulla creatura, quest'ultima può usare un'azione bonus per rispondere.",
+                "Fintanto che il personaggio mantiene la concentrazione su una creatura tramite individuazione dei pensieri, può usare un'azione per lanciare l'incantesimo suggestione (CD 13 del tiro salvezza) su di essa. Una volta usata, la proprietà di suggestione non è riutilizzabile fino all'alba successiva."
+            ]
+        },
+        {
+            "name": "Stasys - Stasys+",
+            "max_uses": "3",
+            "current_uses": 0,
+            "charges": "RL",
+            "description": [
+                "Come reazione quando una creatura nel raggio di 9 metri dal Sapiente viene bersagliata da un attacco con arma a distanza che richieda un tiro per colpire, il Sapiente può aggiungere il proprio Dado Intelletto alla C.A. del bersaglio. Se il colpo manca, esso rimane bloccato a mezz’aria per al più 3 turni (o fino a quando il Sapiente lo desidera, con un minimo di un turno) e poi riparte verso la propria destinazione, colpendo chiunque si trovi in quel luogo senza richiedere tiro per colpire.",
+                "Ora la funzione di Stasys può essere utilizzata anche contro i nemici: come azione bonus il Sapiente impone al bersaglio un tiro salvezza su Destrezza con classe difficoltà 8 + il bonus di competenza del Sapiente + il modificatore di intelligenza del Sapiente, e può scegliere di fallire il tiro. In caso di fallimento il bersaglio viene fermato nel tempo per tre turni. Finché è fermo nel tempo, il bersaglio non può compiere azioni e non può subire danni, ma appena l’effetto termina subisce come fosse un attacco unico tutti i danni che avrebbe dovuto subire durante il periodo di Stasys+. Il Sapiente può decidere di terminare l’effetto in qualsiasi momento. Alla fine di ogni proprio turno successivo al primo, il bersaglio può ripetere il tiro salvezza, terminando l’effetto in caso di successo."
+            ]
+        },
+        {
+            "name": "Golem aiutanti",
+            "max_uses": "-",
+            "current_uses": "-",
+            "charges": "--",
+            "description": [
+                "Come Azione, il Sapiente può evocare fino a tre golem aiutanti. Essi si materializzano sul terreno, in uno spazio libero entro 9 metri dal Sapiente. Possiedono CA 15, 30 punti ferita, hanno tutte le caratteristiche pari a 10 e non possono attaccare. Hanno inoltre le competenze del Sapiente. Se scendono a 0 punti ferita, il Sapiente può evocarne altri dopo aver trascorso un’ora per golem a ripararli, che può essere trascorsa anche durante un riposo breve. Una volta in ogni suo turno, come azione bonus, l’incantatore può ordinare attraverso la tavoletta al golem di muoversi fino a 4,5 metri e di interagire con un oggetto. Il golem può effettuare compiti semplici come portare oggetti, pulire, riparare, ripiegare abiti, accendere fuochi, servire pietanze, versare vino e così via. Una volta impartito l’ordine, il golem svolge il compito al meglio delle sue capacità finché non lo porta a termine, poi attende il comando successivo dell’incantatore. Se il golem si allontana di più di 30 metri dal Sapiente, continua ad eseguire i propri compiti ma non può ricevere altri ordini."
+            ]
+        },
+        {
+            "name": "Analisi Migliorata",
+            "max_uses": "1",
+            "current_uses": 1,
+            "charges": "AL",
+            "description": [
+                "A partire dal livello 8, la tavoletta può lanciare Visione del Vero su sé stessa attraverso il suo visore, ma al costo di venire disabilitata fino alla prossima alba."
+            ]
+        },
+        {
+            "name": "Fasce Metalliche di Bilarro",
+            "max_uses": "1",
+            "current_uses": 0,
+            "charges": "AL",
+            "description": [
+                "Questa sfera di ferro arrugginita misura 7,5 centimetri di diametro e pesa 500 grammi. Puoi usare un’azione per pronunciare una parola di comando e scagliare la sfera contro una creatura visibile di taglia Enorme o inferiore entro 18 metri da te. La sfera si muove nell’aria, aprendosi in un reticolato di fasce metalliche.",
+                "Effettua un tiro per colpire a distanza con un bonus di attacco pari al tuo modificatore di Destrezza più il tuo bonus di competenza. Se colpisci, il bersaglio è intralciato fino a quando non effettuerai un’azione bonus per pronunciare una parola di comando e liberarlo. Farlo, o mancare l’attacco, fa sì che le fasce si contraggano e ritornino a essere una sfera.",
+                "Una creatura, compresa quella intralciata, può usare un’azione per effettuare una prova di Forza con CD 20 per spezzare le fasce di ferro. Se la riesce, l’oggetto viene distrutto, e la creatura intralciata è libera. Se la prova fallisce, qualsiasi ulteriore tentativo effettuato dalla creatura fallisce automaticamente fino a quando non saranno trascorse 24 ore. ",
+                "Una volta che le fasce sono state usate non potranno più esserlo fino alla prossima alba."
+            ]
+        }
+    ],
+    "ts": [
+        {
+            "id": "str",
+            "value": 0
+        },
+        {
+            "id": "dex",
+            "value": 0
+        },
+        {
+            "id": "con",
+            "value": 0
+        },
+        {
+            "id": "int",
+            "value": 1
+        },
+        {
+            "id": "wis",
+            "value": 1
+        },
+        {
+            "id": "cha",
+            "value": 0
+        }
+    ],
+    "skills": [
+        {
+            "stat": "dex",
+            "label": "Acrobazia",
+            "comp": 0
+        },
+        {
+            "stat": "wis",
+            "label": "Addestrare Animali",
+            "comp": 0
+        },
+        {
+            "stat": "int",
+            "label": "Arcano",
+            "comp": 1
+        },
+        {
+            "stat": "str",
+            "label": "Atletica",
+            "comp": 0
+        },
+        {
+            "stat": "dex",
+            "label": "Furtività",
+            "comp": 0
+        },
+        {
+            "stat": "int",
+            "label": "Indagare",
+            "comp": 1
+        },
+        {
+            "stat": "cha",
+            "label": "Inganno",
+            "comp": 1
+        },
+        {
+            "stat": "cha",
+            "label": "Intimidire",
+            "comp": 1
+        },
+        {
+            "stat": "cha",
+            "label": "Intrattenere",
+            "comp": 0
+        },
+        {
+            "stat": "wis",
+            "label": "Intuizione",
+            "comp": 1
+        },
+        {
+            "stat": "wis",
+            "label": "Medicina",
+            "comp": 1
+        },
+        {
+            "stat": "int",
+            "label": "Natura",
+            "comp": 1
+        },
+        {
+            "stat": "wis",
+            "label": "Percezione",
+            "comp": 0
+        },
+        {
+            "stat": "cha",
+            "label": "Persuasione",
+            "comp": 2
+        },
+        {
+            "stat": "dex",
+            "label": "Rapidità di Mano",
+            "comp": 0
+        },
+        {
+            "stat": "int",
+            "label": "Religione",
+            "comp": 0
+        },
+        {
+            "stat": "wis",
+            "label": "Sopravvivenza",
+            "comp": 0
+        },
+        {
+            "stat": "int",
+            "label": "Storia",
+            "comp": 2
+        },
+        {
+            "stat": "wis",
+            "label": "Orecchio",
+            "comp": 0
+        }
+    ],
+    "spells": [
+        {
+            "name": "Ordine di Attacco",
+            "prepared": "true"
+        },
+        {
+            "name": "Ordine di Difesa",
+            "prepared": "true"
+        },
+        {
+            "name": "Ordine di Movimento",
+            "prepared": "true"
+        },
+        {
+            "name": "Ordine di Assistenza",
+            "prepared": "true"
+        },
+        {
+            "name": "Dardo Incantato",
+            "prepared": "true"
+        },
+        {
+            "name": "Parola Guaritrice",
+            "prepared": "true"
+        },
+        {
+            "name": "Illusione Minore",
+            "prepared": "true"
+        },
+        {
+            "name": "Dardo di Fuoco",
+            "prepared": "true"
+        },
+        {
+            "name": "Lama della Fiamma Verde",
+            "prepared": "true"
+        },
+        {
+            "name": "Individuazione del Magico",
+            "prepared": "true"
+        },
+        {
+            "name": "Assorbire Elementi",
+            "prepared": "true"
+        },
+        {
+            "name": "Scudo",
+            "prepared": "true"
+        },
+        {
+            "name": "Onda Tonante",
+            "prepared": "true"
+        },
+        {
+            "name": "Risata Incontenibile di Tasha",
+            "prepared": "true"
+        },
+        {
+            "name": "Scossa Tellurica",
+            "prepared": "true"
+        }
+    ],
+    "slots": [
+        { "level": 0, "max": 0, "used": 0, "known" :0},
+        { "level": 1, "max": 3, "used": 2, "known" :0},
+        { "level": 2, "max": 4, "used": 2, "known" :0},
+        { "level": 3, "max": 0, "used": 0, "known" :0},
+        { "level": 4, "max": 0, "used": 0, "known" :0},
+        { "level": 5, "max": 0, "used": 0, "known" :0},
+        { "level": 5, "max": 0, "used": 0, "known" :0},
+        { "level": 7, "max": 0, "used": 0, "known" :0},
+        { "level": 8, "max": 0, "used": 0, "known" :0},
+        { "level": 9, "max": 0, "used": 0, "known" :0}
+    ]
+}
