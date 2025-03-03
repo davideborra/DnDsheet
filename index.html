@@ -108,32 +108,32 @@
                             <div class="d-flex-card align-items-center statsContainer">
                                 <div class = "card overflow-hidden shadow rounded-4 border-0 mb-5 statsCard">
                                     Strength
-                                    <input class="statvalue" v-model="pg.stats.str"></input>
+                                    <input class="statvalue noarrows" v-model="pg.stats.str" type ="number"></input>
                                     <div class="statmodifier">{{modifier(pg.stats.str)}}</div>
                                 </div>
                                 <div class = "card overflow-hidden shadow rounded-4 border-0 mb-5 statsCard">
                                     Dexterity
-                                    <input class="statvalue" v-model="pg.stats.dex"></input>
+                                    <input class="statvalue noarrows" v-model="pg.stats.dex" type ="number"></input>
                                     <div class="statmodifier">{{modifier(pg.stats.dex)}}</div>
                                 </div>
                                 <div class = "card overflow-hidden shadow rounded-4 border-0 mb-5 statsCard">
                                     Constitution    
-                                    <input class="statvalue" v-model="pg.stats.con"></input>
+                                    <input class="statvalue noarrows" v-model="pg.stats.con" type ="number"></input>
                                     <div class="statmodifier">{{modifier(pg.stats.con)}}</div>
                                 </div>
                                 <div class = "card overflow-hidden shadow rounded-4 border-0 mb-5 statsCard">
                                     Intelligence
-                                    <input class="statvalue" v-model="pg.stats.int"></input>
+                                    <input class="statvalue noarrows" v-model="pg.stats.int" type ="number"></input>
                                     <div class="statmodifier">{{modifier(pg.stats.int)}}</div>
                                 </div>
                                 <div class = "card overflow-hidden shadow rounded-4 border-0 mb-5 statsCard">
                                     Wisdom
-                                    <input class="statvalue" v-model="pg.stats.wis"></input>
+                                    <input class="statvalue noarrows" v-model="pg.stats.wis" type ="number"></input>
                                     <div class="statmodifier">{{modifier(pg.stats.wis)}}</div>
                                 </div>
                                 <div class = "card overflow-hidden shadow rounded-4 border-0 mb-5 statsCard">
                                     Charisma
-                                    <input class="statvalue" v-model="pg.stats.cha"></input>
+                                    <input class="statvalue noarrows" v-model="pg.stats.cha" type ="number"></input>
                                     <div class="statmodifier">{{modifier(pg.stats.cha)}}</div>
                                 </div>
                             </div>
@@ -205,7 +205,7 @@
                                         <div class="progressBar_outer">
                                             <div class="progressBar_inner" :style="widthStyleHP()"></div>
                                         </div>
-                                        <input v-model="pg.hp" class="hp text-right" id="hp" type="number" :value="pg.hp" @input="pg.hp>pg.maxHP?pg.hp=pg.maxHP:pg.hp=pg.hp">/<input v-model="pg.maxHP" class="hp" id = "hpmax" type="number" :value="pg.hp" @input="pg.hp>pg.maxHP?pg.hp=pg.maxHP:pg.hp=pg.hp"></i>
+                                        <input v-model="pg.hp" class="hp text-right" id="hp" type="number" :value="pg.hp" @input="checkHP()">/<input v-model="pg.maxHP" class="hp" id = "hpmax" type="number" :value="pg.hp" @input="checkHP()"></i>
                                         <i class="bi bi-plus-slash-minus" @click="modifyHP = !modifyHP;"></i>
                                     </div>
                                     <div class="hpbarContainer justify-content-end" v-if="modifyHP">
@@ -453,7 +453,7 @@
 
                 <!-- TRAITS MODAL -->
                 <modal v-if="showPTDescription" @close="showPTDescription = false;" >
-                    <h3 slot="header" class="nomarginbottom padding-left-1rem"><input v-model =pg.priv_tratti[selected_PT].name> </h3>
+                    <h3 slot="header" class="nomarginbottom padding-left-1rem"><input v-model =pg.priv_tratti[selected_PT].name placeholder="Name"> </h3>
                     <div slot="body">
                         <textarea class=large v-model="pg.priv_tratti[selected_PT].description">
 
@@ -463,7 +463,7 @@
 
                 <!-- LIMITED TRAITS MODAL -->
                 <modal v-if="showPTLDescription" @close="showPTLDescription = false;" >
-                    <h3 slot="header" class="nomarginbottom padding-left-1rem"><input v-model =pg.PTL[selected_PTL].name> </h3>
+                    <h3 slot="header" class="nomarginbottom padding-left-1rem"><input v-model =pg.PTL[selected_PTL].name placeholder="Name"> </h3>
                     <h6 slot="school">Recharges every <input v-model =pg.PTL[selected_PTL].charges></h6>
                     <div slot="body">
                         <div class="d-flex-card align-items-center justify-content-between">

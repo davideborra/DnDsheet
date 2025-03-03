@@ -510,6 +510,11 @@ var vueapp = new Vue({
             if(level.max>4) level.max = 4;
             if(level.max<0) level.max = 0;
             if(level.used>level.max) level.used = level.max;
+        },
+        checkHP(){
+            if(this.pg.hp<0) this.pg.hp = -this.pg.hp;
+            if(this.pg.maxHP<0) this.pg.maxHP = -this.pg.maxHP;
+            if(this.pg.hp>this.pg.maxHP) this.pg.hp = this.pg.maxHP;
         }
     }
 });
