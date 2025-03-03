@@ -398,7 +398,7 @@
                             </div>
                             <div class = horizontalScroll>
                                 <div class = spellsContainer>
-                                    <div class = "card overflow-hidden shadow rounded-4 border-0 mb-5 dropdownCard margin-left-1rem margin-right-1rem" v-for = "level in pg.slots" v-if="level.known>0||level.max >0">
+                                    <div class = "card overflow-hidden shadow rounded-4 border-0 mb-5 dropdownCard margin-left-1rem margin-right-1rem" v-for = "level in pg.slots" v-if="level.known>0||level.max>0">
                                         <div class = "cardtitlerow">
                                             <div>  {{level.level==0?"Cantrip":"Level "+level.level}}</div>  
                                             <div class= "cardtitlerow" v-if = "level.level>0 && level.max>0">

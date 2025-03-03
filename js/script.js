@@ -475,7 +475,7 @@ var vueapp = new Vue({
                         vueapp.spells_print.push(spell);
                         for(level of this.pg.slots){
                             if(level.level == spell.level){
-                                console.log(level.level + " "+ level.known)
+                                level.known ++;
                             }
                         }
                         const index = this.allSpells.indexOf(spell);
