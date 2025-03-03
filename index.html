@@ -359,11 +359,11 @@
                                                     <i class="bi bi-plus-circle" ></i>
                                                 </div>
                                             </div>
-                                            <div class="attack" v-for="language in pg.languages">
+                                            <div class="attack" v-for="(language,index) in pg.languages">
                                                 <div class = "attackdata clickable" @click= "pg.languages = removeFromArray(language, pg.languages)"> 
                                                     <i class="bi bi-x-circle " ></i>
                                                 </div>
-                                                <input class = "attackdata clickable"  style="width: 100%;" v-model = "language">
+                                                <input class = "attackdata clickable"  style="width: 100%;" v-model="pg.languages[index]">
                                             </div>
                                         </div>
                                     </div>

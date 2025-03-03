@@ -450,8 +450,10 @@ var vueapp = new Vue({
                 .catch ((error) => {
                 console.log(error);
                 vueapp.errorPrint=error;
+                vueapp.filename = "save.json";
                 return;
             });
+            
         },
         appendEmptyFeature(){
             this.pg.priv_tratti.push({name:"", description:""});
