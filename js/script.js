@@ -514,9 +514,14 @@ var vueapp = new Vue({
             if(level.used>level.max) level.used = level.max;
         },
         checkHP(){
-            if(this.pg.hp<0) this.pg.hp = -this.pg.hp;
-            if(this.pg.maxHP<0) this.pg.maxHP = -this.pg.maxHP;
+            if(this.pg.hp<0) this.pg.hp = 0;
+            if(this.pg.maxHP<0) this.pg.maxHP = 0;
             if(this.pg.hp>this.pg.maxHP) this.pg.hp = this.pg.maxHP;
+        },
+        checkPTL(){
+            if(this.pg.PTL[this.selected_PT].current_uses<0) this.pg.PTL[this.selected_PT].current_uses = 0;
+            if(this.pg.PTL[this.selected_PT].max_uses<0) this.pg.PTL[this.selected_PT].max_uses = 0;
+            if(this.pg.PTL[this.selected_PT].current_uses>this.pg.PTL[this.selected_PT].max_uses) this.pg.PTL[this.selected_PT].current_uses = this.pg.PTL[this.selected_PT].max_uses;
         }
     }
 });

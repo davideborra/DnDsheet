@@ -471,7 +471,7 @@
                         <div class="d-flex-card align-items-center justify-content-between">
                             <div class = "card overflow-hidden shadow rounded-4 border-0 mb-5" >
                                 <div class="hpbarContainer justify-content-center">
-                                    <input v-model="pg.PTL[selected_PTL].current_uses" class="hp text-right"  type="number" :value="pg.PTL[selected_PTL].current_uses" @input="pg.PTL[selected_PTL].current_uses>pg.PTL[selected_PTL].max_uses?pg.PTL[selected_PTL].current_uses=pg.PTL[selected_PTL].max_uses:pg.PTL[selected_PTL].current_uses=pg.PTL[selected_PTL].current_uses">/<input v-model="pg.PTL[selected_PTL].max_uses" class="hp text-left" id = "hpmax" type="number" :value="pg.PTL[selected_PTL].max_uses" @input="pg.PTL[selected_PTL].current_uses>pg.PTL[selected_PTL].max_uses?pg.PTL[selected_PTL].current_uses=pg.PTL[selected_PTL].max_uses:pg.PTL[selected_PTL].current_uses=pg.PTL[selected_PTL].current_uses"></i>
+                                    <input v-model="pg.PTL[selected_PTL].current_uses" class="hp text-right"  type="number" :value="pg.PTL[selected_PTL].current_uses" @input="checkPTL(selected_PTL)">/<input v-model="pg.PTL[selected_PTL].max_uses" class="hp text-left" id = "hpmax" type="number" :value="pg.PTL[selected_PTL].max_uses" @input="checkPTL(selected_PTL)"></i>
                                 </div>
                             </div>
                         </div>
