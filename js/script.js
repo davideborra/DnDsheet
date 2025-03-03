@@ -505,6 +505,11 @@ var vueapp = new Vue({
                 }
             }
             this.spellToRemove = "";
+        },
+        checkSlots(level){
+            if(level.max>4) level.max = 4;
+            if(level.max<0) level.max = 0;
+            if(level.used>level.max) level.used = level.max;
         }
     }
 });
