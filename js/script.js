@@ -157,6 +157,17 @@ var vueapp = new Vue({
         modifier(stat){
             return Math.floor((stat-10)/2)>0?"+"+Math.floor((stat-10)/2):Math.floor((stat-10)/2);
         },
+        nozero(string){
+            if (string == 0)
+                return "";
+            return string;
+        },
+        tsModifier(){
+            return this.select_ts(this.selected_ts).value==-100?'':(this.select_ts(this.selected_ts).value>0?"+"+this.select_ts(this.selected_ts).value:this.select_ts(this.selected_ts).value);M
+        },
+        skillModifier(){
+            return this.select_skill(this.selected_skill).value==-100?'':(this.select_skill(this.selected_skill).value>0?"+"+this.select_skill(this.selected_skill).value:this.select_skill(this.selected_skill).value);
+        },
         removeFromArray(name, array){
             /*console.log(name);*/
             var arr2 = [];
@@ -522,7 +533,7 @@ var vueapp = new Vue({
             if(this.pg.PTL[this.selected_PT].current_uses<0) this.pg.PTL[this.selected_PT].current_uses = 0;
             if(this.pg.PTL[this.selected_PT].max_uses<0) this.pg.PTL[this.selected_PT].max_uses = 0;
             if(this.pg.PTL[this.selected_PT].current_uses>this.pg.PTL[this.selected_PT].max_uses) this.pg.PTL[this.selected_PT].current_uses = this.pg.PTL[this.selected_PT].max_uses;
-        }
+        },
     }
 });
 

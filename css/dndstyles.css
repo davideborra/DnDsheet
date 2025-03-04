@@ -12,7 +12,7 @@ input{
 }
 
 .pageContainer{
-    height: calc(100vh - 138px);
+    height: calc(100vh - 144px);
     overflow: scroll;
     padding-left: 8vw;
     padding-right: 8vw;
@@ -233,4 +233,46 @@ textarea.large{
 .spellSlot{
     margin-left: 0.2rem;
     margin-right: 0.2rem;
+}
+
+.diceRoller{
+    background-color: var(--bs-gray-200);
+    border-radius: 0.5rem;
+    margin: 0;
+    padding-inline: 1rem !important;
+    width: 15vw;
+}
+
+.diceRollerContainer{
+    background-color: var(--bs-gray-200);
+    border-radius: 0.5rem;
+    margin: 0rem;
+    padding: 0.5rem !important;
+    width: 20vw;
+}
+
+.diceRollerResult{
+    background-color: var(--bs-gray-200);
+    border-radius: 0.5rem;
+    margin: 0rem;
+    margin-left: 0.5rem;
+    padding: 0.5rem !important;
+    width: 10vw;
+}
+
+.diceRollerButton{
+    background-color: var(--bs-gray-200);
+    border-radius: 0.5rem;
+    margin-left: 0.5rem;
+    padding: 0.5rem !important;
+}
+
+button.noborder{
+    border:  none;
+}
+
+@media (max-width: 950px) {
+    .onlyOnLargerScreens{
+        display: none;
+    }
 }
