@@ -240,7 +240,7 @@ textarea.large{
     border-radius: 0.5rem;
     margin: 0;
     padding-inline: 1rem !important;
-    width: 15vw;
+    width: calc(20vw - 4rem);
 }
 
 .diceRollerContainer{
