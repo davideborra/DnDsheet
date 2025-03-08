@@ -544,7 +544,6 @@ var vueapp = new Vue({
             }
             if(parseInt(this.pg.hp)>parseInt(this.pg.maxHP)){
                 this.pg.hp = this.pg.maxHP;
-                console.log(3);
             };
         },
         checkPTL(){
