@@ -536,9 +536,16 @@ var vueapp = new Vue({
             if(level.used>level.max) level.used = level.max;
         },
         checkHP(){
-            if(this.pg.hp<0) this.pg.hp = 0;
-            if(this.pg.maxHP<0) this.pg.maxHP = 0;
-            if(this.pg.hp>this.pg.maxHP) this.pg.hp = this.pg.maxHP;
+            if(parseInt(this.pg.hp)<0){
+                this.pg.hp = 0;
+            }
+            if(parseInt(this.pg.maxHP)<0){
+                this.pg.maxHP = 0;
+            }
+            if(parseInt(this.pg.hp)>parseInt(this.pg.maxHP)){
+                this.pg.hp = this.pg.maxHP;
+                console.log(3);
+            };
         },
         checkPTL(){
             if(this.pg.PTL[this.selected_PT].current_uses<0) this.pg.PTL[this.selected_PT].current_uses = 0;
