@@ -1,9 +1,9 @@
 {
     "name": "Name",
-    "class": "Class",
+    "class": "",
     "level": 1,
-    "race": "Race",
-    "alignment": "Alignment",
+    "race": "",
+    "alignment": "GE",
     "hp": 10,
     "maxHP": 10,
     "stats": {
@@ -14,6 +14,7 @@
         "wis": 10,
         "cha": 10
     },
+    "castingStat": "int",
     "ca": 15,
     "init": 1,
     "vel": 9,
@@ -23,6 +24,10 @@
         "fallimenti": 0
     },
     "compBonus": 2,
+    "ispirazione": 0,
+    "affaticamento" : 0,
+    "talenti": [],
+    "attuned": [],
     "languages": [
         "Common"
     ],

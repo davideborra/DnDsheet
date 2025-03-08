@@ -12,10 +12,10 @@ var vueapp = new Vue({
         spellToAdd: "",
         spellToRemove : "",
         pg: {
-            name: "Error",
-            class: "caricamento dei dati",
+            name: "Loading Error",
+            class: "Loading Error",
             level: 0,
-            race: "Type: ",
+            race: "",
             alignment: "",
             hp: 42,
             maxHP: 42,
@@ -27,12 +27,17 @@ var vueapp = new Vue({
                 wis: 10,
                 cha: 10,
             },
+            castingStat: "int",
             ca: 15,
             init: 0,
             vel: 9,
             dadi_vita: "6d8",
             ts_morte: {successi: 0, fallimenti: 0},
             compBonus: 2,
+            ispirazione: 0,
+            affaticamento : 0,
+            talenti: [],
+            attuned: [],
             languages: ["Common", "Elvish"],
             other_comps: ["Armors", "Shields"],
             inventory: ["Dagger", "Book 'la Forma delle Cose'", "Pippo", "Pippo"],
@@ -485,6 +490,12 @@ var vueapp = new Vue({
             if(this.spellToAdd!= ""){
                 for(spell of this.allSpells){
                     if(spell.name == this.spellToAdd){
+                        vueapp.pg.spells.push(
+                            {
+                                name: spell.name,
+                                prepared: true,
+                            }
+                        )
                         vueapp.spells_print.push(spell);
                         for(level of this.pg.slots){
                             if(level.level == spell.level){
@@ -534,6 +545,64 @@ var vueapp = new Vue({
             if(this.pg.PTL[this.selected_PT].max_uses<0) this.pg.PTL[this.selected_PT].max_uses = 0;
             if(this.pg.PTL[this.selected_PT].current_uses>this.pg.PTL[this.selected_PT].max_uses) this.pg.PTL[this.selected_PT].current_uses = this.pg.PTL[this.selected_PT].max_uses;
         },
+        spellMod(){
+            var mod = 0;
+            switch (this.pg.castingStat){
+                case "str":
+                    mod = Math.floor((this.pg.stats.str-10)/2);
+                    break;
+                case "dex":
+                    mod = Math.floor((this.pg.stats.dex-10)/2);
+                    break;
+                case "con":
+                    mod = Math.floor((this.pg.stats.con-10)/2);
+                    break;
+                case "int":
+                    mod = Math.floor((this.pg.stats.int-10)/2);
+                    break; 
+                case "wis":
+                    mod = Math.floor((this.pg.stats.wis-10)/2);
+                    break;
+                case "cha":
+                    mod = Math.floor((this.pg.stats.cha-10)/2);
+                    break;
+                default:
+                    mod = 0;     
+                    /*console.log("ahia");*/
+                }
+                mod += parseInt(this.pg.compBonus);
+                if(mod > 0)
+                    return "+" + mod ;
+                else 
+                    return mod;
+        },
+        spellTS(){
+            var mod = 0;
+            switch (this.pg.castingStat){
+                case "str":
+                    mod = Math.floor((this.pg.stats.str-10)/2);
+                    break;
+                case "dex":
+                    mod = Math.floor((this.pg.stats.dex-10)/2);
+                    break;
+                case "con":
+                    mod = Math.floor((this.pg.stats.con-10)/2);
+                    break;
+                case "int":
+                    mod = Math.floor((this.pg.stats.int-10)/2);
+                    break; 
+                case "wis":
+                    mod = Math.floor((this.pg.stats.wis-10)/2);
+                    break;
+                case "cha":
+                    mod = Math.floor((this.pg.stats.cha-10)/2);
+                    break;
+                default:
+                    mod = 0;     
+                    /*console.log("ahia");*/
+                }
+                return 8 + mod + parseInt(this.pg.compBonus);
+        }
     }
 });
 
