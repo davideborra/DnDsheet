@@ -1,0 +1,58 @@
+[
+    {
+        "name": "Ordine di Attacco",
+        "level": 0,
+        "school": "Strategia",
+        "manual": "Biblioteca Omnicomprensiva di Ker",
+        "time": "1 azione",
+        "range": "18m, il bersaglio deve vedere o udire il sapiente",
+        "components": "V o S",
+        "duration": "1 azione",
+        "damage": "",
+        "description": "La prossima volta che il bersaglio di questo Ordine compie l'azione di Attacco prima la fine del prossimo turno dello Stratega, può fare un ulteriore attacco con arma come parte di quell'azione.",
+        "higher_lv": "A partire dal livello 6, il Sapiente può usare la sua azione bonus per fare un attacco con arma. \nA partire dal livello 13 l'ordine può essere rivolto a due creature. \nA partire dal livello17 l'ordine può essere rivolto a tre creature, le quali ricevono punti ferita temporanei pari al modificatore di Intelligenza dello Stratega (minimo di 1). \n",
+        "prepared": "false"
+    },
+    {
+        "name": "Ordine di Difesa",
+        "level": 0,
+        "school": "Strategia",
+        "manual": "Biblioteca Omnicomprensiva di Ker",
+        "time": "1 azione",
+        "range": "18m, il bersaglio deve vedere o udire il sapiente",
+        "components": "V o S",
+        "duration": "1 azione",
+        "damage": "",
+        "description": "Fino all'inizio del prossimo turno dello Stratega, il bersaglio di questo Ordine ottiene un bonus alla CA pari al modificatore di Intelligenza dello Stratega.",
+        "higher_lv": "A partire dal livello 6, il Sapiente può usare la sua azione bonus per fare un attacco con arma. \nA partire dal livello 13 l'ordine può essere rivolto a due creature. \nA partire dal livello17 l'ordine può essere rivolto a tre creature, le quali ricevono punti ferita temporanei pari al modificatore di Intelligenza dello Stratega (minimo di 1). \n",
+        "prepared": "false"
+    },
+    {
+        "name": "Ordine di Movimento",
+        "level": 0,
+        "school": "Strategia",
+        "manual": "Biblioteca Omnicomprensiva di Ker",
+        "time": "1 azione",
+        "range": "18m, il bersaglio deve vedere o udire il sapiente",
+        "components": "V o S",
+        "duration": "1 azione",
+        "damage": "",
+        "description": "Il bersaglio di questo Ordine può usare la sua reazione per muoversi fino alla sua velocità senza provocare attacchi di opportunità.",
+        "higher_lv": "A partire dal livello 6, il Sapiente può usare la sua azione bonus per fare un attacco con arma. \nA partire dal livello 13 l'ordine può essere rivolto a due creature. \nA partire dal livello17 l'ordine può essere rivolto a tre creature, le quali ricevono punti ferita temporanei pari al modificatore di Intelligenza dello Stratega (minimo di 1). \n",
+        "prepared": "false"
+    },
+    {
+        "name": "Ordine di Assistenza",
+        "level": 0,
+        "school": "Strategia",
+        "manual": "Biblioteca Omnicomprensiva di Ker",
+        "time": "1 azione",
+        "range": "",
+        "components": "18m, il bersaglio deve vedere o udire il sapiente",
+        "duration": "1 azione",
+        "damage": "",
+        "description": "Fino all'inizio del prossimo turno del Sapiente, il bersaglio di questo ordine può aggiungere il modificatore di intelligenza dello Stratega a tutte le prove di caratteristica e tiri salvezza che compie sulle statistiche di Forza, Destrezza e Costituzione.",
+        "higher_lv": "A partire dal livello 6, il Sapiente può usare la sua azione bonus per fare un attacco con arma. \nA partire dal livello 13 l'ordine può essere rivolto a due creature. \nA partire dal livello17 l'ordine può essere rivolto a tre creature, le quali ricevono punti ferita temporanei pari al modificatore di Intelligenza dello Stratega (minimo di 1). \n",
+        "prepared": "false"
+    }
+]

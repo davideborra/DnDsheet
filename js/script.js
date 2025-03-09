@@ -322,13 +322,21 @@ var vueapp = new Vue({
         //     }
         // },
         loadSpells(){
-            fetch("data/spells.json")
-                .then((response) => response.json())
-                    .then((json) => this.parseSpells(json));
+            // var json = [];
+            // loadSpellsJson().then(
+            //     (response) => {
+            //         for (book of response){
+            //             console.log("a")
+            //             json = json.concat(book);
+            //         }
+            //         this.parseSpells(json);
+            //     }
+            // )
+            loadSpellsJson().then((response) => this.parseSpells(response));
         },
         parseSpells(json){
-            //console.log(json);
-            this.allSpells = json;
+            // console.log(json);
+            this.allSpells = [];
             vueapp.spells_print = [];
             for(level in this.pg.slots){
                 level.known=0;
@@ -620,9 +628,26 @@ Vue.component("modal", {
 
 
   // check if leaving without saving
-  window.addEventListener("beforeunload", function (e) {
+window.addEventListener("beforeunload", function (e) {
     var confirmationMessage = 'It looks like you have been editing something. '
                             + 'If you leave before saving, your changes will be lost.';
     (e || window.event).returnValue = confirmationMessage; //Gecko + IE
     return confirmationMessage; //Gecko + Webkit, Safari, Chrome etc.
 });
+
+async function loadSpellsJson(){
+    var jsonSpells = [];
+    var phb = await  fetch("data/phb.json");
+    phb = await phb.json();
+    var tce = await fetch("data/tasha.json");
+    tce = await tce.json();
+    var xge = await fetch("data/xanathar.json");
+    xge = await xge.json();
+    var hb = await fetch("data/homebrew.json");
+    hb = await hb.json();
+    jsonSpells = jsonSpells.concat(await phb, await tce, await xge, await hb);
+    return jsonSpells;
+}
+
+// .then((response) => response.json())
+//         .then((json) => jsonSpells = jsonSpells.concat(json));

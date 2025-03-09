@@ -1,0 +1,30 @@
+[
+    {
+        "name": "Assorbire Elementi",
+        "level": 1,
+        "school": "Abiurazione",
+        "manual": "Guida Omnicomprensiva di Xanatar",
+        "time": "1 reazione, che l'incantatore effettua quando subisce danni da acido, freddo, fulmine, fuoco, tuono",
+        "range": "Incantatore",
+        "components": "S",
+        "duration": "1 round",
+        "damage": "+1d6",
+        "description": "L’incantesimo cattura parte dell’energia in arrivo, ammortizzando i suoi effetti sull'incantatore e consentendogli di incamerarla per il suo attacco in mischia successivo.\n L’incantatore possiede resistenza al tipo di danno innescante fino all'inizio del proprio turno successivo. Inoltre, la prima volta che colpisce con un attacco in mischia nel suo turno successivo, il bersaglio subisce 1d6 danni extra del tipo innescante e l’incantesimo termina.",
+        "higher_lv": "Ai Livelli Superiori. Quando l’incantatore lancia questo incantesimo usando uno slot incantesimo di 2° livello o superiore, i danni extra aumentano di 1d6 per ogni slot di livello superiore al 1°.",
+        "prepared": "false"
+    },
+    {
+        "name": "Scossa Tellurica",
+        "level": 1,
+        "school": "Invocazione",
+        "manual": "Guida Omnicomprensiva di Xanatar",
+        "time": "1 azione",
+        "range": "3 metri",
+        "components": "V,S",
+        "duration": "Istantanea",
+        "damage": "1d6",
+        "description": "L’incantatore provoca una scossa tellurica sul terreno in un raggio di 3 metri. Ogni creatura entro l’area, a eccezione dell’incantatore, deve effettuare un Tiro Salvezza su Destrezza; se lo fallisce, subisce 1d6 danni contundenti e cade a terra prona. Se il terreno in quell’area è di pietra o terriccio smosso, diventa terreno difficile finché non viene sgombrato.",
+        "higher_lv": "Ai Livelli Superiori. Quando l’incantatore lancia questo incantesimo usando uno slot incantesimo di 2° livello o superiore, i danni aumentano di 1d6 per ogni slot di livello superiore al 1°.",
+        "prepared": "false"
+    }
+]
