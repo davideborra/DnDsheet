@@ -616,6 +616,14 @@ var vueapp = new Vue({
                     /*console.log("ahia");*/
                 }
                 return 8 + mod + parseInt(this.pg.compBonus);
+        },
+        changePrepared(spell, index){
+            for (varspell of this.pg.spells){
+                if(spell.name == varspell.name){
+                    varspell.prepared = !varspell.prepared;
+                }
+            }
+            this.spells_print[index].prepared = !this.spells_print[index].prepared;
         }
     }
 });
