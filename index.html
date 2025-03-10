@@ -498,9 +498,9 @@
                                         </div>
                                         <!-- <div class = "spell" v-for="(spell,index) in spells_print" v-if="spell.level == level"><input type="checkbox" class="slotsButton" v-model = "spell.prepared">{{spell.name}} <b class = "infobutton" @click="showInfo(index)">ⓘ</b></div>    -->
                                         <div class="attack" v-for="(spell,index) in spells_print" v-if="spell.level == level.level">
-                                            <div class = "attackdata clickable" @click= "pg.PTL = removeFromArray(trait, pg.PTL)" v-if ="level.level>0"> 
-                                                <i class="bi bi-circle" v-if="!spell.prepared" @click="spell.prepared = true"></i>
-                                                <i class="bi bi-record-circle-fill" v-if="spell.prepared" @click="spell.prepared = false"></i>
+                                            <div class = "attackdata clickable" v-if ="level.level>0"> 
+                                                <i class="bi bi-circle" v-if="!spell.prepared" @click="spell.prepared = true;"></i>
+                                                <i class="bi bi-record-circle-fill" v-if="spell.prepared" @click="spell.prepared = false;"></i>
                                             </div>
                                             <div class = "attackdata" style="width: 100%;"> 
                                                 {{spell.name}}
