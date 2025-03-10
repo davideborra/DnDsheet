@@ -501,7 +501,7 @@ var vueapp = new Vue({
                         vueapp.pg.spells.push(
                             {
                                 name: spell.name,
-                                prepared: true,
+                                prepared: false,
                             }
                         )
                         vueapp.spells_print.push(spell);
