@@ -624,6 +624,7 @@ var vueapp = new Vue({
                 }
             }
             this.spells_print[index].prepared = !this.spells_print[index].prepared;
+            this.$forceUpdate(); //questo serve perché vue fa i capricci e ogni tanto non mi aggiorna gli elementi grafici
         }
     }
 });
