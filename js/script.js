@@ -336,7 +336,7 @@ var vueapp = new Vue({
         },
         parseSpells(json){
             // console.log(json);
-            this.allSpells = [];
+            this.allSpells = json;
             vueapp.spells_print = [];
             for(level in this.pg.slots){
                 level.known=0;
