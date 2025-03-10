@@ -10,7 +10,8 @@
         "duration": "Istantanea",
         "damage": "",
         "description": "L’incantatore sceglie una fiamma non magica situata entro gittata, che egli sia in grado di vedere e che sia contenuta in un cubo con spigolo di 1,5 metri. L’incantatore la influenza in uno dei modi seguenti: \n• L’incantatore espande istantaneamente la fiamma di 1,5 metri in una direzione, purché nella nuova direzione sia disponibile della legna o altro materiale combustibile.\n L’incantatore estingue istantaneamente le fiamme all’interno del cubo.\n• L’incantatore raddoppia o dimezza l’area di luce intensa e luce fioca proiettata dalla fiamma, cambia il suo colore o entrambe le cose. Il cambiamento dura per 1 ora.\n• L’incantatore fa in modo che alcune forme semplici (come la vaga forma di una creatura, un oggetto inanimato o un luogo) compaiano tra le fiamme e si animino a suo piacimento. Le forme permangono per 1 ora.\nSe l’incantatore lancia questo incantesimo più volte, può mantenere attivi fino a tre dei suoi effetti non istantanei contemporaneamente e può congedare uno di questi effetti con un’azione.",
-        "higher_lv": ""
+        "higher_lv": "",
+        "prepared": "false"
     },
     {
         "name": "Creare Falò",
@@ -23,7 +24,8 @@
         "duration": "Concentrazione, fino a 1 minuto",
         "damage": "1d8 Fuoco (TS Destrezza)",
         "description": "L' incantatore crea un falò su un punto del terreno situato entro gittata e che egli sia in grado di vedere. Finché l'incantesimo non termina, il falò occupa un cubo con spigolo di 1,5 metri. Ogni creatura nello spazio del falò nel momento in cui l'incantatore lancia l'incantesimo deve superare un tiro salvezza su Destrezza, altrimenti subisce 1d8 danni da fuoco. Una creatura deve effettuare il tiro salvezza anche quando entra nello spazio del falò per la prima volta in un turno o vi termina il proprio turno.\nIl falò incendia gli oggetti infiammabili entro l'area che non siano indossati o trasportati.",
-        "higher_lv": "I danni dell'incantesimo aumentano di 1d8 quando l'incantatore raggiunge il 5° livello (2d8), l'11° livello (3d8) e il 17°  livello (4d8)."
+        "higher_lv": "I danni dell'incantesimo aumentano di 1d8 quando l'incantatore raggiunge il 5° livello (2d8), l'11° livello (3d8) e il 17°  livello (4d8).",
+        "prepared": "false"
     },
     {
         "name": "Ferocia Primordiale",
@@ -36,7 +38,8 @@
         "duration": "Istantanea",
         "damage": "1d10 acido",
         "description": "L'incantatore incanala la magia primordiale e sviluppa denti o unghie affilate  con cui sferrare un attacco corrosivo. L'incantatore effettua un attacco con incantesimo in mischia contro una creatura situata entro 1,5 metri da lui. Se colpisce, il bersaglio subisce 1d10 danni da acido. Dopo che l'incantatore ha effettuato questo attacco, i suoi denti o le sue unghie tornano alla normalità.",
-        "higher_lv": "I danni dell'incantesimo aumentano di 1d10 quando l'incantatore raggiunge il 5° livello (2d10), l'11° livello (3d10) e il 17° livello (4d10)."
+        "higher_lv": "I danni dell'incantesimo aumentano di 1d10 quando l'incantatore raggiunge il 5° livello (2d10), l'11° livello (3d10) e il 17° livello (4d10).",
+        "prepared": "false"
     },
     {
         "name": "Folata",
@@ -49,7 +52,8 @@
         "duration": "Istantanea",
         "damage": "",
         "description": "L’incantatore stringe il pugno nell’aria e la obbliga a generare uno degli effetti seguenti in un punto situato entro gittata e che egli sia in grado di vedere: \n• Una creatura di taglia Media o inferiore a scelta dell’incantatore deve superare un tiro salvezza su Forza, altrimenti sarà spinta lontano da lui di un massimo di 1,5 metri.\n• L’incantatore genera una piccola raffica di vento in grado di muovere un oggetto che non sia né trattenuto né trasportato e che non pesi più di 2,5 kg. L’oggetto viene spinto lontano da lui di un massimo di 3 metri. Non viene spinto con forza sufficiente da infliggere danni.\n• L’incantatore crea un effetto sensoriale innocuo usando l’aria, come per esempio un fruscio di foglie, un’imposta che sbatte o una brezza che agita leggermente le sue vesti.",
-        "higher_lv": ""
+        "higher_lv": "",
+        "prepared": "false"
     },
     {
         "name": "Infestazione",
@@ -62,7 +66,8 @@
         "duration": "9 metri",
         "damage": "1d6 Veleno (TS Costituzione)",
         "description": "L'incantatore fa apparire temporaneamente una nube di termiti, pulci e altri parassiti su una creatura situata entro gittata e che egli sia in grado di vedere. Il bersaglio deve superare un tiro salvezza su Costituzione, altrimenti subisce 1d6 danni da veleno e si muove di 1,5 metri in una direzione casuale se è in grado di muoversi e la sua velocità è di almeno 1,5 metri. Si tira un d4 per la direzione: 1, nord; 2, sud; 3, est; o 4, ovest. Questo movimento non provoca attacchi di opportunità e, se la direzione indicata dal tiro è bloccata, il bersaglio non si muove.",
-        "higher_lv": "I danni dell'incantesimo aumentano di 1d6 quando l'incantatore raggiunge il 5° livello (2d6), l'11° livello (3d6) e il 17° livello (4d6)."
+        "higher_lv": "I danni dell'incantesimo aumentano di 1d6 quando l'incantatore raggiunge il 5° livello (2d6), l'11° livello (3d6) e il 17° livello (4d6).",
+        "prepared": "false"
     },
     {
         "name": "Modellare Acqua",
@@ -75,7 +80,8 @@
         "duration": "Istantanea",
         "damage": "",
         "description": "L’incantatore sceglie un’area d’acqua situata entro gittata, che egli sia in grado di vedere e che sia contenuta in un cubo con spigolo di 1,5 metri.\nL'incantatore manipola quell’acqua in uno dei modi seguenti:\n• L’incantatore muove istantaneamente o cambia in altri modi il corso dell’acqua in base al suo comando, fino a 1,5 metri in ogni direzione. Questo movimento non ha abbastanza forza da infliggere danni.\n• L’incantatore ricava dall’acqua delle semplici forme che anima in base alle sue indicazioni. Questo cambiamento dura 1 ora.\n• L’incantatore cambia il colore o l’opacità dell’acqua. L’intera massa d’acqua deve essere cambiata nello stesso modo. Questo cambiamento dura 1 ora.\n• L’incantatore congela l’acqua, purché non ci siano creature in essa. L’acqua si scongela dopo 1 ora.\nSe l’incantatore lancia questo incantesimo più volte, può mantenere attivi fino a due dei suoi effetti non istantanei contemporaneamente e può congedare uno di questi effetti con un’azione.",
-        "higher_lv": ""
+        "higher_lv": "",
+        "prepared": "false"
     },
     {
         "name": "Modellare Terra",
@@ -88,7 +94,8 @@
         "duration": "Istantanea",
         "damage": "",
         "description": "L’incantatore sceglie una parte di terra o di pietra situata entro gittata, che egli sia in grado di vedere e che sia contenuta entro un cubo con spigolo di 1,5 metri. Manipola quella terra in uno dei modi seguenti:\n• Se l’incantatore bersaglia un’area di terra smossa, può istantaneamente scavarla, spostarla lungo il terreno e depositarla fino a 1,5 metri di distanza. Questo movimento non ha abbastanza forza da infliggere danni.\n• L’incantatore fa comparire forme, colori o entrambe le cose sulla terra o sulla pietra, per formare parole, creare immagini o tracciare disegni. Questi cambiamenti permangono per 1 ora.\n• Se il terriccio o la pietra modellati dall’incantatore si trovano sul terreno, l’incantatore può rendere quel terreno difficile. In alternativa, se quel terreno è già terreno difficile, l’incantatore può renderlo terreno normale. Questo cambiamento permane per 1 ora.\nSe l’incantatore lancia questo incantesimo più volte, non può avere attivi più di due suoi effetti non istantanei alla volta e può congedare uno di questi effetti con un’azione.",
-        "higher_lv": ""
+        "higher_lv": "",
+        "prepared": "false"
     },
     {
         "name": "Morsa del Gelo",
@@ -101,7 +108,8 @@
         "duration": "Istantanea",
         "damage": "1d6 Freddo (TS Costituzione)",
         "description": "L’incantatore crea una patina di gelo che intorpidisce su una creatura situata entro gittata e che egli sia in grado di vedere. Il bersaglio deve effettuare un tiro salvezza su Costituzione; se lo fallisce, subisce 1d6 danni da freddo e dispone di svantaggio al prossimo tiro per colpire con un’arma che effettua prima della fine del suo turno successivo.",
-        "higher_lv": "I danni dell’incantesimo aumentano di 1d6 quando l’incantatore raggiunge il 5° livello (2d6), l’11° livello (3d6) e il 17° livello (4d6)."
+        "higher_lv": "I danni dell’incantesimo aumentano di 1d6 quando l’incantatore raggiunge il 5° livello (2d6), l’11° livello (3d6) e il 17° livello (4d6).",
+        "prepared": "false"
     },
     {
         "name": "Parola Radiosa",
@@ -114,7 +122,8 @@
         "duration": "Istantanea",
         "damage": "1d6 Radiosi (TS Costituzione)",
         "description": "L'incantatore pronuncia una parola divina e un bagliore radioso e bruciante compare attorno alla sua figura.\nOgni creatura a sua scelta situata entro gittata e che egli sia in grado di vedere deve superare un tiro salvezza su Costituzione, altrimenti subisce 1d6 danni radiosi.",
-        "higher_lv": "Il danno dell'incantesimo aumenta di 1d6 quando raggiungi il 5° livello (2d6), l'11° livello (3d6) e il 17° livello (4d6)."
+        "higher_lv": "Il danno dell'incantesimo aumenta di 1d6 quando raggiungi il 5° livello (2d6), l'11° livello (3d6) e il 17° livello (4d6).",
+        "prepared": "false"
     },
     {
         "name": "Pietra Magica",
@@ -127,7 +136,8 @@
         "duration": "1 minuto",
         "damage": "1d6 + Modificatore di Caratteristica da incantatore, Contundenti",
         "description": "L’incantatore tocca da uno a tre sassolini, infondendo in essi un flusso di magia. L’incantatore o qualcun altro può effettuare un attacco con incantesimo a distanza con uno dei sassolini scagliandolo a mano o con una fionda.\nSe scagliato a mano, ha una gittata di 18 metri. Se qualcun altro attacca con il sassolino, quell’attaccante aggiunge il modificatore di caratteristica da incantatore (dell’incantatore e non dell’attaccante) al tiro per colpire. Se colpito, il bersaglio subisce un ammontare di danni contundenti pari a 1d6 + il modificatore di caratteristica da incantatore dell’incantatore. Che il bersaglio sia colpito o mancato, l’incantesimo sulla pietra termina.\nSe l’incantatore lancia di nuovo questo incantesimo, l’incantesimo termina anticipatamente sugli eventuali sassolini già influenzati da esso.",
-        "higher_lv": ""
+        "higher_lv": "",
+        "prepared": "false"
     },
     {
         "name": "Rintocco dei Morti",
@@ -140,7 +150,8 @@
         "duration": "Istantanea",
         "damage": "1d8/1d12 Necrotici (TS Saggezza)",
         "description": "L'incantatore indica una creatura situata entro gittata e che egli sia in grado di vedere e il lugubre rintocco di una campana echeggia attorno ad essa per un istante. Il bersaglio deve superare un tiro salvezza su Saggezza, altrimenti subisce 1d8 danni necrotici. Se al bersaglio mancano uno o più punti ferita subisce invece 1d12 danni necrotici.",
-        "higher_lv": "I danni dell'incantesimo aumentano quando l'incantatore raggiunge il 5° livello (2d8 o 2d12), l'11° livello (3d8 o 3d12) e il 17° livello (4d8 o 4d12)."
+        "higher_lv": "I danni dell'incantesimo aumentano quando l'incantatore raggiunge il 5° livello (2d8 o 2d12), l'11° livello (3d8 o 3d12) e il 17° livello (4d8 o 4d12).",
+        "prepared": "false"
     },
     {
         "name": "Rombo di Tuono",
@@ -153,7 +164,8 @@
         "duration": "Istantanea",
         "damage": "1d6 Tuono (TS Costituzione)",
         "description": "L’incantatore genera un’esplosione tonante, che può essere udita a 30 metri di distanza. Ogni creatura, ad eccezione dell’incantatore, situata entro 1,5 metri da lui deve effettuare un tiro salvezza su Costituzione; se lo fallisce, subisce 1d6 danni da tuono.",
-        "higher_lv": "I danni dell’incantesimo aumentano di 1d6 quando l’incantatore raggiunge il 5° livello (2d6), l’11° livello (3d6) e il 17° livello (4d6)."
+        "higher_lv": "I danni dell’incantesimo aumentano di 1d6 quando l’incantatore raggiunge il 5° livello (2d6), l’11° livello (3d6) e il 17° livello (4d6).",
+        "prepared": "false"
     },
     {
         "name": "Assorbire Elementi",
@@ -166,7 +178,8 @@
         "duration": "1 round",
         "damage": "1d6 Tipo variabile",
         "description": "L’incantesimo cattura parte dell’energia in arrivo, ammortizzando i suoi effetti sull'incantatore e consentendogli di incamerarla per il suo attacco in mischia successivo.\nL’incantatore possiede resistenza al tipo di danno innescante fino all'inizio del proprio turno successivo. Inoltre, la prima volta che colpisce con un attacco in mischia nel suo turno successivo, il bersaglio subisce 1d6 danni extra del tipo innescante e l’incantesimo termina.",
-        "higher_lv": "Quando l’incantatore lancia questo incantesimo usando uno slot incantesimo di 2° livello o superiore, i danni extra aumentano di 1d6 per ogni slot di livello superiore al 1°."
+        "higher_lv": "Quando l’incantatore lancia questo incantesimo usando uno slot incantesimo di 2° livello o superiore, i danni extra aumentano di 1d6 per ogni slot di livello superiore al 1°.",
+        "prepared": "false"
     },
     {
         "name": "Catapulta",
@@ -179,7 +192,8 @@
         "duration": "Istantanea",
         "damage": "3d8 Contundenti",
         "description": "L’incantatore sceglie un oggetto di peso compreso tra 0,5 e 2,5 kg, situato entro gittata e che non sia indossato o trasportato. L’oggetto vola in linea retta fino a 27 metri in una direzione a scelta dell’incantatore prima di cadere a terra, fermandosi prima se impatta contro una superficie solida;\nSe l’oggetto sta per colpire una creatura, quella creatura deve effettuare un tiro salvezza su Destrezza.\nSe lo fallisce, l’oggetto colpisce il bersaglio e smette di muoversi.\nIn ogni caso, sia l’oggetto che la creatura o la superficie solida subiscono 3d8 danni contundenti.",
-        "higher_lv": "Quando l’incantatore lancia questo incantesimo usando uno slot incantesimo di 2° livello o superiore, il peso massimo degli oggetti che può bersagliare con questo incantesimo aumenta di 2,5 kg e i danni aumentano di 1d8 per ogni slot di livello superiore al 1°."
+        "higher_lv": "Quando l’incantatore lancia questo incantesimo usando uno slot incantesimo di 2° livello o superiore, il peso massimo degli oggetti che può bersagliare con questo incantesimo aumenta di 2,5 kg e i danni aumentano di 1d8 per ogni slot di livello superiore al 1°.",
+        "prepared": "false"
     },
     {
         "name": "Cerimonia",
@@ -192,7 +206,8 @@
         "duration": "Istantanea",
         "damage": "",
         "description": "L'incantatore effettua una cerimonia religiosa speciale infusa di magia. Quando lancia l'incantesimo, sceglie uno dei riti seguenti, il cui bersaglio deve trovarsi entro 3 metri da lui per tutto il tempo di lancio.\n• Benedire l'Acqua. L'incantatore tocca una fiala di acqua e la fa diventare dell'Acqua santa.\n• Dedizione. L'incantatore tocca un umanoide che desidera dedicarsi al servizio del suo dio. Per le successive 24 ore, ogni volta che il bersaglio effettua un tiro salvezza, può tirare un d4 e aggiungere il numero al tiro salvezza. Una creatura può beneficiare di questo rito solo una volta.\n• Espiazione. L'incantatore tocca una creatura consenziente il cui allineamento è cambiato ed effettua una prova di Saggezza (Intuizione) con CD 20. In caso di successo, ripristina l'allineamento originale del bersaglio.\n• Ingresso nell'Età Adulta. L'incantatore tocca un umanoide che sia un giovane adulto. Per le 24 ore successive, ogni volta che il bersaglio effettua una prova di caratteristica, può tirare un d4 e aggiungere il risultato ottenuto alla prova di caratteristica. Una creatura può beneficiare di questo rito una volta sola.\n• Matrimonio. L'incantatore tocca due umanoidi adulti disposti a legarsi l'un l'altro in matrimonio. Per i 7 giorni successivi, ogni bersaglio ottiene un bonus di +2 alla CA mentre si trova entro 9 metri dall'altro. Una creatura può beneficiare di nuovo di questo rito soltanto se resta vedova.\n• Rito funebre. L'incantatore tocca un cadavere, per i successivi 7 giorni il bersaglio non può diventare non morto in alcun modo salvo che per l'incantesimo Desiderio.",
-        "higher_lv": ""
+        "higher_lv": "",
+        "prepared": "false"
     },
     {
         "name": "Colpo dello Zefiro",
@@ -205,7 +220,8 @@
         "duration": "Concentrazione, fino a 1 minuto",
         "damage": "",
         "description": "L'incantatore si muove come il vento. Finché l'incantesimo non termina, il suo movimento non provoca attacchi di opportunità.\nUna volta, prima che l'incantesimo termini, l'incantatore può conferire a se stesso vantaggio in un tiro per colpire con un'arma durante il proprio turno. Quell'attacco infligge 1d8 danni da forza extra se colpisce. Che l'attacco colpisca o manchi, la velocità base sul terreno dell'incantatore aumenta di 9 metri fino alla fine di quel turno.",
-        "higher_lv": ""
+        "higher_lv": "",
+        "prepared": "false"
     },
     {
         "name": "Coltello di Ghiaccio",
@@ -218,7 +234,8 @@
         "duration": "Istantanea",
         "damage": "2d6 Freddo (TS Destrezza)",
         "description": "L’incantatore crea un frammento di ghiaccio e lo scaglia contro una creatura entro gittata, effettuando un attacco con incantesimo a distanza contro il bersaglio. Se lo colpisce, il bersaglio subisce 1d10 danni perforanti. Che colpisca o manchi il bersaglio, il frammento poi esplode. Il bersaglio e ogni creatura entro 1,5 metri dal punto in cui il ghiaccio è esploso devono superare un tiro salvezza su Destrezza, altrimenti subiscono 2d6 danni da freddo.",
-        "higher_lv": "Ai Livelli Superiori. Quando l’incantatore lancia questo incantesimo usando uno slot incantesimo di 2° livello o superiore, i danni da freddo aumentano di 1d6 per ogni slot di livello superiore al 1°."
+        "higher_lv": "Ai Livelli Superiori. Quando l’incantatore lancia questo incantesimo usando uno slot incantesimo di 2° livello o superiore, i danni da freddo aumentano di 1d6 per ogni slot di livello superiore al 1°.",
+        "prepared": "false"
     },
     {
         "name": "Dardo di Caos",
@@ -231,7 +248,8 @@
         "duration": "Istantanea",
         "damage": "2d8 + 1d6",
         "description": "L'incantatore scaglia una massa tremolante e gorgogliante di energia caotica contro una creatura entro gittata, effettuando un attacco con incantesimo a distanza contro il bersaglio. Se lo colpisce, il bersaglio subisce 2d8 + 1d6 danni. L' incantatore sceglie uno dei d8. Il risultato ottenuto col tiro di quel dado determina il tipo di danno dell'attacco, come indicato di seguito.\n\td8\tTipo di Danno\n\t1\tAcido\n\t2\tForza\n\t3\tFreddo\n\t4\tFulmine\n\t5\tFuoco\n\t6\tPsichico\n\t7\tTuono\n\t8\tVeleno\nSe l'incantatore ottiene lo stesso risultato con entrambi i d8, l'energia caotica balza dal bersaglio a una creatura diversa a scelta dell'incantatore situata entro 9 metri da esso. L'incantatore effettua un nuovo tiro per colpire contro il nuovo bersaglio e un nuovo tiro per i danni, che potrebbe far balzare di nuovo l'energia caotica. Una creatura può essere bersagliata soltanto una volta da ogni lancio di questo incantesimo.",
-        "higher_lv": "Quando l'incantatore lancia questo incantesimo usando uno slot incantesimo di 2°  livello o superiore, ogni bersaglio subisce 1d6 danni extra del tipo ottenuto con il tiro per ogni slot di livello superiore al 1°."
+        "higher_lv": "Quando l'incantatore lancia questo incantesimo usando uno slot incantesimo di 2°  livello o superiore, ogni bersaglio subisce 1d6 danni extra del tipo ottenuto con il tiro per ogni slot di livello superiore al 1°.",
+        "prepared": "false"
     },
     {
         "name": "Incuti paura",
@@ -244,7 +262,8 @@
         "duration": "Concentrazione, fino a 1 minuto",
         "damage": "",
         "description": "L'incantatore risveglia la percezione della mortalità in una creatura situata entro gittata e che egli sia in grado di vedere. Un costrutto o un non morto è immune a questo effetto. Il bersaglio deve superare un tiro salvezza su Saggezza, altrimenti diventa spaventato dall'incantatore finché l'incantesimo non termina. Il bersaglio spaventato può ripetere il tiro salvezza alla fine di ogni suo turno, terminando l'effetto su se stesso in caso di successo.",
-        "higher_lv": "Quando l'incantatore lancia questo incantesimo usando uno slot incantesimo di 2° livello o superiore, può bersagliare una creatura aggiuntiva per ogni slot di livello superiore al 10.  Le creature devono trovarsi entro 9 metri l'una dall'altra quando l'incantatore le bersaglia."
+        "higher_lv": "Quando l'incantatore lancia questo incantesimo usando uno slot incantesimo di 2° livello o superiore, può bersagliare una creatura aggiuntiva per ogni slot di livello superiore al 10.  Le creature devono trovarsi entro 9 metri l'una dall'altra quando l'incantatore le bersaglia.",
+        "prepared": "false"
     },
     {
         "name": "Legame con le Bestie",
@@ -257,7 +276,8 @@
         "duration": "Concentrazione, fino a 10 minuti",
         "damage": "",
         "description": "L'incantatore stabilisce un legame telepatico con una bestia con cui è in contatto, che è stata da lui affascinata o è amichevole nei suoi confronti. L'incantesimo fallisce se l'Intelligenza della bestia è pari o superiore a 4. Finché l'incantesimo non termina, il legame resta attivo fintanto che l'incantatore e la bestia rimangono entro linea di vista l'uno dall'altra. Attraverso il legame, la bestia può capire i messaggi telepatici che l'incantatore le invia e può a sua volta comunicare telepaticamente le emozioni e i concetti più semplici all'incantatore. Fintanto che il legame è attivo, la bestia dispone di vantaggio ai tiri per colpire contro qualsiasi creatura situata entro 1,5 metri dall'incantatore e che quest'ultimo sia in grado di vedere.",
-        "higher_lv": ""
+        "higher_lv": "",
+        "prepared": "false"
     },
     {
         "name": "Scossa Tellurica",
@@ -270,7 +290,8 @@
         "duration": "Istantanea",
         "damage": "1d6 Contundenti (TS Destrezza)",
         "description": "L’incantatore provoca una scossa tellurica sul terreno in un raggio di 3 metri. Ogni creatura entro l’area, a eccezione dell’incantatore, deve effettuare un Tiro Salvezza su Destrezza; se lo fallisce, subisce 1d6 danni contundenti e cade a terra prona. Se il terreno in quell’area è di pietra o terriccio smosso, diventa terreno difficile finché non viene sgombrato.",
-        "higher_lv": "Quando l’incantatore lancia questo incantesimo usando uno slot incantesimo di 2° livello o superiore, i danni aumentano di 1d6 per ogni slot di livello superiore al 1°."
+        "higher_lv": "Quando l’incantatore lancia questo incantesimo usando uno slot incantesimo di 2° livello o superiore, i danni aumentano di 1d6 per ogni slot di livello superiore al 1°.",
+        "prepared": "false"
     },
     {
         "name": "Trabocchetto",
@@ -283,7 +304,8 @@
         "duration": "8 ore",
         "damage": "",
         "description": "Quando lancia questo incantesimo, l'incantatore usa la corda per creare un cerchio del raggio di 1,5 metri sul terreno o sul pavimento. Una volta completato il lancio, la corda scompare e il cerchio diventa una trappola magica.\nQuesta trappola è pressoché invisibile e per discernerla è necessario effettuare con successo una prova di Intelligenza (Indagare) contro la CD del tiro salvezza dell'incantesimo.\nLa trappola si innesca quando una creatura Piccola, Media o Grande si muove sul terreno o sul pavimento, entrando nel raggio dell'incantesimo. Quella creatura deve superare un tiro salvezza su Destrezza, altrimenti viene magicamente sollevata in aria, dove rimane appesa a testa in giù a 90 cm dal terreno o dal pavimento. La creatura rimane trattenuta in quella posizione finché l'incantesimo non termina. Una creatura trattenuta può effettuare un tiro salvezza su Destrezza alla fine di ogni suo turno; se lo supera, l'effetto su se stessa termina. In alternativa, la creatura o qualcun altro in grado di raggiungerla può usare un'azione per effettuare una prova di Intelligenza (Arcano) contro la CD del tiro salvezza dell'incantesimo. Se ha successo, l'effetto di trattenuto termina.\nDopo che la trappola è stata innescata, l'incantesimo termina quando nessuna creatura è trattenuta da esso.",
-        "higher_lv": ""
+        "higher_lv": "",
+        "prepared": "false"
     },
     {
         "name": "Passo del Tuono",
