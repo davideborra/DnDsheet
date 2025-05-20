@@ -535,6 +535,14 @@ var vueapp = new Vue({
                         }
                     }
                 }
+                for(spell of vueapp.pg.spells){
+                    if(spell.name == this.spellToRemove){
+                        const index = vueapp.pg.spells.indexOf(spell);
+                        if (index > -1) { 
+                            vueapp.pg.spells.splice(index, 1); // 2nd parameter means remove one item only
+                        }
+                    }
+                }
             }
             this.spellToRemove = "";
         },
