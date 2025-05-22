@@ -712,7 +712,7 @@ function download(filename, text) {
 
 async function writeToFile(contents){
     if (file == null){
-        download("character.json",contents);
+        download(vueapp.pg.name+".json",contents);
     }else{
         const writable = await fileHandle.createWritable();
     await writable.write(contents);
