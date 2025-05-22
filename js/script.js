@@ -1,4 +1,5 @@
 var debug  = false;
+var updated = false;
 var vueapp = new Vue({
     el: "#vueContainer",
     data: {
@@ -149,16 +150,6 @@ var vueapp = new Vue({
         //     // this.stats.push({label: "INT", value: this.pg.stats.int*5});
         //     // this.stats.push({label: "STR", value: this.pg.stats.str*5});
         // },
-        ToSpells(){
-            this.visible = 1;
-            this.stats_style="off";
-            this.spells_style="on";
-        },
-        ToStats(){
-            this.visible = 0;
-            this.stats_style="on";
-            this.spells_style="off";
-        },
         modifier(stat){
             return Math.floor((stat-10)/2)>0?"+"+Math.floor((stat-10)/2):Math.floor((stat-10)/2);
         },
@@ -338,26 +329,21 @@ var vueapp = new Vue({
             // console.log(json);
             this.allSpells = json;
             vueapp.spells_print = [];
-            for(level in this.pg.slots){
-                level.known=0;
+            for(slot of this.pg.slots){
+                slot.known = 0;
             }
             for (var i=0; i<vueapp.pg.spells.length; i++){
                 for(var spell of json){
                     if(vueapp.pg.spells[i].name == spell.name){
-                        if (vueapp.pg.spells[i].prepared == "true"){
-                            spell.prepared = true;
-                        } else
-                        {
-                            spell.prepared = false;
-                        }
+                        spell.prepared = (vueapp.pg.spells[i].prepared == "true");
                         const index = this.allSpells.indexOf(spell);
                         if (index > -1) { 
                             this.allSpells.splice(index, 1); // 2nd parameter means remove one item only
                         }
                         vueapp.spells_print.push(spell);
-                        for(level of this.pg.slots){
-                            if(spell.level == level.level){
-                                level.known++;
+                        for(slot of this.pg.slots){
+                            if(spell.level == slot.level){
+                                slot.known++;
                             }
                         }
                             
@@ -416,6 +402,7 @@ var vueapp = new Vue({
             // api.saveData(JSON.stringify(this.pg), this.filename);
             var savedata = JSON.stringify(this.pg);
             download(this.filename,savedata);
+            updated = false;
         },
         widthStyleHP(){
             var percentage = parseInt(this.pg.hp)/parseInt(this.pg.maxHP) *100;
@@ -427,6 +414,7 @@ var vueapp = new Vue({
                 this.pg.hp =0;
             if (this.pg.hp > this.pg.maxHP)
                 this.pg.hp = this.pg.maxHP;
+            updated = true;
         },
         tsMorteFail(n){
             if(this.pg.ts_morte.fallimenti >= n)
@@ -442,6 +430,7 @@ var vueapp = new Vue({
         },
         appendEmptyAttack(){
             this.pg.attack_bonus.push({name: "", bonus: "", danni: "", tipo: ""},)
+            updated = true;
         },
         proficiencyST(){
             var i=0;
@@ -451,6 +440,7 @@ var vueapp = new Vue({
                     this.pg.ts[i].value%=2;
                 }
             }
+            updated = true;
         },
         proficiencySkill(){
             var i=0;
@@ -460,6 +450,7 @@ var vueapp = new Vue({
                     this.pg.skills[i].comp%=3;
                 }
             }
+            updated = true;
         },
         getFilename(){
             var array  = this.filepath.split("\\");
@@ -467,6 +458,12 @@ var vueapp = new Vue({
             return this.filename;
         },
         new_pg(){
+            if(updated){
+                 var confirmationMessage = 'It looks like you have been editing something. '
+                            + 'If you leave before saving, your changes will be lost.';
+            (window.event).returnValue = confirmationMessage; //Gecko + IE
+            return confirmationMessage; //Gecko + Webkit, Safari, Chrome etc.
+            }
             this.loading = false;
             fetch("saves/blank.json")
                     .then((response) => response.json()
@@ -477,10 +474,10 @@ var vueapp = new Vue({
                 vueapp.filename = "save.json";
                 return;
             });
-            
         },
         appendEmptyFeature(){
             this.pg.priv_tratti.push({name:"", description:""});
+            updated = true;
         },
         appendEmptyLimitedFeature(){
             this.pg.PTL.push(
@@ -492,7 +489,7 @@ var vueapp = new Vue({
                     description:""
                 }
             );
-            
+            updated = true;
         },
         addSpell(){
             if(this.spellToAdd!= ""){
@@ -518,6 +515,8 @@ var vueapp = new Vue({
                 }
             }
             this.spellToAdd= "";
+            updated = true;
+
         },
         removeSpell(){
             if(this.spellToRemove != ""){
@@ -545,6 +544,7 @@ var vueapp = new Vue({
                 }
             }
             this.spellToRemove = "";
+            updated = true;
         },
         checkSlots(level){
             if(level.max>4) level.max = 4;
@@ -629,10 +629,11 @@ var vueapp = new Vue({
             for (varspell of this.pg.spells){
                 if(spell.name == varspell.name){
                     varspell.prepared = !varspell.prepared;
+                    this.spells_print[index].prepared = varspell.prepared
                 }
             }
-            this.spells_print[index].prepared = !this.spells_print[index].prepared;
             this.$forceUpdate(); //questo serve perché vue fa i capricci e ogni tanto non mi aggiorna gli elementi grafici
+            updated = true;
         }
     }
 });
@@ -646,10 +647,13 @@ Vue.component("modal", {
 
   // check if leaving without saving
 window.addEventListener("beforeunload", function (e) {
-    var confirmationMessage = 'It looks like you have been editing something. '
+    if(updated){
+        var confirmationMessage = 'It looks like you have been editing something. '
                             + 'If you leave before saving, your changes will be lost.';
     (e || window.event).returnValue = confirmationMessage; //Gecko + IE
     return confirmationMessage; //Gecko + Webkit, Safari, Chrome etc.
+    }
+    else return null;
 });
 
 async function loadSpellsJson(){
