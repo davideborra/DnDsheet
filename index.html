@@ -75,6 +75,7 @@
                         <input type ="text" class="fw-bolder text-primary navbar-brand" id = "pgname" v-model="pg.name" @keyup="updated = true;"></input>
                         <label for = "pglevel" class= "fw-bolder text-primary navbar-brand">Lv. </label><input type ="number" class="fw-bolder text-primary navbar-brand" id = "pglevel" v-model="pg.level" @keyup="updated = true;"></input>
                         <input type ="text" class="fw-bolder text-primary navbar-brand" id = "pgalign" v-model="pg.alignment"  @keyup="updated = true;"></input>
+                        <i v-if="isUpdated()">There are unsaved changes</i>
                     </div>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -103,11 +104,11 @@
                 <div class="card overflow-hidden shadow rounded-4 border-0 mb-5">
                     <div class="card-body p-5">
                         <div class="p-5">
-                            <h2 class="fw-bolder">Loading {{getFilename()}}</h2>
+                            <h2 class="fw-bolder">Loading</h2>
                             {{errorPrint}}
                             <div class = "d-flex-card align-items-center justify-content-end" >
-                                <label class="btn btn-outline-dark btn-lg px-5 py-3 fs-6 fw-bolder margin-right-1rem" for = selectFiles> Upload Saves</label>
-                            <input type="file" id="selectFiles" value="" class = "import" v-model ="filepath"/><br />
+                                <!-- <label class="btn btn-outline-dark btn-lg px-5 py-3 fs-6 fw-bolder margin-right-1rem" for = selectFiles> Upload Saves</label>
+                            <input type="file" id="selectFiles" value="" class = "import" v-model ="filepath"/><br /> -->
 
                             <button id="import" class ="btn btn-primary btn-lg px-5 py-3 me-sm-3 fs-6 fw-bolder margin-left-1rem" @click ="loadData();"> Load</button>
                             </div>

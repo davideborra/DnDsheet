@@ -24,6 +24,7 @@ function resetRolls(){
 
 function parseDiceNotation(inputString){
     var string =inputString.toLowerCase();
+    resultsArray = "";
     string = string.replaceAll("-", "+-");
     string = string.replaceAll(" ","");
     var cut = string.split("+");
@@ -65,5 +66,6 @@ function parseDiceNotation(inputString){
             result += Math.floor(Math.random() * typeOfDice) + 1;
         }
     }
+    console.log()
     return result;
 }

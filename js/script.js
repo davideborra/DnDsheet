@@ -1,11 +1,13 @@
 var debug  = false;
 var updated = false;
+var file = null;
+var fileHandle = null;
 var vueapp = new Vue({
     el: "#vueContainer",
     data: {
         loading : true,
         filepath : "",
-        filename: "save.json",
+        // filename: "save.json",
         errorPrint: "",
         hideInventory: true,
         showSpellsSettings : false,
@@ -352,23 +354,34 @@ var vueapp = new Vue({
             }
         },
         loadData(){
-            var files = document.getElementById('selectFiles').files;
-            if (files.length <= 0) {
-                vueapp.errorPrint = "No files provided."
-                return false;
-            }
-            vueapp.filename = files.item(0).name;
+            
+            // var files = document.getElementById('selectFiles').files;
+            // if (files.length <= 0) {
+            //     vueapp.errorPrint = "No files provided."
+            //     return false;
+            // }
+            // vueapp.filename = files.item(0).name;
             
         
-            var fr = new FileReader();
+            // var fr = new FileReader();
         
-            fr.onload = function(e) { 
-                json = JSON.parse(e.target.result);
-                vueapp.parseData(json);
+            // fr.onload = function(e) { 
+            //     json = JSON.parse(e.target.result);
+            //     vueapp.parseData(json);
+            // }
+            // fr.readAsText(files.item(0));
+            // vueapp.filepath = "";
+            // this.loading = false;
+            try{
+                loadFromFile()
+                    .then((file) => JSON.parse(file))
+                        .then((json) => vueapp.parseData(json));
+            }catch(error){
+                if(error == "AbortError: Failed to execute 'showOpenFilePicker' on 'Window': The user aborted a request."){
+                    error = "No file provided";
+                }
+                vueapp.errorPrint = error;
             }
-            fr.readAsText(files.item(0));
-            vueapp.filepath = "";
-            this.loading = false;
         },
         parseData(json){
             // console.log(json);
@@ -386,23 +399,12 @@ var vueapp = new Vue({
                     }
                 }
             }
-            function download(filename, text) {
-                var element = document.createElement('a');
-                element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
-                element.setAttribute('download', filename);
-              
-                element.style.display = 'none';
-                document.body.appendChild(element);
-              
-                element.click();
-              
-                document.body.removeChild(element);
-              }
-
             // api.saveData(JSON.stringify(this.pg), this.filename);
             var savedata = JSON.stringify(this.pg);
-            download(this.filename,savedata);
+            // download(this.filename,savedata);
+            writeToFile(savedata);
             updated = false;
+            this.$forceUpdate(); //questo serve perché vue fa i capricci e ogni tanto non mi aggiorna gli elementi grafici
         },
         widthStyleHP(){
             var percentage = parseInt(this.pg.hp)/parseInt(this.pg.maxHP) *100;
@@ -452,26 +454,26 @@ var vueapp = new Vue({
             }
             updated = true;
         },
-        getFilename(){
-            var array  = this.filepath.split("\\");
-            this.filename = array[array.length-1];
-            return this.filename;
-        },
+        // getFilename(){
+        //     var array  = this.filepath.split("\\");
+        //     this.filename = array[array.length-1];
+        //     return this.filename;
+        // },
         new_pg(){
-            if(updated){
-                 var confirmationMessage = 'It looks like you have been editing something. '
-                            + 'If you leave before saving, your changes will be lost.';
-            (window.event).returnValue = confirmationMessage; //Gecko + IE
-            return confirmationMessage; //Gecko + Webkit, Safari, Chrome etc.
+            if(updated && !window.confirm("There are unsaved changes. Proceed?")){
+                return;
             }
+            updated = false;
             this.loading = false;
+            fileHandle = null;
+            file = null;
             fetch("saves/blank.json")
                     .then((response) => response.json()
                         .then((json) => this.parseData(json)))
                 .catch ((error) => {
                 console.log(error);
                 vueapp.errorPrint=error;
-                vueapp.filename = "save.json";
+                // vueapp.filename = "save.json";
                 return;
             });
         },
@@ -634,6 +636,9 @@ var vueapp = new Vue({
             }
             this.$forceUpdate(); //questo serve perché vue fa i capricci e ogni tanto non mi aggiorna gli elementi grafici
             updated = true;
+        },
+        isUpdated(){
+            return updated;
         }
     }
 });
@@ -672,3 +677,45 @@ async function loadSpellsJson(){
 
 // .then((response) => response.json())
 //         .then((json) => jsonSpells = jsonSpells.concat(json));
+
+async function loadFromFile(){
+    const options = {
+    types: [
+        {
+        description: 'JSON Files',
+        accept: {
+            'text/json': ['.json', '.JSON'],
+        },
+        },
+    ],
+    };
+    [fileHandle] = await window.showOpenFilePicker(options);
+    file = await fileHandle.getFile();
+    const contents = await file.text();
+    vueapp.loading = false;
+    return contents
+}
+
+function download(filename, text) {
+    var element = document.createElement('a');
+    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+    element.setAttribute('download', filename);
+    
+    element.style.display = 'none';
+    document.body.appendChild(element);
+    
+    element.click();
+    
+    document.body.removeChild(element);
+}
+
+async function writeToFile(contents){
+    if (file == null){
+        download("character.json",contents);
+    }else{
+        const writable = await fileHandle.createWritable();
+    await writable.write(contents);
+    await writable.close();
+    }
+    
+}
