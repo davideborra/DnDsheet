@@ -376,6 +376,7 @@ var vueapp = new Vue({
                 loadFromFile()
                     .then((file) => JSON.parse(file))
                         .then((json) => vueapp.parseData(json));
+                updated = false;
             }catch(error){
                 if(error == "AbortError: Failed to execute 'showOpenFilePicker' on 'Window': The user aborted a request."){
                     error = "No file provided";
