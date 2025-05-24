@@ -1,184 +1,215 @@
 {
-    "name": "Lord Doxos XLII Ioun",
-    "class": "Sapiente (Stratega) 8 - Mago (Divinatore) 2 ",
-    "level": 10,
-    "race": "Cangiante",
-    "alignment": "Caotico Buono",
-    "hp": "20",
-    "maxHP": 73,
+    "name": "Rufus Von Similaumus",
+    "class": "Barbarian (Chaos)",
+    "class_points": 5,
+    "max_class_points": 10,
+    "show_class_points": true,
+    "level": "16",
+    "race": "Human",
+    "alignment": "CN",
+    "background" : "Forestiero",
+    "hp": "245",
+    "maxHP": "245",
+    "tempHP": "0",
     "stats": {
-        "str": 8,
-        "dex": 12,
-        "con": 14,
-        "int": 20,
-        "wis": 10,
-        "cha": 8
+        "str": "20",
+        "dex": "20",
+        "con": "22",
+        "int": "23",
+        "wis": "10",
+        "cha": 10
     },
-    "ca": 19,
-    "init": 6,
-    "vel": 9,
-    "dadi_vita": "8d8+2d6",
+    "castingStat": "int",
+    "ca": "24",
+    "init": "+5ad",
+    "vel": "12",
+    "dadi_vita_rimanenti": "16d12",
+    "dadi_vita_massimi": "16d12",
     "ts_morte": {
         "successi": 0,
         "fallimenti": 0
     },
-    "compBonus": 4,
+    "compBonus": "5",
+    "ispirazione": 0,
+    "affaticamento": 0,
+    "talenti": [],
+    "attuned": [
+        "Spada della Distruzione",
+        "Cintura della forza dei giganti del gelo",
+        "Fendispazio"
+    ],
     "languages": [
         "Comune",
         "Elfico",
-        "Gnomesco",
-        "∫ᴇƒdµ",
-        "Matematichese",
-        "Draconico",
-        "Abissale",
-        "Primordiale",
-        "Infernale",
-        "Gergo delle profondità"
+        "Sottocomune"
     ],
     "other_comps": [
         "Armature leggere e medie",
         "Scudi",
-        "Armi semplici, spade corte, stocchi, spade lunghe, scimitarre",
-        "Strumenti da Inventore"
+        "Armi semplici e da guerra"
     ],
     "inventory": [
-        "Tavoletta di Minera Ioun (sintonia 9 livelli)",
-        "Calamaio con pennino e coltellino",
-        "Lettera di un Collega con una congettura mai dimostrata",
-        "Pergamena",
-        "Studio rapido: Strumenti da fabbro",
-        "Elmo della telepatia (sintonia)",
-        "Dado del ciarlatano",
-        "ISPIRAZIONE x2",
-        "Portento: (15)",
-        "22 punti Aiden",
-        "Amuleto del passo velato (d6/alba - sintonia)",
-        "Golem gufo: 26pf",
-        "dadi vita da usare: tutti",
-        "1 ampolle di acqua della vita.",
-        "1 ampolla di sangue + 1 occhio di Kirin",
-        "HO BISOGNO DI UN FOCUS DA INCANTATORE",
-        "QUADRATINO con runa"
+        "2 pozioni di cura superiore (8d4+8, azione bonus)",
+        "Elmo della luminosità (1 diamante, 16 rubini, 17 opali di fuoco) e della telepatia",
+        "12 corna di Kirin",
+        "Un po' di piume di Solar",
+        "Guanti di pelle",
+        "Sanpietrino con rune (incantesimo monouso: scudo, ha un aspetto familiare per Lucian)",
+        "1 punti Karma consecutivo",
+        "Ago di Zenz Ernest",
+        "Potion of Supreme Healing (10d4 + 20 HP)",
+        "Mutande di amianto",
+        "Cappa della levitazione del Dr Strano, PhD"
     ],
     "wallet": [
         {
             "label": "CP",
-            "value": "8"
-        },
-        {
-            "label": "SP",
-            "value": "14"
-        },
-        {
-            "label": "EP",
             "value": 0
         },
         {
+            "label": "SP",
+            "value": "5"
+        },
+        {
+            "label": "EP",
+            "value": "0"
+        },
+        {
             "label": "GP",
-            "value": "1484"
+            "value": "12197"
         },
         {
             "label": "PP",
-            "value": "318"
+            "value": "1505"
         }
     ],
     "attack_bonus": [
         {
-            "name": "Stocco",
-            "bonus": "5/9",
-            "danni": "1d8+1/5",
-            "tipo": "perforanti"
+            "name": "Spada della Distruzione (1 mano)",
+            "bonus": "+13",
+            "danni": "1d8+8",
+            "tipo": "Taglienti"
         },
         {
-            "name": "Balestra",
-            "bonus": "5/9",
-            "danni": "1d6+1/5",
-            "tipo": "perforanti"
+            "name": "Spada della Distruzione (2 mani)",
+            "bonus": "+13",
+            "danni": "1d10+8",
+            "tipo": "Taglienti"
         },
         {
-            "name": "Incantesimi",
-            "bonus": "9",
-            "danni": "17",
-            "tipo": ""
+            "name": "Colpo rotante",
+            "bonus": "+13",
+            "danni": "2d8+8",
+            "tipo": "Taglienti"
+        },
+        {
+            "name": "Fendispazio",
+            "bonus": "+13",
+            "danni": "1d8+8",
+            "tipo": "Taglienti"
+        },
+        {
+            "name": "Flagello di Hurin",
+            "bonus": "--",
+            "danni": "3d10",
+            "tipo": "Fulmine/Contundenti"
+        },
+        {
+            "name": "Terremoto",
+            "bonus": "TS Dex (CD 19), r 4,5m",
+            "danni": "5d6",
+            "tipo": "Contundenti"
         }
     ],
     "priv_tratti": [
-        {"name" : "1", "description": "Se il Sapiente non è incapacitato, il Mark ha svantaggio nei tiri di attacco contro di lui."},
-        {"name" : "2", "description": "Quando compie una prova di caratteristica che richiede o un tiro salvezza su Saggezza o Intelligenza, o quando tira per i danni contro il Mark, aggiunge il proprio Dado Intelletto (d6) al tiro. Inoltre, quando una creatura che una creatura che il Sapiente vede colpisce il Mark con un attacco, il Sapiente può usare la sua reazione per aggiungere il proprio Dado Intelletto al danno dell'attacco."},
-        {"name" : "3", "description": "1 reazione extra"},
-        {"name" : "4", "description": "1 competenza che può essere cambiata in un'ora."},
-        {"name" : "5", "description": "Ambiti di studio: Scherma, Enigmi, Navigazione, Portento (1d20), Linguistica"},
-        {"name" : "6", "description": "Tavoletta: Stasys, Golem Gufo"},
-        {"name" : "7", "description": "Sa dove reperire le informazioni di cui ha bisogno"},
-        {"name" : "8", "description": "La posizione dello Stratega non gli permette di soccombere agli istinti. Ottiene vantaggio nei tiri per resistere incantesimi di Ammaliamento, ed è immune alla condizione di spaventato. Inoltre, quandi usa un’azione per dare un Ordine, può fare un attacco con arma come azione bonus."},
-        {"name" : "9", "description": "Il Sapiente non può essere sorpreso a meno che non sia incapacitato."},
-        {"name" : "10", "description": "Inoltre, quando tira per iniziativa, può compiere una delle seguenti azioni prima che le altre creature agiscano:\n • Usare Attenta Analisi per scegliere come Mark una creatura che può vedere.\n • Fare un tiro su Intelligenza per ottenere informazioni.\n • Fare una tra le azioni di Aiuto, Prepararsi o Cercare."},
-        {"name" : "11", "description": "Recupero arcano: durante un RB, posso recuperare slot spesi con livello totale pari o inferiore al livello da mago"}
+        {
+            "name": "Attacco Irruento",
+            "description": "A partire dal 2· livello, un barbaro può ignorare ogni preoccupazione per la sua difesa e attaccare in preda a una feroce disperazione. Quando effettua il suo primo attacco nel suo turno, può decidere di sferrare un attacco irruento. Così facendo dispone di vantaggio ai tiri per (colpire in\nmischia che usano Forza durante questo turno, ma i tiri per colpire contro di lui dispongono di vantaggio fino al suo turno successivo."
+        },
+        {
+            "name": "Percezione del Pericolo",
+            "description": "Al 2° livello, un barbaro ottiene una percezione prodigiosa di tutto ciò che nei paraggi non è come dovrebbe essere, cosa che lo agevola quando deve schivare i pericoli. Un barbaro dispone di vantaggio ai tiri salvezza su Destrezza contro gli effetti che può vedere, come le trappole e gli incantesimi. Per ottenere questo beneficio il barbaro non deve essere accecato, assordato o incapacitato."
+        },
+        {
+            "name": "Critico Brutale",
+            "description": "In caso di colpo critico, i dadi dei danni vengono triplicati."
+        },
+        {
+            "name": "Orizzonte degli Eventi",
+            "description": "A partire dal 10° livello, quando il Barbaro utilizza il suo privilegio Ira proietta un campo gravitazionale intorno a sé. Quando una creatura alleata entro 1.5 metri da lui è bersaglio di un tiro per colpire, egli può usare la sua reazione per reindirizzare tale attacco su di sé: in questo caso il nemico ha vantaggio nel tiro per colpire, ma i danni sono ridotti di 1d10 più il suo modificatore di Costituzione (che aumenta a 2d10 al livello 14 e a 3d10 al livello 20). Se i danni vengono ridotti a 0 da questo\nprivilegio, il barbaro può effettuare un attacco come parte della stessa reazione.\n\nSe il Barbaro muore durante la trasformazione, apre un portale verso il Piano Astrale. Il portale origina dal punto in cui si trova il Barbaro. Qualsiasi creatura entro 3 metri dal portale viene risucchiata al suo interno e depositata in un luogo casuale del Piano Astrale. Poi il portale si chiude. Il portale è a senso unico e non può essere riaperto."
+        },
+        {
+            "name": "Ira Superiore",
+            "description": "Una volta in ira, con un’azione bonus il Barbaro può entrare in uno stato di ira superiore. Quando questo succede, il barbaro ottiene i seguenti benefici:\n• si attiva nuovamente il privilegio Scarica di Adrenalina con un raggio incrementato di 1,5m;\n• può lanciare un incantesimo di quinto livello, che viene scelto dal giocatore quando utilizza per la prima volta questo privilegio. Nel caso\nquesto incantesimo preveda concentrazione, essa è legata al permanere del Barbaro nello stato di Ira Superiore.\n\nInoltre, finché rimane in Ira Superiore,\n• la sua velocità aumenta di ulteriori 1,5m;\n• il bonus per i danni dato dall’Ira è raddoppiato;\n• un tiro di 19 sul d20 viene contato come un colpo critico;\n• quando il barbaro è colpito da un attacco con arma da mischia, un numero di volte pari al proprio bonus di competenza ogni riposo\nbreve, può imporre all’attaccante un tiro salvezza su Costituzione. In caso di fallimento, questi è paralizzato fino al termine del prossimo turno del barbaro. Se questo effetto è attivato dal privilegio Scarica\ndi Adrenalina, il tiro salvezza deve essere effettuato con svantaggio.\n• può effettuare un ulteriore attacco durante il proprio turno.\nL’Ira superiore termina se è soddisfatta una delle condizioni che porrebbero fine all’Ira. \n\nAl termine dell’Ira Superiore, il barbaro deve superare un TS su costituzione con classe difficoltà pari a 10, altrimenti riceve un grado\ndi affaticamento, che può tuttavia essere recuperato trascorrendo un riposo breve."
+        },
+        {
+            "name": "Talento: Robusto",
+            "description": "Il massimo dei punti ferita del personaggio aumenta di un ammontare pari al doppio del suo livello quando il personaggio ottiene questo talento. Da allora in poi, ogni volta che il personaggio acquisisce un livello, il massimo dei suoi punti ferita aumenta di 2 punti ferita aggiuntivi."
+        },
+        {
+            "name": "Boots of Elvenkind",
+            "description": "While you wear these boots, your steps make no sound, regardless of the surface you are moving across. You also have Advantage on Dexterity (Stealth) checks."
+        },
+        {
+            "name": "Rifugio",
+            "description": "A partire dal 16° livello, la Spada può essere piantata a terra, diventando inestraibile. Chiunque provi ad estrarla, fatta eccezione per il possessore, subisce il danno di un attacco ricevuto dalla spada, che tuttavia non può ridurlo a 0 Punti Ferita. Quando la Spada è piantata in questo modo, il possessore può entrarvi e portare con se delle creature consenzienti. I personaggi all’interno della spada sono in un semipiano altrimenti inaccessibile. \n\nIn caso di un fallimento di un tiro salvezza su Saggezza, anche una creatura non consenziente può essere trascinata all’interno della Spada. In questo caso, ogni turno essa potrà riperete il tiro e, in caso di successo, lasciare il semipiano. In ogni caso, questa condizione termina dopo 1 minuto."
+        }
     ],
     "PTL": [
         {
-            "name": "Attenta Analisi",
-            "max_uses": 7,
-            "current_uses": 2,
-            "charges": "RB",
-            "description":
-                "Come azione bonus, un numero di volte pari al proprio bonusi di competenza ogni riposo breve, può analizzare una creatura che puoi vedere entro 18 metri, designandolo come suo Mark. Finché si concentra sul suo Mark, come se si stesse concentrando su un incantesimo, il Sapiente ottiene i seguenti benefici: \n • quando colpisce il Mark con un attacco o lo osserva per 1 minuto, può apprendere una delle seguenti caratteristiche a sua scelta: punteggio di caratteristica più alto, punteggio di caratteristica più basso, Classe Armatura, velocità, punti ferita massimi o tipo di creatura.\n • può usare Intelligenza, al posto di Forza o Destrezza, per i titi di attacco e danni contro il Mark. \n • ha vantaggio su prove di caratteristica su Intelligenza e Saggezza per ottenere informazioni sul Mark. \n • può fare un tiro salvezza su Intelligenza, anziché su Costituzione per mantenere la concentrazione sul Mark. \n La creatura rimane indefinitamente il Mark del Sapiente, almeno finché il Sapiente non perde la concentrazione, la creatura non esce dal suo campo  vista, o il Sapiente usa questo privilegio su un'altra creatura."
+            "name": "Ira",
+            "max_uses": "5",
+            "current_uses": 0,
+            "charges": "LR",
+            "description": "In battaglia, un barbaro combatte animato da una ferocia primordiale. Nel suo turno può entrare in ira come azione bonus. Finché è in ira, ottiene i benefici seguenti se non indossa un'armatura pesante:\n• Dispone di vantaggio alle prove di Forza e ai tiri salvezza su Forza.\n• Quando effettua un attacco con un'arma da mischia usando Forza, ottiene un bonus al tiro per i danni che aumenta man mano che egli ottiene nuovi livelli da barbaro, come indicato nella colonna \"Danni dell'Ira\" nella tabella \"Barbaro\".\n• Un barbaro dispone di resistenza ai danni contundenti, perforanti e taglienti. \n\nSe un barbaro è in grado di lanciare incantesimi, non può\nlanciarli o concentrarsi su di essi quando è in ira.\n\nL'ira del barbaro termina solo se il barbaro cade privo di sensi. Un barbaro può anche porre fine alla sua ira nel proprio turno, come azione bonus.\n\nUna volta entrato in ira per il numero di volte indicato dal suo livello di barbaro nella colonna \"Ira\" nella tabella \"Barbaro\", un barbaro deve completare un riposo lungo prima di poter entrare di nuovo in ira.\n\nA partire dall'11° livello, grazie alla sua ira il barbaro può continuare a combattere nonostante le ferite più gravi. Se scende a O punti ferita mentre è in ira e non è ucciso sul colpo, può effettuare un tiro salvezza su Costituzione con CD 10. Se lo supera, rimane invece a 1 punto ferita.\nOgni volta che utilizza questo privilegio dopo la prima, la CD aumenta di 5. Quando completa un riposo breve o lungo, la CD è ripristinata a 10."
         },
         {
-            "name": "Elmo della Telepatia",
-            "max_uses": "-",
-            "current_uses": "-",
-            "charges": "--",
-            "description": [
-                "Mentre il personaggio indossa questo elmo, può usare un'azione per lanciare l'incantesimo individuazione dei pensieri (CD 13 del tiro salvezza). Finché mantiene la concentrazione sull'incantesimo, può usare un'azione bonus per inviare un messaggio telepatico a una creatura su cui è concentrato. Mentre il personaggio mantiene la concentrazione sulla creatura, quest'ultima può usare un'azione bonus per rispondere.",
-                "Fintanto che il personaggio mantiene la concentrazione su una creatura tramite individuazione dei pensieri, può usare un'azione per lanciare l'incantesimo suggestione (CD 13 del tiro salvezza) su di essa. Una volta usata, la proprietà di suggestione non è riutilizzabile fino all'alba successiva."
-            ]
+            "name": "Incantesimi Spada",
+            "max_uses": "5",
+            "current_uses": 0,
+            "charges": "SR",
+            "description": "Chiaroveggenza, individuazione del magico"
         },
         {
-            "name": "Stasys - Stasys+",
+            "name": "Punizione del Caos",
+            "max_uses": "5",
+            "current_uses": "1",
+            "charges": "LR",
+            "description": "A partire dall’8° livello, un numero di volte pari al proprio bonus di competenza per riposo lungo, il Barbaro può lanciare l’incantesimo Punizione del caos senza consumare slot, anche se è in ira.\n\nPUNIZIONE DEL CAOS\nInvocazione di 3° livello\nTempo di Lancio: 1 azione bonus\nGittata: Incantatore\nComponenti: V\nDurata: Concentrazione, fino a 1 minuto\n\nLa prossima volta che l’incantatore colpisce una creatura con un attacco con un’arma da mischia entro la durata di questo incantesimo, l’arma in questione viene pervasa da un’aura di energia caotica e l’attacco infligge 2d6 danni necrotici extra al bersaglio.\n\nAi livelli superiori. Quando questo incantesimo viene lanciato con uno slot di livello superiore al 3°, i danni inflitti aumentano di 1d6 ogni livello."
+        },
+        {
+            "name": "Colpo Rotante",
+            "max_uses": "5",
+            "current_uses": 0,
+            "charges": "SR",
+            "description": "A partire dal 12° livello, il Barbaro può usare un’azione per compiere un attacco con arma da mischia su tutti i nemici in portata e scegliere se allontanare i bersagli da sé di 1,5 metri."
+        },
+        {
+            "name": "Scarica di Adrenalina",
+            "max_uses": "5",
+            "current_uses": "0",
+            "charges": "SR",
+            "description": "A partire dal 14° livello, il barbaro quando entra in ira impone a tutti i nemici in un raggio di 1.5m un tiro salvezza su Costituzione. In\ncaso di fallimento, essi vengono paralizzati per la durata del turno del barbaro. Con un’azione bonus, può imporre lo stesso effetto ad un\nsingolo nemico fino ad un massimo di volte pari al bonus di competenza ogni riposo breve."
+        },
+        {
+            "name": "Terremoto",
+            "max_uses": "5",
+            "current_uses": 0,
+            "charges": "LR",
+            "description": "A partire dal 16° livello, un numero di volte pari al proprio modificatore di competenza per riposo lungo, il Barbaro può piantare la Spada a terra e rilasciare un’esplosione di magia del Caos. In questo modo lancia l’incantesimo Scossa Tellurica di 5° livello senza consumare slot (anche se in Ira). Il raggio dell’incantesimo è incrementato di 1,5 metri e il terreno diventa difficile a prescindere della composizione, e il Barbaro può decidere di escludere un numero di persone pari al proprio modificatore di forza."
+        },
+        {
+            "name": "Feat: Fortunato",
             "max_uses": "3",
             "current_uses": 0,
-            "charges": "RL",
-            "description": [
-                "Come reazione quando una creatura nel raggio di 9 metri dal Sapiente viene bersagliata da un attacco con arma a distanza che richieda un tiro per colpire, il Sapiente può aggiungere il proprio Dado Intelletto alla C.A. del bersaglio. Se il colpo manca, esso rimane bloccato a mezz’aria per al più 3 turni (o fino a quando il Sapiente lo desidera, con un minimo di un turno) e poi riparte verso la propria destinazione, colpendo chiunque si trovi in quel luogo senza richiedere tiro per colpire.",
-                "Ora la funzione di Stasys può essere utilizzata anche contro i nemici: come azione bonus il Sapiente impone al bersaglio un tiro salvezza su Destrezza con classe difficoltà 8 + il bonus di competenza del Sapiente + il modificatore di intelligenza del Sapiente, e può scegliere di fallire il tiro. In caso di fallimento il bersaglio viene fermato nel tempo per tre turni. Finché è fermo nel tempo, il bersaglio non può compiere azioni e non può subire danni, ma appena l’effetto termina subisce come fosse un attacco unico tutti i danni che avrebbe dovuto subire durante il periodo di Stasys+. Il Sapiente può decidere di terminare l’effetto in qualsiasi momento. Alla fine di ogni proprio turno successivo al primo, il bersaglio può ripetere il tiro salvezza, terminando l’effetto in caso di successo."
-            ]
-        },
-        {
-            "name": "Golem aiutanti",
-            "max_uses": "-",
-            "current_uses": "-",
-            "charges": "--",
-            "description": [
-                "Come Azione, il Sapiente può evocare fino a tre golem aiutanti. Essi si materializzano sul terreno, in uno spazio libero entro 9 metri dal Sapiente. Possiedono CA 15, 30 punti ferita, hanno tutte le caratteristiche pari a 10 e non possono attaccare. Hanno inoltre le competenze del Sapiente. Se scendono a 0 punti ferita, il Sapiente può evocarne altri dopo aver trascorso un’ora per golem a ripararli, che può essere trascorsa anche durante un riposo breve. Una volta in ogni suo turno, come azione bonus, l’incantatore può ordinare attraverso la tavoletta al golem di muoversi fino a 4,5 metri e di interagire con un oggetto. Il golem può effettuare compiti semplici come portare oggetti, pulire, riparare, ripiegare abiti, accendere fuochi, servire pietanze, versare vino e così via. Una volta impartito l’ordine, il golem svolge il compito al meglio delle sue capacità finché non lo porta a termine, poi attende il comando successivo dell’incantatore. Se il golem si allontana di più di 30 metri dal Sapiente, continua ad eseguire i propri compiti ma non può ricevere altri ordini."
-            ]
-        },
-        {
-            "name": "Analisi Migliorata",
-            "max_uses": "1",
-            "current_uses": 1,
-            "charges": "AL",
-            "description": [
-                "A partire dal livello 8, la tavoletta può lanciare Visione del Vero su sé stessa attraverso il suo visore, ma al costo di venire disabilitata fino alla prossima alba."
-            ]
-        },
-        {
-            "name": "Fasce Metalliche di Bilarro",
-            "max_uses": "1",
-            "current_uses": 0,
-            "charges": "AL",
-            "description": [
-                "Questa sfera di ferro arrugginita misura 7,5 centimetri di diametro e pesa 500 grammi. Puoi usare un’azione per pronunciare una parola di comando e scagliare la sfera contro una creatura visibile di taglia Enorme o inferiore entro 18 metri da te. La sfera si muove nell’aria, aprendosi in un reticolato di fasce metalliche.",
-                "Effettua un tiro per colpire a distanza con un bonus di attacco pari al tuo modificatore di Destrezza più il tuo bonus di competenza. Se colpisci, il bersaglio è intralciato fino a quando non effettuerai un’azione bonus per pronunciare una parola di comando e liberarlo. Farlo, o mancare l’attacco, fa sì che le fasce si contraggano e ritornino a essere una sfera.",
-                "Una creatura, compresa quella intralciata, può usare un’azione per effettuare una prova di Forza con CD 20 per spezzare le fasce di ferro. Se la riesce, l’oggetto viene distrutto, e la creatura intralciata è libera. Se la prova fallisce, qualsiasi ulteriore tentativo effettuato dalla creatura fallisce automaticamente fino a quando non saranno trascorse 24 ore. ",
-                "Una volta che le fasce sono state usate non potranno più esserlo fino alla prossima alba."
-            ]
+            "charges": "LR",
+            "description": ""
         }
     ],
     "ts": [
         {
             "id": "str",
-            "value": 0
+            "value": 1
         },
         {
             "id": "dex",
@@ -186,15 +217,15 @@
         },
         {
             "id": "con",
-            "value": 0
+            "value": 1
         },
         {
             "id": "int",
-            "value": 1
+            "value": 0
         },
         {
             "id": "wis",
-            "value": 1
+            "value": 0
         },
         {
             "id": "cha",
@@ -215,32 +246,32 @@
         {
             "stat": "int",
             "label": "Arcano",
-            "comp": 1
+            "comp": 0
         },
         {
             "stat": "str",
             "label": "Atletica",
-            "comp": 0
+            "comp": 1
         },
         {
             "stat": "dex",
             "label": "Furtività",
-            "comp": 0
+            "comp": 1
         },
         {
             "stat": "int",
             "label": "Indagare",
-            "comp": 1
+            "comp": 0
         },
         {
             "stat": "cha",
             "label": "Inganno",
-            "comp": 1
+            "comp": 0
         },
         {
             "stat": "cha",
             "label": "Intimidire",
-            "comp": 1
+            "comp": 0
         },
         {
             "stat": "cha",
@@ -250,12 +281,12 @@
         {
             "stat": "wis",
             "label": "Intuizione",
-            "comp": 1
+            "comp": 0
         },
         {
             "stat": "wis",
             "label": "Medicina",
-            "comp": 1
+            "comp": 0
         },
         {
             "stat": "int",
@@ -265,7 +296,7 @@
         {
             "stat": "wis",
             "label": "Percezione",
-            "comp": 0
+            "comp": 1
         },
         {
             "stat": "cha",
@@ -285,12 +316,12 @@
         {
             "stat": "wis",
             "label": "Sopravvivenza",
-            "comp": 0
+            "comp": 1
         },
         {
             "stat": "int",
             "label": "Storia",
-            "comp": 2
+            "comp": 0
         },
         {
             "stat": "wis",
@@ -300,59 +331,59 @@
     ],
     "spells": [
         {
-            "name": "Ordine di Attacco",
+            "name": "Deflagrazione Occulta",
+            "prepared": "false"
+        },
+        {
+            "name": "Tocco Gelido",
+            "prepared": "false"
+        },
+        {
+            "name": "Intimorire Infernale",
             "prepared": "true"
         },
         {
-            "name": "Ordine di Difesa",
+            "name": "Ritirata Rapida",
             "prepared": "true"
         },
         {
-            "name": "Ordine di Movimento",
+            "name": "Dardo Stregato",
             "prepared": "true"
         },
         {
-            "name": "Ordine di Assistenza",
+            "name": "Braccia di Hadar",
             "prepared": "true"
         },
         {
-            "name": "Dardo Incantato",
+            "name": "Passo Velato",
             "prepared": "true"
         },
         {
-            "name": "Parola Guaritrice",
+            "name": "Nube di Pugnali",
             "prepared": "true"
         },
         {
-            "name": "Illusione Minore",
+            "name": "Frantumare",
             "prepared": "true"
         },
         {
-            "name": "Dardo di Fuoco",
+            "name": "Volare",
             "prepared": "true"
         },
         {
-            "name": "Lama della Fiamma Verde",
+            "name": "Passo del Tuono",
             "prepared": "true"
         },
         {
-            "name": "Individuazione del Magico",
-            "prepared": "true"
+            "name": "Fulmine Adescante",
+            "prepared": "false"
         },
         {
-            "name": "Assorbire Elementi",
-            "prepared": "true"
+            "name": "Desiderio",
+            "prepared": "false"
         },
         {
-            "name": "Scudo",
-            "prepared": "true"
-        },
-        {
-            "name": "Onda Tonante",
-            "prepared": "true"
-        },
-        {
-            "name": "Risata Incontenibile di Tasha",
+            "name": "Fame di Hadar",
             "prepared": "true"
         },
         {
@@ -361,15 +392,65 @@
         }
     ],
     "slots": [
-        { "level": 0, "max": 0, "used": 0, "known" :0},
-        { "level": 1, "max": 3, "used": 2, "known" :0},
-        { "level": 2, "max": 4, "used": 2, "known" :0},
-        { "level": 3, "max": 0, "used": 0, "known" :0},
-        { "level": 4, "max": 0, "used": 0, "known" :0},
-        { "level": 5, "max": 0, "used": 0, "known" :0},
-        { "level": 5, "max": 0, "used": 0, "known" :0},
-        { "level": 7, "max": 0, "used": 0, "known" :0},
-        { "level": 8, "max": 0, "used": 0, "known" :0},
-        { "level": 9, "max": 0, "used": 0, "known" :0}
+        {
+            "level": 0,
+            "max": 0,
+            "used": 0,
+            "known": 3
+        },
+        {
+            "level": 1,
+            "max": "4",
+            "used": 0,
+            "known": 5
+        },
+        {
+            "level": 2,
+            "max": "3",
+            "used": 0,
+            "known": 3
+        },
+        {
+            "level": 3,
+            "max": "3",
+            "used": 0,
+            "known": 3
+        },
+        {
+            "level": 4,
+            "max": 0,
+            "used": 0,
+            "known": 0
+        },
+        {
+            "level": 5,
+            "max": 0,
+            "used": 0,
+            "known": 0
+        },
+        {
+            "level": 5,
+            "max": 0,
+            "used": 0,
+            "known": 0
+        },
+        {
+            "level": 7,
+            "max": 0,
+            "used": 0,
+            "known": 0
+        },
+        {
+            "level": 8,
+            "max": 0,
+            "used": 0,
+            "known": 0
+        },
+        {
+            "level": 9,
+            "max": 0,
+            "used": 0,
+            "known": 1
+        }
     ]
 }

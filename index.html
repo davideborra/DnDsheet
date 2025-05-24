@@ -63,6 +63,9 @@
                 <div class = "btn btn-primary btn-lg px-3 py-3 me-sm-3 fs-6 fw-bolder sidebutton" @click = "location.href='#inventory'">
                     <i class="bi bi-backpack2"></i>
                 </div>
+                <div class = "btn btn-primary btn-lg px-3 py-3 me-sm-3 fs-6 fw-bolder sidebutton" @click = "location.href='#features'">
+                    <i class="bi bi-columns-gap"></i>
+                </div>
                 <div class = "btn btn-primary btn-lg px-3 py-3 me-sm-3 fs-6 fw-bolder sidebutton" @click = "location.href='#spells'">
                     <i class="bi bi-magic"></i>
                 </div>
@@ -72,10 +75,10 @@
                 <i class="bi bi-x-circle-fill clickable fw-bolder text-primary navbar-brand exit" @click="location.href = 'https://davideborra.github.io/'"></i>
                 <div class="container px-5" v-if="!loading">
                     <div class = pginfo>
-                        <input type ="text" class="fw-bolder text-primary navbar-brand" id = "pgname" v-model="pg.name" @keyup="updated = true;"></input>
-                        <label for = "pglevel" class= "fw-bolder text-primary navbar-brand">Lv. </label><input type ="number" class="fw-bolder text-primary navbar-brand" id = "pglevel" v-model="pg.level" @keyup="updated = true;"></input>
-                        <input type ="text" class="fw-bolder text-primary navbar-brand" id = "pgalign" v-model="pg.alignment"  @keyup="updated = true;"></input>
-                        <i v-if="isUpdated()">There are unsaved changes</i>
+                        <input type ="text" class="fw-bolder text-primary navbar-brand" id = "pgname" v-model="pg.name" @input="updated = true;"></input>
+                        <label for = "pglevel" class= "fw-bolder text-primary navbar-brand">Lv. </label><input type ="number" class="fw-bolder text-primary navbar-brand" id = "pglevel" v-model="pg.level" @input="updated = true;"></input>
+                        <input type ="text" class="fw-bolder text-primary navbar-brand" id = "pgalign" v-model="pg.alignment"  @input="updated = true;"></input>
+                        <i v-if="updated">There are unsaved changes</i>
                     </div>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -103,13 +106,20 @@
             <div class = "pageContainer loadingPage" v-if = "loading">
                 <div class="card overflow-hidden shadow rounded-4 border-0 mb-5">
                     <div class="card-body p-5">
-                        <div class="p-5">
+                        <div class="p-5" v-if = "legacy">
                             <h2 class="fw-bolder">Loading</h2>
                             {{errorPrint}}
                             <div class = "d-flex-card align-items-center justify-content-end" >
-                                <!-- <label class="btn btn-outline-dark btn-lg px-5 py-3 fs-6 fw-bolder margin-right-1rem" for = selectFiles> Upload Saves</label>
-                            <input type="file" id="selectFiles" value="" class = "import" v-model ="filepath"/><br /> -->
+                                <label class="btn btn-outline-dark btn-lg px-5 py-3 fs-6 fw-bolder margin-right-1rem" for = selectFiles> Upload Saves</label>
+                            <input type="file" id="selectFiles" value="" class = "import" v-model ="filepath"/><br />
 
+                            <button id="import" class ="btn btn-primary btn-lg px-5 py-3 me-sm-3 fs-6 fw-bolder margin-left-1rem" @click ="loadDataLegacy();"> Load</button>
+                            </div>
+                        </div>
+                        <div class="p-5" v-if = "!legacy">
+                            <h2 class="fw-bolder">Loading</h2>
+                            {{errorPrint}}
+                            <div class = "d-flex-card align-items-center justify-content-end" >
                             <button id="import" class ="btn btn-primary btn-lg px-5 py-3 me-sm-3 fs-6 fw-bolder margin-left-1rem" @click ="loadData();"> Load</button>
                             </div>
                         </div>
@@ -126,39 +136,39 @@
                             <div class="d-flex-card align-items-center statsContainer">
                                 <div class = "card overflow-hidden shadow rounded-4 border-0 mb-5 statsCard">
                                     Strength
-                                    <input class="statvalue noarrows" v-model="pg.stats.str" type ="number" @keyup="updated = true;"></input>
+                                    <input class="statvalue noarrows" v-model="pg.stats.str" type ="number" @input="updated = true;"></input>
                                     <div class="statmodifier clickable" @click="setRollString('1d20'+nozero(modifier(pg.stats.str)))">{{modifier(pg.stats.str)}}</div>
                                 </div>
                                 <div class = "card overflow-hidden shadow rounded-4 border-0 mb-5 statsCard">
                                     Dexterity
-                                    <input class="statvalue noarrows" v-model="pg.stats.dex" type ="number" @keyup="updated = true;"></input>
+                                    <input class="statvalue noarrows" v-model="pg.stats.dex" type ="number" @input="updated = true;"></input>
                                     <div class="statmodifier" @click="setRollString('1d20'+nozero(modifier(pg.stats.dex)))">{{modifier(pg.stats.dex)}}</div>
                                 </div>
                                 <div class = "card overflow-hidden shadow rounded-4 border-0 mb-5 statsCard">
                                     Constitution    
-                                    <input class="statvalue noarrows" v-model="pg.stats.con" type ="number" @keyup="updated = true;"></input>
+                                    <input class="statvalue noarrows" v-model="pg.stats.con" type ="number" @input="updated = true;"></input>
                                     <div class="statmodifier" @click="setRollString('1d20'+nozero(modifier(pg.stats.con)))">{{modifier(pg.stats.con)}}</div>
                                 </div>
                                 <div class = "card overflow-hidden shadow rounded-4 border-0 mb-5 statsCard">
                                     Intelligence
-                                    <input class="statvalue noarrows" v-model="pg.stats.int" type ="number" @keyup="updated = true;"></input>
+                                    <input class="statvalue noarrows" v-model="pg.stats.int" type ="number" @input="updated = true;"></input>
                                     <div class="statmodifier" @click="setRollString('1d20'+nozero(modifier(pg.stats.int)))">{{modifier(pg.stats.int)}}</div>
                                 </div>
                                 <div class = "card overflow-hidden shadow rounded-4 border-0 mb-5 statsCard">
                                     Wisdom
-                                    <input class="statvalue noarrows" v-model="pg.stats.wis" type ="number" @keyup="updated = true;"></input>
+                                    <input class="statvalue noarrows" v-model="pg.stats.wis" type ="number" @input="updated = true;"></input>
                                     <div class="statmodifier" @click="setRollString('1d20'+nozero(modifier(pg.stats.wis)))">{{modifier(pg.stats.wis)}}</div>
                                 </div>
                                 <div class = "card overflow-hidden shadow rounded-4 border-0 mb-5 statsCard">
                                     Charisma
-                                    <input class="statvalue noarrows" v-model="pg.stats.cha" type ="number" @keyup="updated = true;"></input>
+                                    <input class="statvalue noarrows" v-model="pg.stats.cha" type ="number" @input="updated = true;"></input>
                                     <div class="statmodifier" @click="setRollString('1d20'+nozero(modifier(pg.stats.cha)))">{{modifier(pg.stats.cha)}}</div>
                                 </div>
                             </div>
                             <div class = "d-flex-card align-items-center abilityContainer">
                                 <div class = "card overflow-hidden shadow rounded-4 border-0 mb-5 statsCard">
                                     Proficiency Bonus
-                                    <input class="statvalue" v-model="pg.compBonus" @keyup="updated = true;"></input>
+                                    <input class="statvalue" v-model="pg.compBonus" @input="updated = true;"></input>
                                 </div>
 
                                 <div class = "card overflow-hidden shadow rounded-4 border-0 mb-5 dropdownCard">
@@ -196,13 +206,32 @@
                                 <div class = "card overflow-hidden shadow rounded-4 border-0 mb-5 dropdownCard">
                                     Class
                                     <div class="dropdownContainer">
-                                        <input class="fill" placeholder="Class" v-model="pg.class" @keyup="updated = true;">
+                                        <input class="fill" placeholder="Class" v-model="pg.class" @input="updated = true;">
+                                    </div>
+                                    <div >
+
+                                    </div>
+                                    <div class = "cardtitlerow">
+                                            <div>  Class Points</div>  
+                                            <div class = "attackdata clickable" @click= "pg.show_class_points = !pg.show_class_points; updated=true;" style = "padding-top: 0.15rem !important; padding-bottom: 0.15rem !important; margin: 0 !important;">
+                                                <i class="bi bi-eye-fill" v-if="!pg.show_class_points" ></i><i class="bi bi-eye-slash-fill" v-if="pg.show_class_points"></i>
+                                            </div>
+                                        </div>
+                                    <div class="hpbarContainer" v-if="pg.show_class_points">
+                                        <div class="progressBar_outer">
+                                            <div class="progressBar_inner" :style="widthStyleClassPoints()"></div>
+                                        </div>
+                                        <input v-model="pg.class_points" @input="updated = true;" class="hp text-right" id="cp" type="number" :value="pg.class_points" @input="checkClassPoints()">/<input v-model="pg.max_class_points" @input="updated = true;" class="hp" id = "max_cp" type="number" :value="pg.max_class_points" @input="checkClassPoints()"></i>
                                     </div>
                                 </div>
                                 <div class = "card overflow-hidden shadow rounded-4 border-0 mb-5 dropdownCard">
                                     Race
                                     <div class="dropdownContainer">
-                                        <input class="fill" placeholder="Race" v-model="pg.race" @keyup="updated = true;">
+                                        <input class="fill" placeholder="Race" v-model="pg.race" @input="updated = true;">
+                                    </div>
+                                    Background
+                                    <div class="dropdownContainer">
+                                        <input class="fill" placeholder="Background" v-model="pg.background" @input="updated = true;">
                                     </div>
                                 </div>
                                 <div class = "card overflow-hidden shadow rounded-4 border-0 mb-5 statsCard">
@@ -233,19 +262,23 @@
                             <div class="d-flex-card align-items-center statsContainer">
                                 <div class = "card overflow-hidden shadow rounded-4 border-0 mb-5 statsCard">
                                     Armor Class
-                                    <input class="statvalue" v-model="pg.ca" @keyup="updated = true;"></input>
+                                    <input class="statvalue" v-model="pg.ca" @input="updated = true;"></input>
                                 </div>
                                 <div class = "card overflow-hidden shadow rounded-4 border-0 mb-5 statsCard">
                                     <div @click="setRollString('1d20'+nozero(pg.init>0?'+'+pg.init:pg.init))">Initiative</div>
-                                    <input class="statvalue" v-model="pg.init" @keyup="updated = true;"></input>
+                                    <input class="statvalue" v-model="pg.init" @input="updated = true;"></input>
                                 </div>
                                 <div class = "card overflow-hidden shadow rounded-4 border-0 mb-5 statsCard">
                                     Speed    
-                                    <input class="statvalue" v-model="pg.vel" @keyup="updated = true;"></input>
+                                    <input class="statvalue" v-model="pg.vel" @input="updated = true;"></input>
                                 </div>
-                                <div class = "card overflow-hidden shadow rounded-4 border-0 mb-5 statsCard">
+                                <div class = "card overflow-hidden shadow rounded-4 border-0 mb-5 dropdownCard">
                                     Hit Dice
-                                    <input class="statvalue" v-model="pg.dadi_vita" @keyup="updated = true;"></input>
+                                    <div class ="d-flex">
+                                        <input class="statvalue-fixed" v-model="pg.dadi_vita_rimanenti" @input="updated = true;"></input>
+                                        <div class = "statvalue">/</div>
+                                        <input class="statvalue-fixed" v-model="pg.dadi_vita_massimi" @input="updated = true;"></input>
+                                    </div>
                                 </div>
                                 <div class = "card overflow-hidden shadow rounded-4 border-0 mb-5 largeDropdownCard">
                                     Hit Points
@@ -253,7 +286,7 @@
                                         <div class="progressBar_outer">
                                             <div class="progressBar_inner" :style="widthStyleHP()"></div>
                                         </div>
-                                        <input v-model="pg.hp" @keyup="updated = true;" class="hp text-right" id="hp" type="number" :value="pg.hp" @input="checkHP()">/<input v-model="pg.maxHP" @keyup="updated = true;" class="hp" id = "hpmax" type="number" :value="pg.hp" @input="checkHP()"></i>
+                                        <input v-model="pg.hp" @input="updated = true;" class="hp" id="hp" type="number" :value="pg.hp" @input="checkHP()">/<input v-model="pg.maxHP" @input="updated = true;" class="hp" id = "hpmax" type="number" :value="pg.maxHP" @input="checkHP()"> + <input v-model="pg.tempHP" @input="updated = true;" class="hp" style="width:10%;" id = "hptemp" type="number" @input="checkHP()">
                                         <i class="bi bi-plus-slash-minus" @click="modifyHP = !modifyHP;"></i>
                                     </div>
                                     <div class="hpbarContainer justify-content-end" v-if="modifyHP">
@@ -296,10 +329,10 @@
                                             <div class = "attackdata clickable" @click= "pg.attack_bonus = removeFromArray(attack, pg.attack_bonus)"> 
                                                 <i class="bi bi-x-circle " ></i>
                                             </div>
-                                            <input type = text class = "attackdata" v-model="attack.name" @keyup="updated = true;" style="width: 35%;">
-                                            <input type = text class = "attackdata" v-model="attack.bonus" @keyup="updated = true;" style="width: 15%;">
-                                            <input type = text class = "attackdata" v-model="attack.danni" @keyup="updated = true;" style="width: 20%;">
-                                            <input type = text class = "attackdata" v-model="attack.tipo" @keyup="updated = true;" style="width: 25%;">
+                                            <input type = text class = "attackdata" v-model="attack.name" @input="updated = true;" style="width: 35%;">
+                                            <input type = text class = "attackdata" v-model="attack.bonus" @input="updated = true;" style="width: 15%;">
+                                            <input type = text class = "attackdata" v-model="attack.danni" @input="updated = true;" style="width: 20%;">
+                                            <input type = text class = "attackdata" v-model="attack.tipo" @input="updated = true;" style="width: 25%;">
                                             <div class = "attackdata clickable" @click= "setRollString(attack.danni)"> 
                                                 <i class="bi bi-dice-6 " ></i>
                                             </div>
@@ -318,7 +351,7 @@
                             <div class="d-flex-card align-items-center statsContainer">
                                 <div class = "card overflow-hidden shadow rounded-4 border-0 mb-5 statsCard" v-for = "money in pg.wallet">
                                     {{money.label}}
-                                    <input class="statvalue noarrows" type = "number" v-model="money.value" @keyup="updated = true;"></input>
+                                    <input class="statvalue noarrows" type = "number" v-model="money.value" @input="updated = true;"></input>
                                 </div>
                             </div>
                             <div>
@@ -342,7 +375,7 @@
                                             <div class = "attackdata" > 
                                                 <i class="bi bi-x-circle clickable" @click= "pg.inventory = removeFromArray(item, pg.inventory); updated = true;"></i>
                                             </div>
-                                            <input type = text class = "attackdata" v-model="pg.inventory[index]" @keyup="updated = true;" style="width: 100%;">
+                                            <input type = text class = "attackdata" v-model="pg.inventory[index]" @input="updated = true;" style="width: 100%;">
                                         </div>
                                     </div>
                                 </div>
@@ -382,8 +415,13 @@
                                         <div class="card-body p0">
                                             <div class = "cardtitlerow">
                                                 <div> Limited Features and Traits </div>  
-                                                <div class = "attackdata clickable" @click= "appendEmptyLimitedFeature()">
-                                                    <i class="bi bi-plus-circle" ></i>
+                                                <div class="d-flex">
+                                                    <div class = "attackdata clickable" @click= "resetPTL()">
+                                                        <i class="bi bi-arrow-counterclockwise"></i>
+                                                    </div>
+                                                    <div class = "attackdata clickable" @click= "appendEmptyLimitedFeature()">
+                                                        <i class="bi bi-plus-circle" ></i>
+                                                    </div>
                                                 </div>
                                             </div>
                                         
@@ -393,6 +431,9 @@
                                                 </div>
                                                 <div class = "attackdata" style="width: 100%;"> 
                                                     {{trait.name}}
+                                                </div>
+                                                <div class = "attackdata clickable" style = "width: 15%; text-align: center;" @click= "trait.current_uses++; checkPTL(index); updated = true;"> 
+                                                    {{trait.current_uses}}/{{trait.max_uses}}
                                                 </div>
                                                 <div class = "attackdata clickable" @click= "showInfoPTL(index)"> 
                                                     <i class="bi bi-info-circle"></i>
@@ -412,7 +453,7 @@
                                                 <div class = "attackdata clickable" @click= "pg.languages = removeFromArray(language, pg.languages); updated = true;"> 
                                                     <i class="bi bi-x-circle " ></i>
                                                 </div>
-                                                <input class = "attackdata clickable"  style="width: 100%;" v-model="pg.languages[index]"  @keyup="updated = true;">
+                                                <input class = "attackdata clickable"  style="width: 100%;" v-model="pg.languages[index]"  @input="updated = true;">
                                             </div>
                                         </div>
                                     </div>
@@ -444,7 +485,7 @@
                                                 <div class = "attackdata clickable" @click= "pg.attuned = removeFromArray(obj, pg.attuned); updated = true;"> 
                                                     <i class="bi bi-x-circle " ></i>
                                                 </div>
-                                                <input class = "attackdata clickable"  style="width: 100%;" v-model="pg.attuned[index]" @keyup="updated = true;">
+                                                <input class = "attackdata clickable"  style="width: 100%;" v-model="pg.attuned[index]" @input="updated = true;">
                                             </div>
                                         </div>
                                     </div>
@@ -536,9 +577,9 @@
 
                 <!-- TRAITS MODAL -->
                 <modal v-if="showPTDescription" @close="showPTDescription = false;" >
-                    <h3 slot="header" class="nomarginbottom padding-left-1rem"><input v-model =pg.priv_tratti[selected_PT].name placeholder="Name" @keyup="updated = true;"> </h3>
+                    <h3 slot="header" class="nomarginbottom padding-left-1rem"><input v-model =pg.priv_tratti[selected_PT].name placeholder="Name" @input="updated = true;"> </h3>
                     <div slot="body">
-                        <textarea class=large v-model="pg.priv_tratti[selected_PT].description" @keyup="updated = true;">
+                        <textarea class=large v-model="pg.priv_tratti[selected_PT].description" @input="updated = true;">
 
                         </textarea>
                     </div>
@@ -546,17 +587,17 @@
 
                 <!-- LIMITED TRAITS MODAL -->
                 <modal v-if="showPTLDescription" @close="showPTLDescription = false;" >
-                    <h3 slot="header" class="nomarginbottom padding-left-1rem"><input v-model =pg.PTL[selected_PTL].name placeholder="Name" @keyup="updated = true;"> </h3>
-                    <h6 slot="school">Recharges every <input style="background-color: none;" v-model =pg.PTL[selected_PTL].charges @keyup="updated = true;"></h6>
+                    <h3 slot="header" class="nomarginbottom padding-left-1rem"><input v-model =pg.PTL[selected_PTL].name placeholder="Name" @input="updated = true;"> </h3>
+                    <h6 slot="school">Recharges every <input style="background-color: none;" v-model =pg.PTL[selected_PTL].charges @input="updated = true;"></h6>
                     <div slot="body">
                         <div class="d-flex-card align-items-center justify-content-between">
                             <div class = "card overflow-hidden shadow rounded-4 border-0 mb-5" >
                                 <div class="hpbarContainer justify-content-center">
-                                    <input v-model="pg.PTL[selected_PTL].current_uses" class="hp text-right"  type="number" :value="pg.PTL[selected_PTL].current_uses" @input="checkPTL(selected_PTL)" @keyup="updated = true;">/<input v-model="pg.PTL[selected_PTL].max_uses" class="hp text-left" type="number" :value="pg.PTL[selected_PTL].max_uses" @input="checkPTL(selected_PTL)" @keyup="updated = true;"></i>
+                                    <input v-model="pg.PTL[selected_PTL].current_uses" class="hp text-right"  type="number" :value="pg.PTL[selected_PTL].current_uses" @input="checkPTL(selected_PTL)" @input="updated = true;">/<input v-model="pg.PTL[selected_PTL].max_uses" class="hp text-left" type="number" :value="pg.PTL[selected_PTL].max_uses" @input="checkPTL(selected_PTL)" @input="updated = true;"></i>
                                 </div>
                             </div>
                         </div>
-                        <textarea class = medium v-model="pg.PTL[selected_PTL].description" @keyup="updated = true;">
+                        <textarea class = medium v-model="pg.PTL[selected_PTL].description" @input="updated = true;">
 
                         </textarea>
                     </div>
@@ -573,7 +614,7 @@
                                     <div class = "attackdata text-center" > 
                                         {{level.level}}
                                     </div>
-                                    <input class = "attackdata clickable text-center" style = "width:4rem;" type = number v-model = "level.max" @input="checkSlots(level)" @keyup="updated = true;">
+                                    <input class = "attackdata clickable text-center" style = "width:4rem;" type = number v-model = "level.max" @input="checkSlots(level)" @input="updated = true;">
                                 </div>
                             </div>
                         </div>

@@ -70,10 +70,23 @@ input{
     margin: 0.5rem;
 }
 
+.largeStatsCard{
+    max-width: 28vh;
+    min-width: 10vh;
+    text-align: center;
+    padding: 1rem;
+    margin: 0.5rem;
+}
+
 .statvalue{
     text-align: center;
     font-size: xx-large;
     
+}
+.statvalue-fixed{
+    text-align: center;
+    font-size: xx-large;
+    width: 50%;
 }
 
 .statsContainer{
@@ -145,6 +158,7 @@ input.fill{
 
 input.hp{
     width: 18%;
+    text-align: center;
 }
 
 

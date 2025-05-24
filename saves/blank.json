@@ -1,11 +1,16 @@
 {
     "name": "Name",
     "class": "",
+    "class_points" : 0,
+    "max_class_points" : 0,
+    "show_class_points": false,
     "level": 1,
     "race": "",
     "alignment": "CN",
+    "background": "",
     "hp": 10,
     "maxHP": 10,
+    "tempHP": 0,
     "stats": {
         "str": 10,
         "dex": 10,
@@ -18,7 +23,8 @@
     "ca": 15,
     "init": 1,
     "vel": 9,
-    "dadi_vita": "1d6",
+    "dadi_vita_rimanenti": "1d6",
+    "dadi_vita_massimi": "1d6",
     "ts_morte": {
         "successi": 0,
         "fallimenti": 0

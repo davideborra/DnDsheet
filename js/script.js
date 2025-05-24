@@ -1,13 +1,14 @@
-var debug  = false;
-var updated = false;
+var debug  = true;
 var file = null;
 var fileHandle = null;
 var vueapp = new Vue({
     el: "#vueContainer",
     data: {
         loading : true,
+        updated : false,
+        legacy : false,
         filepath : "",
-        // filename: "save.json",
+        filename: "save.json",
         errorPrint: "",
         hideInventory: true,
         showSpellsSettings : false,
@@ -17,11 +18,16 @@ var vueapp = new Vue({
         pg: {
             name: "Loading Error",
             class: "Loading Error",
+            class_points: 0,
+            max_class_points: 0,
+            show_class_points : false,
             level: 0,
             race: "",
             alignment: "",
+            background: "",
             hp: 42,
             maxHP: 42,
+            tempHP: 0,
             stats: {
                 str: 10,
                 dex: 10,
@@ -34,7 +40,8 @@ var vueapp = new Vue({
             ca: 15,
             init: 0,
             vel: 9,
-            dadi_vita: "6d8",
+            dadi_vita_rimanenti: "6d8",
+            dadi_vita_massimi: "6d8",
             ts_morte: {successi: 0, fallimenti: 0},
             compBonus: 2,
             ispirazione: 0,
@@ -133,6 +140,7 @@ var vueapp = new Vue({
                 return;
             });
         }
+        this.legacy = !(!!window.chrome);
     },
     methods: {
         // parseStats(){
@@ -353,30 +361,29 @@ var vueapp = new Vue({
                 }
             }
         },
+        loadDataLegacy(){
+            var files = document.getElementById('selectFiles').files;
+            if (files.length <= 0) {
+                vueapp.errorPrint = "No files provided."
+                return false;
+            }
+            vueapp.filename = files.item(0).name;
+        
+            var fr = new FileReader();
+        
+            fr.onload = function(e) { 
+                json = JSON.parse(e.target.result);
+                vueapp.parseData(json);
+            }
+            fr.readAsText(files.item(0));
+            this.loading = false;
+        },
         loadData(){
-            
-            // var files = document.getElementById('selectFiles').files;
-            // if (files.length <= 0) {
-            //     vueapp.errorPrint = "No files provided."
-            //     return false;
-            // }
-            // vueapp.filename = files.item(0).name;
-            
-        
-            // var fr = new FileReader();
-        
-            // fr.onload = function(e) { 
-            //     json = JSON.parse(e.target.result);
-            //     vueapp.parseData(json);
-            // }
-            // fr.readAsText(files.item(0));
-            // vueapp.filepath = "";
-            // this.loading = false;
             try{
                 loadFromFile()
                     .then((file) => JSON.parse(file))
                         .then((json) => vueapp.parseData(json));
-                updated = false;
+                this.updated = false;
             }catch(error){
                 if(error == "AbortError: Failed to execute 'showOpenFilePicker' on 'Window': The user aborted a request."){
                     error = "No file provided";
@@ -404,11 +411,19 @@ var vueapp = new Vue({
             var savedata = JSON.stringify(this.pg);
             // download(this.filename,savedata);
             writeToFile(savedata);
-            updated = false;
+            this.updated = false;
             this.$forceUpdate(); //questo serve perché vue fa i capricci e ogni tanto non mi aggiorna gli elementi grafici
         },
         widthStyleHP(){
-            var percentage = parseInt(this.pg.hp)/parseInt(this.pg.maxHP) *100;
+            var percentage = parseInt(this.pg.hp)/(parseInt(this.pg.maxHP)+parseInt(this.pg.tempHP)) *100;
+            return "width: "+percentage+"%;";
+        },
+        widthStyleClassPoints(){
+            if (this.pg.max_class_points==0){
+                percentage = 0
+            }else{
+                var percentage = parseInt(this.pg.class_points)/parseInt(this.pg.max_class_points) *100;
+            }
             return "width: "+percentage+"%;";
         },
         addHP(n){
@@ -417,7 +432,7 @@ var vueapp = new Vue({
                 this.pg.hp =0;
             if (this.pg.hp > this.pg.maxHP)
                 this.pg.hp = this.pg.maxHP;
-            updated = true;
+            this.updated = true;
         },
         tsMorteFail(n){
             if(this.pg.ts_morte.fallimenti >= n)
@@ -433,7 +448,7 @@ var vueapp = new Vue({
         },
         appendEmptyAttack(){
             this.pg.attack_bonus.push({name: "", bonus: "", danni: "", tipo: ""},)
-            updated = true;
+            this.updated = true;
         },
         proficiencyST(){
             var i=0;
@@ -443,7 +458,7 @@ var vueapp = new Vue({
                     this.pg.ts[i].value%=2;
                 }
             }
-            updated = true;
+            this.updated = true;
         },
         proficiencySkill(){
             var i=0;
@@ -453,7 +468,7 @@ var vueapp = new Vue({
                     this.pg.skills[i].comp%=3;
                 }
             }
-            updated = true;
+            this.updated = true;
         },
         // getFilename(){
         //     var array  = this.filepath.split("\\");
@@ -461,10 +476,10 @@ var vueapp = new Vue({
         //     return this.filename;
         // },
         new_pg(){
-            if(updated && !window.confirm("There are unsaved changes. Proceed?")){
+            if(this.updated && !window.confirm("There are unsaved changes. Proceed?")){
                 return;
             }
-            updated = false;
+            this.updated = false;
             this.loading = false;
             fileHandle = null;
             file = null;
@@ -480,7 +495,7 @@ var vueapp = new Vue({
         },
         appendEmptyFeature(){
             this.pg.priv_tratti.push({name:"", description:""});
-            updated = true;
+            this.updated = true;
         },
         appendEmptyLimitedFeature(){
             this.pg.PTL.push(
@@ -492,7 +507,7 @@ var vueapp = new Vue({
                     description:""
                 }
             );
-            updated = true;
+            this.updated = true;
         },
         addSpell(){
             if(this.spellToAdd!= ""){
@@ -518,7 +533,7 @@ var vueapp = new Vue({
                 }
             }
             this.spellToAdd= "";
-            updated = true;
+            this.updated = true;
 
         },
         removeSpell(){
@@ -547,7 +562,7 @@ var vueapp = new Vue({
                 }
             }
             this.spellToRemove = "";
-            updated = true;
+            this.updated = true;
         },
         checkSlots(level){
             if(level.max>4) level.max = 4;
@@ -561,14 +576,37 @@ var vueapp = new Vue({
             if(parseInt(this.pg.maxHP)<0){
                 this.pg.maxHP = 0;
             }
-            if(parseInt(this.pg.hp)>parseInt(this.pg.maxHP)){
-                this.pg.hp = this.pg.maxHP;
+            if(parseInt(this.pg.hp)>parseInt(this.pg.maxHP)+parseInt(this.pg.tempHP)){
+                this.pg.hp = parseInt(this.pg.maxHP)+parseInt(this.pg.tempHP);
             };
         },
-        checkPTL(){
-            if(this.pg.PTL[this.selected_PT].current_uses<0) this.pg.PTL[this.selected_PT].current_uses = 0;
-            if(this.pg.PTL[this.selected_PT].max_uses<0) this.pg.PTL[this.selected_PT].max_uses = 0;
-            if(this.pg.PTL[this.selected_PT].current_uses>this.pg.PTL[this.selected_PT].max_uses) this.pg.PTL[this.selected_PT].current_uses = this.pg.PTL[this.selected_PT].max_uses;
+        checkClassPoints(){
+            if(parseInt(this.pg.class_points)<0){
+                this.pg.class_points = 0;
+            }
+            if(parseInt(this.pg.max_class_points)<0){
+                this.pg.max_class_points = 0;
+            }
+            if(parseInt(this.pg.class_points)>parseInt(this.pg.max_class_points)){
+                this.pg.class_points = this.pg.max_class_points;
+            };
+        },
+        checkPTL(index){
+            if(this.pg.PTL[index].current_uses<0){
+                this.pg.PTL[index].current_uses = 0;
+            }
+            if(this.pg.PTL[index].max_uses<0){
+                this.pg.PTL[index].max_uses = 0;
+            }
+            if(this.pg.PTL[index].current_uses>this.pg.PTL[index].max_uses){
+                this.pg.PTL[index].current_uses = this.pg.PTL[index].max_uses;
+            }
+        },
+        resetPTL(){
+            for(trait of this.pg.PTL){
+                trait.current_uses = 0;
+            }
+            this.updated = true;
         },
         spellMod(){
             var mod = 0;
@@ -636,10 +674,7 @@ var vueapp = new Vue({
                 }
             }
             this.$forceUpdate(); //questo serve perché vue fa i capricci e ogni tanto non mi aggiorna gli elementi grafici
-            updated = true;
-        },
-        isUpdated(){
-            return updated;
+            this.updated = true;
         }
     }
 });
@@ -653,7 +688,7 @@ Vue.component("modal", {
 
   // check if leaving without saving
 window.addEventListener("beforeunload", function (e) {
-    if(updated){
+    if(vueapp.updated){
         var confirmationMessage = 'It looks like you have been editing something. '
                             + 'If you leave before saving, your changes will be lost.';
     (e || window.event).returnValue = confirmationMessage; //Gecko + IE
@@ -711,12 +746,11 @@ function download(filename, text) {
 }
 
 async function writeToFile(contents){
-    if (file == null){
+    if (file == null || vueapp.legacy){
         download(vueapp.pg.name+".json",contents);
     }else{
         const writable = await fileHandle.createWritable();
-    await writable.write(contents);
-    await writable.close();
+        await writable.write(contents);
+        await writable.close();
     }
-    
 }
