@@ -7,7 +7,7 @@
         <meta name="author" content="Davide " />
         <title>D&D Character Sheet</title>
         <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
         <!-- VUE JS CDN-->
         <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
         <!-- Custom Google font-->
@@ -17,10 +17,9 @@
         <!-- Bootstrap icons-->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="css/styles.css" rel="stylesheet" />
-        <link href="css/dndstyles.css" rel="stylesheet" />
-        <link href="css/modal.css" rel="stylesheet" />
-
+        <link href="../css/styles.css" rel="stylesheet" />
+        <link href="../css/dndstyles.css" rel="stylesheet" />
+        <link href="../css/modal.css" rel="stylesheet" />
         <!-- MODAL -->
         <script type="text/x-template" id="modal-template">
             <transition name="modal">
@@ -75,112 +74,128 @@
                 <i class="bi bi-x-circle-fill clickable fw-bolder text-primary navbar-brand exit" @click="location.href = 'https://davideborra.github.io/'"></i>
                 <div class="container px-5" v-if="!loading">
                     <div class = pginfo>
-                        <input type ="text" class="fw-bolder text-primary navbar-brand" id = "pgname" v-model="pg.name" @input="updated = true;"></input>
-                        <label for = "pglevel" class= "fw-bolder text-primary navbar-brand">Lv. </label><input type ="number" class="fw-bolder text-primary navbar-brand" id = "pglevel" v-model="pg.level" @input="updated = true;"></input>
-                        <input type ="text" class="fw-bolder text-primary navbar-brand" id = "pgalign" v-model="pg.alignment"  @input="updated = true;"></input>
-                        <i v-if="updated">There are unsaved changes</i>
+                        <input readonly = "true"type ="text" class="fw-bolder text-primary navbar-brand" id = "pgname" v-model="pg.name" @input="updated = true;"></input>
+                        <label for = "pglevel" class= "fw-bolder text-primary navbar-brand">Lv. </label><input readonly = "true"type ="number" class="fw-bolder text-primary navbar-brand" id = "pglevel" v-model="pg.level" @input="updated = true;"></input>
+                        <input readonly = "true"type ="text" class="fw-bolder text-primary navbar-brand" id = "pgalign" v-model="pg.alignment"  @input="updated = true;"></input>
                     </div>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav ms-auto mb-2 mb-lg-0 small fw-bolder">
-                            <li class="nav-item clickable"><a class="nav-link" @click = "loading = true;">Load</a></li>
-                            <li class="nav-item clickable"><a class="nav-link" @click="save()">Save</a></li>
-                            <li class="nav-item clickable"><a class="nav-link" @click = "new_pg();">New</a></li>
-                            <li class="nav-item clickable"><a class="nav-link" href="help">Help</a></li>
+                            <li class="nav-item clickable"><a class="nav-link" @click = "">Load</a></li>
+                            <li class="nav-item clickable"><a class="nav-link" @click="">Save</a></li>
+                            <li class="nav-item clickable"><a class="nav-link" @click = "">New</a></li>
+                            <li class="nav-item clickable"><a class="nav-link" href = "../">Back</a></li>
                         </ul>
                     </div>
-                </div>
-                <div class="container px-5" v-if="loading">
-                    <div class = pginfo>
-                        <div  class="fw-bolder text-primary navbar-brand" >D&D Character Sheet</div>
-                    </div>
-                    <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 small fw-bolder">
-                            <div class="nav-item clickable"><a class="nav-link" @click = "new_pg();">New</a></div>
-                        </ul>
-                    </div> -->
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 small fw-bolder">
-                            <li class="nav-item clickable"><a class="nav-link" @click = "new_pg();">New</a></li>
-                            <li class="nav-item clickable"><a class="nav-link" href="help">Help</a></li>
-                        </ul>
-                    </div>
-
                 </div>
             </nav>
-            <div class = "pageContainer loadingPage" v-if = "loading">
-                <div class="card overflow-hidden shadow rounded-4 border-0 mb-5">
-                    <div class="card-body p-5">
-                        <div class="p-5" v-if = "legacy">
-                            <h2 class="fw-bolder">Loading</h2>
-                            {{errorPrint}}
-                            <div class = "d-flex-card align-items-center justify-content-end" >
-                                <label class="btn btn-outline-dark btn-lg px-5 py-3 fs-6 fw-bolder margin-right-1rem" for = selectFiles> Upload Saves</label>
-                            <input type="file" id="selectFiles" value="" class = "import" v-model ="filepath"/><br />
-
-                            <button id="import" class ="btn btn-primary btn-lg px-5 py-3 me-sm-3 fs-6 fw-bolder margin-left-1rem" @click ="loadDataLegacy();"> Load</button>
-                            </div>
-                        </div>
-                        <div class="p-5" v-if = "!legacy">
-                            <h2 class="fw-bolder">Loading</h2>
-                            {{errorPrint}}
-                            <div class = "d-flex-card align-items-center justify-content-end" >
-                            <button id="import" class ="btn btn-primary btn-lg px-5 py-3 me-sm-3 fs-6 fw-bolder margin-left-1rem" @click ="loadData();"> Load</button>
-                            </div>
+            <div class = pageContainer v-if= "!loading">
+                <div class="card overflow-hidden shadow rounded-4 border-0 mb-5 helpCard">
+                    <div class="card-body p-0">
+                        <div class="p-4">
+                            <h4 class="fw-bolder text-gradient">Introduction</h4>
+                            This is an automated character sheet for Dungeons and Dragons 5e, developed to help manage complex characters and automate some calculations. This page is meant to help new users familiarise with the website and its wide amount of features. If you find a bug, please report it by <a href="https://davideborra.github.io/index.html#contact">contacting me directly</a> or <a href="https://github.com/davideborra/DnDsheet/issues">reporting an issue on GitHub</a>.
                         </div>
                     </div>
                 </div>
+                <div class="card overflow-hidden shadow rounded-4 border-0 mb-5 helpCard">
+                    <div class="card-body p-0">
+                        <div class="p-4">
+                            <div class="d-flex" style = "align-items: center;">
+                                <div class="badge bg-gradient-primary-to-secondary text-white mb-4" style="margin: 0.5rem 0.5rem !important;"><div class="text-uppercase">Help</div></div><h4 class="fw-bolder">The header</h4>
+                            </div>
+                            
+                            The header contains the primary informations about your character: name, level and alignment, which can be easily edited by clicking on them. Here are located also the main controls for the website:
+                            <ul>
+                                <li>
+                                    Load: opens the loading screen, which has two modes: the normal one for chromium-based browsers and the legacy one for al other browsers.
+                                </li>
+                                <li>
+                                    Save: if the loaded is a newly created one or the website is in legacy-mode, this button downloads an edited version of it, meanwhile if you are using a chromium-based web browser and you uploaded the file from your device, this option updates the file directly on your device.
+                                </li>
+                                <li>
+                                    New: creates a new blank character
+                                </li>
+                                <li>
+                                    Help: opens this screen
+                                </li>
+                            </ul>
+                            The <i class="bi bi-x-circle-fill fw-bolder text-primary navbar-brand exit" style="margin: 0;"></i> button on the top left corner closes this website and redirects to <a href="http://davideborra.github.io">davideborra.github.io</a>.
 
-            </div>
-            <div class = pageContainer v-if= "!loading">
+                        </div>
+                    </div>
+                </div>
+                
                 <!-- STATS CARD -->
                 <div class="card overflow-hidden shadow rounded-4 border-0 mb-5" id = "stats">
                     <div class="card-body p-0">
                         <div class="p-5">
                             <h2 class="fw-bolder">Stats</h2>
+                            <div class="card overflow-hidden shadow rounded-4 border-0 mb-5 helpCard">
+                                <div class="card-body p-0">
+                                    <div class="p-4">
+                                        <div class="d-flex" style = "align-items: center;">
+                                            <div class="badge bg-gradient-primary-to-secondary text-white mb-4" style="margin: 0.5rem 0.5rem !important;"><div class="text-uppercase">Help</div></div><h4 class="fw-bolder">Stats</h4>
+                                        </div>
+                                        
+                                        Each box contains one of the six main stats in Dungeons and Dragons and its related modifier. The stats can be edited by clicking on the number, while the modifier is automatically calculated. Clicking on the modifier setups the dice roller in the footer to roll an ability check for that specific stat, without considering any proficiency.
+
+                                    </div>
+                                </div>
+                            </div>
                             <div class="d-flex-card align-items-center statsContainer">
                                 <div class = "card overflow-hidden shadow rounded-4 border-0 mb-5 statsCard">
                                     Strength
-                                    <input class="statvalue noarrows" v-model="pg.stats.str" type ="number" @input="updated = true;"></input>
+                                    <input readonly = "true"class="statvalue noarrows" v-model="pg.stats.str" type ="number" @input="updated = true;"></input>
                                     <div class="statmodifier clickable" @click="setRollString('1d20'+nozero(modifier(pg.stats.str)))">{{modifier(pg.stats.str)}}</div>
                                 </div>
                                 <div class = "card overflow-hidden shadow rounded-4 border-0 mb-5 statsCard">
                                     Dexterity
-                                    <input class="statvalue noarrows" v-model="pg.stats.dex" type ="number" @input="updated = true;"></input>
+                                    <input readonly = "true"class="statvalue noarrows" v-model="pg.stats.dex" type ="number" @input="updated = true;"></input>
                                     <div class="statmodifier" @click="setRollString('1d20'+nozero(modifier(pg.stats.dex)))">{{modifier(pg.stats.dex)}}</div>
                                 </div>
                                 <div class = "card overflow-hidden shadow rounded-4 border-0 mb-5 statsCard">
                                     Constitution    
-                                    <input class="statvalue noarrows" v-model="pg.stats.con" type ="number" @input="updated = true;"></input>
+                                    <input readonly = "true"class="statvalue noarrows" v-model="pg.stats.con" type ="number" @input="updated = true;"></input>
                                     <div class="statmodifier" @click="setRollString('1d20'+nozero(modifier(pg.stats.con)))">{{modifier(pg.stats.con)}}</div>
                                 </div>
                                 <div class = "card overflow-hidden shadow rounded-4 border-0 mb-5 statsCard">
                                     Intelligence
-                                    <input class="statvalue noarrows" v-model="pg.stats.int" type ="number" @input="updated = true;"></input>
+                                    <input readonly = "true"class="statvalue noarrows" v-model="pg.stats.int" type ="number" @input="updated = true;"></input>
                                     <div class="statmodifier" @click="setRollString('1d20'+nozero(modifier(pg.stats.int)))">{{modifier(pg.stats.int)}}</div>
                                 </div>
                                 <div class = "card overflow-hidden shadow rounded-4 border-0 mb-5 statsCard">
                                     Wisdom
-                                    <input class="statvalue noarrows" v-model="pg.stats.wis" type ="number" @input="updated = true;"></input>
+                                    <input readonly = "true"class="statvalue noarrows" v-model="pg.stats.wis" type ="number" @input="updated = true;"></input>
                                     <div class="statmodifier" @click="setRollString('1d20'+nozero(modifier(pg.stats.wis)))">{{modifier(pg.stats.wis)}}</div>
                                 </div>
                                 <div class = "card overflow-hidden shadow rounded-4 border-0 mb-5 statsCard">
                                     Charisma
-                                    <input class="statvalue noarrows" v-model="pg.stats.cha" type ="number" @input="updated = true;"></input>
+                                    <input readonly = "true"class="statvalue noarrows" v-model="pg.stats.cha" type ="number" @input="updated = true;"></input>
                                     <div class="statmodifier" @click="setRollString('1d20'+nozero(modifier(pg.stats.cha)))">{{modifier(pg.stats.cha)}}</div>
                                 </div>
                             </div>
+                            
+                            <div class="card overflow-hidden shadow rounded-4 border-0 mb-5 helpCard">
+                                    <div class="card-body p-0">
+                                        <div class="p-4">
+                                            <div class="d-flex" style = "align-items: center;">
+                                                <div class="badge bg-gradient-primary-to-secondary text-white mb-4" style="margin: 0.5rem 0.5rem !important;"><div class="text-uppercase">Help</div></div><h4 class="fw-bolder">Proficiency, Saving Throws and Ability Checks</h4>
+                                            </div>
+                                            The proficiency bonus can be inputed directly as any other stats, and influences the modifiers of any stat in which the character is proficient. To specify that a character is proficient in a specific stat, select it from the list and click once (or twice for expertise) on the circle appeared on the right. To remove the proficiency, click again on the same circle. For now ability checks are available only in Italian (sorry!). Clicking on the modifier setups the dice roller to roll a d20 with that specific modifier.
+                                        </div>
+                                    </div>
+                                </div>
                             <div class = "d-flex-card align-items-center abilityContainer">
                                 <div class = "card overflow-hidden shadow rounded-4 border-0 mb-5 statsCard">
                                     Proficiency Bonus
-                                    <input class="statvalue" v-model="pg.compBonus" @input="updated = true;"></input>
+                                    <input readonly = "true"class="statvalue" v-model="pg.compBonus" @input="updated = true;"></input>
                                 </div>
 
                                 <div class = "card overflow-hidden shadow rounded-4 border-0 mb-5 dropdownCard">
                                     Saving Throws
                                     <div class="dropdownContainer">
-                                        <input class="comp" list="Saving_throws" placeholder="Saving Throw" v-model="selected_ts">
+                                        <input readonly = "true"class="comp" list="Saving_throws" placeholder="Saving Throw" v-model="selected_ts">
                                         <datalist id="Saving_throws">
                                             <select multiple size=6 >
                                             <option v-for="stat in pg.ts" :value="stat_name(stat.id)" >{{stat_name(stat.id)}}
@@ -197,7 +212,7 @@
                                 <div class = "card overflow-hidden shadow rounded-4 border-0 mb-5 dropdownCard">
                                     Ability Checks
                                     <div class="dropdownContainer">
-                                        <input class="comp" list="ability_checks" placeholder="Ability Check" v-model="selected_skill">
+                                        <input readonly = "true"class="comp" list="ability_checks" placeholder="Ability Check" v-model="selected_skill">
                                         <datalist id="ability_checks">
                                             <select>
                                                 <option v-for="(skill,index) in pg.skills" :value="skill.label">{{skill.label}}
@@ -209,10 +224,11 @@
                                         <b class="statmodifier" @click="setRollString('1d20'+nozero(skillModifier()))">{{skillModifier()}}</b>
                                     </div>
                                 </div>
+
                                 <div class = "card overflow-hidden shadow rounded-4 border-0 mb-5 dropdownCard">
                                     Class
                                     <div class="dropdownContainer">
-                                        <input class="fill" placeholder="Class" v-model="pg.class" @input="updated = true;">
+                                        <input readonly = "true"class="fill" placeholder="Class" v-model="pg.class" @input="updated = true;">
                                     </div>
                                     <div >
 
@@ -227,17 +243,17 @@
                                         <div class="progressBar_outer">
                                             <div class="progressBar_inner" :style="widthStyleClassPoints()"></div>
                                         </div>
-                                        <input v-model="pg.class_points" @input="updated = true;" class="hp text-right" id="cp" type="number" :value="pg.class_points" @input="checkClassPoints()">/<input v-model="pg.max_class_points" @input="updated = true;" class="hp" id = "max_cp" type="number" :value="pg.max_class_points" @input="checkClassPoints()"></i>
+                                        <input readonly = "true"v-model="pg.class_points" @input="updated = true;" class="hp text-right" id="cp" type="number" :value="pg.class_points" @input="checkClassPoints()">/<input readonly = "true"v-model="pg.max_class_points" @input="updated = true;" class="hp" id = "max_cp" type="number" :value="pg.max_class_points" @input="checkClassPoints()"></i>
                                     </div>
                                 </div>
                                 <div class = "card overflow-hidden shadow rounded-4 border-0 mb-5 dropdownCard">
                                     Race
                                     <div class="dropdownContainer">
-                                        <input class="fill" placeholder="Race" v-model="pg.race" @input="updated = true;">
+                                        <input readonly = "true"class="fill" placeholder="Race" v-model="pg.race" @input="updated = true;">
                                     </div>
                                     Background
                                     <div class="dropdownContainer">
-                                        <input class="fill" placeholder="Background" v-model="pg.background" @input="updated = true;">
+                                        <input readonly = "true"class="fill" placeholder="Background" v-model="pg.background" @input="updated = true;">
                                     </div>
                                 </div>
                                 <div class = "card overflow-hidden shadow rounded-4 border-0 mb-5 statsCard">
@@ -255,7 +271,17 @@
                                         </div>
                                     </div>
                                 </div>
-
+                                
+                            </div>
+                            <div class="card overflow-hidden shadow rounded-4 border-0 mb-5 helpCard">
+                                <div class="card-body p-0">
+                                    <div class="p-4">
+                                        <div class="d-flex" style = "align-items: center;">
+                                            <div class="badge bg-gradient-primary-to-secondary text-white mb-4" style="margin: 0.5rem 0.5rem !important;"><div class="text-uppercase">Help</div></div><h4 class="fw-bolder">Other Character Informations</h4>
+                                        </div>
+                                        These last boxes are used to specify the Class, Race and Background of the character. By clicking on the <i class="bi bi-eye-slash-fill" v-if="pg.show_class_points"></i><i class="bi bi-eye-fill" v-if="!pg.show_class_points"></i> button one can <i v-if = pg.show_class_points>hide</i><i v-if = !pg.show_class_points>show</i> the bar meant to display class points (e.g. Ki Points, Sorcery Points.
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -265,25 +291,36 @@
                     <div class="card-body p-0">
                         <div class="p-5">
                             <h2 class="fw-bolder">Combat</h2>
+                            <div class="card overflow-hidden shadow rounded-4 border-0 mb-5 helpCard">
+                                <div class="card-body p-0">
+                                    <div class="p-4">
+                                        <div class="d-flex" style = "align-items: center;">
+                                            <div class="badge bg-gradient-primary-to-secondary text-white mb-4" style="margin: 0.5rem 0.5rem !important;"><div class="text-uppercase">Help</div></div><h4 class="fw-bolder">Combat Stats</h4>
+                                        </div>
+                                        This section contains those stats which are the most important during a fight: all of them can be edited by clicking on their value. The three numbres in the Hit Points card represent, in order, the remaining, maximum and temporary HPs; clicking on the <i class="bi bi-plus-slash-minus"></i> icon hides/shows a utility to add/subtract a certain value from the remaining HPs. The dots in the "Savint Throws" box represent the failed ones (on the left) and the succeeded ones (on the right). Clicking one them cycles through their possible values. 
+
+                                    </div>
+                                </div>
+                            </div>
                             <div class="d-flex-card align-items-center statsContainer">
                                 <div class = "card overflow-hidden shadow rounded-4 border-0 mb-5 statsCard">
                                     Armor Class
-                                    <input class="statvalue" v-model="pg.ca" @input="updated = true;"></input>
+                                    <input readonly = "true"class="statvalue" v-model="pg.ca" @input="updated = true;"></input>
                                 </div>
                                 <div class = "card overflow-hidden shadow rounded-4 border-0 mb-5 statsCard">
                                     <div @click="setRollString('1d20'+nozero(pg.init>0?'+'+pg.init:pg.init))">Initiative</div>
-                                    <input class="statvalue" v-model="pg.init" @input="updated = true;"></input>
+                                    <input readonly = "true"class="statvalue" v-model="pg.init" @input="updated = true;"></input>
                                 </div>
                                 <div class = "card overflow-hidden shadow rounded-4 border-0 mb-5 statsCard">
                                     Speed    
-                                    <input class="statvalue" v-model="pg.vel" @input="updated = true;"></input>
+                                    <input readonly = "true"class="statvalue" v-model="pg.vel" @input="updated = true;"></input>
                                 </div>
                                 <div class = "card overflow-hidden shadow rounded-4 border-0 mb-5 dropdownCard">
                                     Hit Dice
                                     <div class ="d-flex">
-                                        <input class="statvalue-fixed" v-model="pg.dadi_vita_rimanenti" @input="updated = true;"></input>
+                                        <input readonly = "true"class="statvalue-fixed" v-model="pg.dadi_vita_rimanenti" @input="updated = true;"></input>
                                         <div class = "statvalue">/</div>
-                                        <input class="statvalue-fixed" v-model="pg.dadi_vita_massimi" @input="updated = true;"></input>
+                                        <input readonly = "true"class="statvalue-fixed" v-model="pg.dadi_vita_massimi" @input="updated = true;"></input>
                                     </div>
                                 </div>
                                 <div class = "card overflow-hidden shadow rounded-4 border-0 mb-5 largeDropdownCard">
@@ -292,11 +329,11 @@
                                         <div class="progressBar_outer">
                                             <div class="progressBar_inner" :style="widthStyleHP()"></div>
                                         </div>
-                                        <input v-model="pg.hp" @input="updated = true;" class="hp" id="hp" type="number" :value="pg.hp" @input="checkHP()">/<input v-model="pg.maxHP" @input="updated = true;" class="hp" id = "hpmax" type="number" :value="pg.maxHP" @input="checkHP()"> + <input v-model="pg.tempHP" @input="updated = true;" class="hp" style="width:10%;" id = "hptemp" type="number" @input="checkHP()">
+                                        <input readonly = "true"v-model="pg.hp" @input="updated = true;" class="hp" id="hp" type="number" :value="pg.hp" @input="checkHP()">/<input readonly = "true"v-model="pg.maxHP" @input="updated = true;" class="hp" id = "hpmax" type="number" :value="pg.maxHP" @input="checkHP()"> + <input readonly = "true"v-model="pg.tempHP" @input="updated = true;" class="hp" style="width:10%;" id = "hptemp" type="number" @input="checkHP()">
                                         <i class="bi bi-plus-slash-minus" @click="modifyHP = !modifyHP;"></i>
                                     </div>
                                     <div class="hpbarContainer justify-content-end" v-if="modifyHP">
-                                        <input v-model="deltaHP" class="hp" id="hp" type="number" > 
+                                        <input readonly = "true"v-model="deltaHP" class="hp" id="hp" type="number" > 
                                         <div class = "attackdata clickable" @click= "addHP(+1)">
                                             <i class="bi bi-plus-circle" ></i>
                                         </div>
@@ -321,6 +358,16 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="card overflow-hidden shadow rounded-4 border-0 mb-5 helpCard">
+                                <div class="card-body p-0">
+                                    <div class="p-4">
+                                        <div class="d-flex" style = "align-items: center;">
+                                            <div class="badge bg-gradient-primary-to-secondary text-white mb-4" style="margin: 0.5rem 0.5rem !important;"><div class="text-uppercase">Help</div></div><h4 class="fw-bolder">Attacks</h4>
+                                        </div>
+                                        The next table displays the possible ways of dealing damage. The <i class="bi bi-plus-circle" ></i> button adds a new empty attack, while the <i class="bi bi-x-circle " ></i> button on the beginning of each row removes that specific row from the table. The columns contain in order the name of the attack, its hit modifier, its damage and its damage type. 
+                                    </div>
+                                </div>
+                            </div>
                             <div>
                                 <div class = "card overflow-hidden shadow rounded-4 border-0 mb-5">
                                     <div class="card-body p0">
@@ -335,16 +382,16 @@
                                             <div class = "attackdata clickable" @click= "pg.attack_bonus = removeFromArray(attack, pg.attack_bonus)"> 
                                                 <i class="bi bi-x-circle " ></i>
                                             </div>
-                                            <input type = text class = "attackdata" v-model="attack.name" @input="updated = true;" style="width: 35%;">
-                                            <input type = text class = "attackdata mergeright" v-model="attack.bonus" @input="updated = true;" style="width: 15%;">
+                                            <input readonly = "true"type = text class = "attackdata" v-model="attack.name" @input="updated = true;" style="width: 35%;">
+                                            <input readonly = "true"type = text class = "attackdata mergeright" v-model="attack.bonus" @input="updated = true;" style="width: 15%;">
                                             <div class = "attackdata clickable mergeleft" @click= "setRollString('1d20'+nozero(attack.bonus))"> 
                                                 <i class="bi bi-dice-6 " ></i>
                                             </div>
-                                            <input type = text class = "attackdata mergeright" v-model="attack.danni" @input="updated = true;" style="width: 20%;">
+                                            <input readonly = "true"type = text class = "attackdata mergeright" v-model="attack.danni" @input="updated = true;" style="width: 20%;">
                                             <div class = "attackdata clickable mergeleft" @click= "setRollString(attack.danni)"> 
                                                 <i class="bi bi-dice-6 " ></i>
                                             </div>
-                                            <input type = text class = "attackdata" v-model="attack.tipo" @input="updated = true;" style="width: 25%;">
+                                            <input readonly = "true"type = text class = "attackdata" v-model="attack.tipo" @input="updated = true;" style="width: 25%;">
                                             
                                         </div>
                                     </div>
@@ -361,7 +408,18 @@
                             <div class="d-flex-card align-items-center statsContainer">
                                 <div class = "card overflow-hidden shadow rounded-4 border-0 mb-5 statsCard" v-for = "money in pg.wallet">
                                     {{money.label}}
-                                    <input class="statvalue noarrows" type = "number" v-model="money.value" @input="updated = true;"></input>
+                                    <input readonly = "true"class="statvalue noarrows" type = "number" v-model="money.value" @input="updated = true;"></input>
+                                </div>
+                            </div>
+                            <div class="card overflow-hidden shadow rounded-4 border-0 mb-5 helpCard">
+                                <div class="card-body p-0">
+                                    <div class="p-4">
+                                        <div class="d-flex" style = "align-items: center;">
+                                            <div class="badge bg-gradient-primary-to-secondary text-white mb-4" style="margin: 0.5rem 0.5rem !important;"><div class="text-uppercase">Help</div></div><h4 class="fw-bolder">Inventory</h4>
+                                        </div>
+                                        The inventory is simply a list of items which can be edited by clicking on them. The <i class="bi bi-plus-circle" ></i> button adds a new empty item, while the <i class="bi bi-x-circle " ></i> button on the beginning of each row removes that specific row from the list. The inventory is collapsable: click the <i class="bi bi-arrow-down-circle" v-if="hideInventory"></i><i class="bi bi-arrow-left-circle" v-if="!hideInventory"></i> to <i v-if="hideInventory">show</i><i v-if="!hideInventory">hide</i> the inventory.
+
+                                    </div>
                                 </div>
                             </div>
                             <div>
@@ -385,7 +443,7 @@
                                             <div class = "attackdata" > 
                                                 <i class="bi bi-x-circle clickable" @click= "pg.inventory = removeFromArray(item, pg.inventory); updated = true;"></i>
                                             </div>
-                                            <input type = text class = "attackdata" v-model="pg.inventory[index]" @input="updated = true;" style="width: 100%;">
+                                            <input readonly = "true"type = text class = "attackdata" v-model="pg.inventory[index]" @input="updated = true;" style="width: 100%;">
                                         </div>
                                     </div>
                                 </div>
@@ -398,6 +456,17 @@
                     <div class="card-body p-0">
                         <div class="p-5">
                             <h2 class="fw-bolder">Features</h2>
+                            <div class="card overflow-hidden shadow rounded-4 border-0 mb-5 helpCard">
+                                <div class="card-body p-0">
+                                    <div class="p-4">
+                                        <div class="d-flex" style = "align-items: center;">
+                                            <div class="badge bg-gradient-primary-to-secondary text-white mb-4" style="margin: 0.5rem 0.5rem !important;"><div class="text-uppercase">Help</div></div><h4 class="fw-bolder">Features and Traits</h4>
+                                        </div>
+                                        Each card works the same as the inventory, with some slightly changes in those displaying a <i class="bi bi-info-circle"></i> button: in this case the entry cannot be edited from the table and you need to open the info box to access more details and edit them. The "Limited Features and Traits" card has some unique features: the <i class="bi bi-arrow-counterclockwise"></i> button resets the uses of each feature to 0, while the counter can be clicked to increase the number displayed by one, up to the maximum showed on the right. Try clicking info button below.
+
+                                    </div>
+                                </div>
+                            </div>
                             <div class = horizontalScroll>
                                 <div class = "spellsContainer">
                                     <div class = "card overflow-hidden shadow rounded-4 border-0 mb-5 margin-left-1rem margin-right-1rem largeDropdownCard">
@@ -415,7 +484,7 @@
                                                 <div class = "attackdata" style="width: 100%;"> 
                                                     {{trait.name}}
                                                 </div>
-                                                <div class = "attackdata clickable" @click= "showInfoPT(index)"> 
+                                                <div class = "attackdata clickable"> 
                                                     <i class="bi bi-info-circle"></i>
                                                 </div>
                                             </div>
@@ -426,26 +495,26 @@
                                             <div class = "cardtitlerow">
                                                 <div> Limited Features and Traits </div>  
                                                 <div class="d-flex">
-                                                    <div class = "attackdata clickable" @click= "resetPTL()">
+                                                    <div class = "attackdata clickable">
                                                         <i class="bi bi-arrow-counterclockwise"></i>
                                                     </div>
-                                                    <div class = "attackdata clickable" @click= "appendEmptyLimitedFeature()">
+                                                    <div class = "attackdata clickable">
                                                         <i class="bi bi-plus-circle" ></i>
                                                     </div>
                                                 </div>
                                             </div>
                                         
-                                            <div class="attack" v-for="(trait,index) in pg.PTL">
-                                                <div class = "attackdata clickable" @click= "pg.PTL = removeFromArray(trait, pg.PTL); updated = true;"> 
+                                            <div class="attack" >
+                                                <div class = "attackdata clickable" > 
                                                     <i class="bi bi-x-circle " ></i>
                                                 </div>
                                                 <div class = "attackdata" style="width: 100%;"> 
-                                                    {{trait.name}}
+                                                    More infos about Limited Features
                                                 </div>
                                                 <div class = "attackdata clickable" style = "width: 15%; text-align: center;" @click= "trait.current_uses++; checkPTL(index); updated = true;"> 
-                                                    {{trait.current_uses}}/{{trait.max_uses}}
+                                                    1/2
                                                 </div>
-                                                <div class = "attackdata clickable" @click= "showInfoPTL(index)"> 
+                                                <div class = "attackdata clickable" @click= "showPTLDescription = true;"> 
                                                     <i class="bi bi-info-circle"></i>
                                                 </div>
                                             </div>
@@ -463,7 +532,7 @@
                                                 <div class = "attackdata clickable" @click= "pg.languages = removeFromArray(language, pg.languages); updated = true;"> 
                                                     <i class="bi bi-x-circle " ></i>
                                                 </div>
-                                                <input class = "attackdata clickable"  style="width: 100%;" v-model="pg.languages[index]"  @input="updated = true;">
+                                                <input readonly = "true"class = "attackdata clickable"  style="width: 100%;" v-model="pg.languages[index]"  @input="updated = true;">
                                             </div>
                                         </div>
                                     </div>
@@ -479,7 +548,7 @@
                                                 <div class = "attackdata clickable" @click= "pg.other_comps = removeFromArray(comp, pg.other_comps)"> 
                                                     <i class="bi bi-x-circle " ></i>
                                                 </div>
-                                                <input class = "attackdata clickable"  style="width: 100%;" v-model = "pg.other_comps[index]">
+                                                <input readonly = "true"class = "attackdata clickable"  style="width: 100%;" v-model = "pg.other_comps[index]">
                                             </div>
                                         </div>
                                     </div>
@@ -495,7 +564,7 @@
                                                 <div class = "attackdata clickable" @click= "pg.attuned = removeFromArray(obj, pg.attuned); updated = true;"> 
                                                     <i class="bi bi-x-circle " ></i>
                                                 </div>
-                                                <input class = "attackdata clickable"  style="width: 100%;" v-model="pg.attuned[index]" @input="updated = true;">
+                                                <input readonly = "true"class = "attackdata clickable"  style="width: 100%;" v-model="pg.attuned[index]" @input="updated = true;">
                                             </div>
                                         </div>
                                     </div>
@@ -510,6 +579,7 @@
                         <div class="p-5">
                             <div class = cardtitlerow>
                                 <h2 class="fw-bolder">Spells</h2>
+                                
                                 <div class= "d-flex">
                                     <select id = "castingStat" class = "attackdata clickable" v-model="pg.castingStat" @click = "updated = true">
                                         <option value = "str"> Strength </option>
@@ -533,6 +603,16 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="card overflow-hidden shadow rounded-4 border-0 mb-5 helpCard">
+                                <div class="card-body p-0">
+                                    <div class="p-4">
+                                        <div class="d-flex" style = "align-items: center;">
+                                            <div class="badge bg-gradient-primary-to-secondary text-white mb-4" style="margin: 0.5rem 0.5rem !important;"><div class="text-uppercase">Help</div></div><h4 class="fw-bolder">Spells</h4>
+                                        </div>
+                                        This card is about spellcasting. In the card header the user can specify the character's casting stat: the attack bonus and the DC are automatically computed. The <i class="bi bi-arrow-counterclockwise"></i> resets all spells uses, while the <i class="bi bi-gear-fill"></i> button opens the spells settings (try clicking on it!). In the body, a card is displayed if the character has slots or knows spells of that specific level. The dots near the level name represent the available/used slots. The circle near the spell name represents if it is prepared or not, while the <i class="bi bi-info-circle"></i> button opens the spell description.
+                                    </div>
+                                </div>
+                            </div>
                             <div class = horizontalScroll>
                                 <div class = spellsContainer>
                                     <div class = "card overflow-hidden shadow rounded-4 border-0 mb-5 dropdownCard margin-left-1rem margin-right-1rem" v-for = "level in pg.slots" v-if="level.known>0||level.max>0">
@@ -551,7 +631,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <!-- <div class = "spell" v-for="(spell,index) in spells_print" v-if="spell.level == level"><input type="checkbox" class="slotsButton" v-model = "spell.prepared">{{spell.name}} <b class = "infobutton" @click="showInfo(index)">ⓘ</b></div>    -->
+                                        <!-- <div class = "spell" v-for="(spell,index) in spells_print" v-if="spell.level == level"><input readonly = "true"type="checkbox" class="slotsButton" v-model = "spell.prepared">{{spell.name}} <b class = "infobutton" @click="showInfo(index)">ⓘ</b></div>    -->
                                         <div class="attack" v-for="(spell,index) in spells_print" v-if="spell.level == level.level">
                                             <div class = "attackdata clickable" @click = "changePrepared(spell, index); updated = true;" v-if ="level.level>0"> 
                                                 <i class="bi bi-circle" v-if="!spells_print[index].prepared"></i>
@@ -590,7 +670,7 @@
 
                 <!-- TRAITS MODAL -->
                 <modal v-if="showPTDescription" @close="showPTDescription = false;" >
-                    <h3 slot="header" class="nomarginbottom padding-left-1rem"><input v-model =pg.priv_tratti[selected_PT].name placeholder="Name" @input="updated = true;"> </h3>
+                    <h3 slot="header" class="nomarginbottom padding-left-1rem"><input readonly = "true"v-model =pg.priv_tratti[selected_PT].name placeholder="Name" @input="updated = true;"> </h3>
                     <div slot="body">
                         <textarea class=large v-model="pg.priv_tratti[selected_PT].description" @input="updated = true;">
 
@@ -600,25 +680,43 @@
 
                 <!-- LIMITED TRAITS MODAL -->
                 <modal v-if="showPTLDescription" @close="showPTLDescription = false;" >
-                    <h3 slot="header" class="nomarginbottom padding-left-1rem"><input v-model =pg.PTL[selected_PTL].name placeholder="Name" @input="updated = true;"> </h3>
-                    <h6 slot="school">Recharges every <input style="background-color: none;" v-model =pg.PTL[selected_PTL].charges @input="updated = true;"></h6>
+                    <h3 slot="header" class="nomarginbottom padding-left-1rem"><input readonly = "true"  placeholder="Name" value = "Limited Features"> </h3>
+                    <h6 slot="school">Recharges every <input readonly = "true"style="background-color: none;" value = "SR"></h6>
                     <div slot="body">
                         <div class="d-flex-card align-items-center justify-content-between">
                             <div class = "card overflow-hidden shadow rounded-4 border-0 mb-5" >
                                 <div class="hpbarContainer justify-content-center">
-                                    <input v-model="pg.PTL[selected_PTL].current_uses" class="hp text-right"  type="number" :value="pg.PTL[selected_PTL].current_uses" @input="checkPTL(selected_PTL)" @input="updated = true;">/<input v-model="pg.PTL[selected_PTL].max_uses" class="hp text-left" type="number" :value="pg.PTL[selected_PTL].max_uses" @input="checkPTL(selected_PTL)" @input="updated = true;"></i>
+                                    <input readonly = "true" class="hp text-right"  type="number" value = 1>/<input readonly = "true" class="hp"  type="number" value = 2></i>
                                 </div>
                             </div>
                         </div>
-                        <textarea class = medium v-model="pg.PTL[selected_PTL].description" @input="updated = true;">
+                        <div class="card overflow-hidden shadow rounded-4 border-0 mb-5 helpCard">
+                            <div class="card-body p-0">
+                                <div class="p-4">
+                                    <div class="d-flex" style = "align-items: center;">
+                                        <div class="badge bg-gradient-primary-to-secondary text-white mb-4" style="margin: 0.5rem 0.5rem !important;"><div class="text-uppercase">Help</div></div><h4 class="fw-bolder">Info Boxes</h4>
+                                    </div>
+                                    These boxes contain more details about each Feature/Trait. They all share a text input for the name (on top) and a text area for more details. In the case of the Limited Features/Traits more details are available: a slot to specify how often the feature is recharged, one to specify how many time it has been used and one to specify the maximum number of uses.
 
-                        </textarea>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </modal>
                 <!-- SPELL SELECTION MODAL -->
                 <modal v-if="showSpellsSettings" @close="showSpellsSettings = false;" >
                     <h3 slot="header" class="nomarginbottom padding-left-1rem">Spells Settings </h3>
                     <div slot="body">
+                        <div class="card overflow-hidden shadow rounded-4 border-0 mb-5 helpCard">
+                            <div class="card-body p-0">
+                                <div class="p-4">
+                                    <div class="d-flex" style = "align-items: center;">
+                                        <div class="badge bg-gradient-primary-to-secondary text-white mb-4" style="margin: 0.5rem 0.5rem !important;"><div class="text-uppercase">Help</div></div><h4 class="fw-bolder">Spells Settings</h4>
+                                    </div>
+                                    In this window yoiu can change the number of slots available for each level and add/remove a spell from the list of the known one. To do so, write the spell name in the form and click the button on the left hand side. The spells are available only in italian (sorry!).
+                                </div>
+                            </div>
+                        </div>
                         <h5>Spells Slots</h5>
                         <div class="horizontalScroll">
                             <div class="spellsContainer">
@@ -627,7 +725,7 @@
                                     <div class = "attackdata text-center" > 
                                         {{level.level}}
                                     </div>
-                                    <input class = "attackdata clickable text-center" style = "width:4rem;" type = number v-model = "level.max" @input="checkSlots(level)" @input="updated = true;">
+                                    <input readonly = "true"class = "attackdata clickable text-center" style = "width:4rem;" type = number v-model = "level.max" @input="checkSlots(level)" @input="updated = true;">
                                 </div>
                             </div>
                         </div>
@@ -635,7 +733,7 @@
                         <h5>Add Spell</h5>
                         <div class = "attackdata" @click= "addSpell()">
                             <i class="bi bi-plus-circle clickable margin-right-1rem margin-left-1rem" ></i> 
-                                <input class="attackdata" style = "width: 85%" list="addSpells" placeholder="Spell Name" v-model="spellToAdd">
+                                <input readonly = "true"class="attackdata" style = "width: 85%" list="addSpells" placeholder="Spell Name" v-model="spellToAdd">
                             <datalist id="addSpells">
                                 <select>
                                     <option v-for="spell in allSpells" :value="spell.name">{{spell.name}}
@@ -646,7 +744,7 @@
                         <h5>Remove Spell</h5>
                         <div class = "attackdata clickable" >
                             <i class="bi bi-x-circle margin-right-1rem margin-left-1rem" @click= "removeSpell()" ></i>
-                            <input class="attackdata" style = "width: 85%" list="removeSpells" placeholder="Spell Name" v-model="spellToRemove">
+                            <input readonly = "true"class="attackdata" style = "width: 85%" list="removeSpells" placeholder="Spell Name" v-model="spellToRemove">
                             <datalist id="removeSpells">
                                 <select>
                                     <option v-for="spell in spells_print" :value="spell.name">{{spell.name}}
@@ -665,7 +763,7 @@
                     <div class="col-auto onlyOnLargerScreens">
                         <div class="d-flex">
                             <button class="bi bi-x-circle noborder diceRollerButton mergeright" onclick= "resetRolls()" ></button>
-                            <input  class="diceRoller diceRollerContainer mergeleft" placeholder="Roll..." id = "rollString">
+                            <input readonly = "true" class="diceRoller diceRollerContainer mergeleft" placeholder="Roll..." id = "rollString">
                             <button class = "diceRollerButton noborder" onclick= "roll()">
                                 <i class="bi bi-dice-6-fill"></i>
                             </button>
@@ -679,7 +777,8 @@
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
-        <script src="js/script.js"></script>
-        <script src="js/diceRoller.js"></script>
+        <script src="../js/script.js"></script>
+        <script src="../js/help.js"></script>
+        <script src="../js/diceRoller.js"></script>
     </body>
 </html>

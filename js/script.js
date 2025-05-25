@@ -1,6 +1,7 @@
 var debug  = false;
 var file = null;
 var fileHandle = null;
+var help = false;
 var vueapp = new Vue({
     el: "#vueContainer",
     data: {
@@ -76,7 +77,7 @@ var vueapp = new Vue({
                 { level: 3, max: 0, used: 0, known :0},
                 { level: 4, max: 0, used: 0, known :0},
                 { level: 5, max: 0, used: 0, known :0},
-                { level: 5, max: 0, used: 0, known :0},
+                { level: 6, max: 0, used: 0, known :0},
                 { level: 7, max: 0, used: 0, known :0},
                 { level: 8, max: 0, used: 0, known :0},
                 { level: 9, max: 0, used: 0, known :0}
@@ -143,6 +144,20 @@ var vueapp = new Vue({
         this.legacy = !(!!window.chrome);
     },
     methods: {
+        help(){
+            help = true;
+            this.loading = false;
+            fetch("../saves/help.json")
+                    .then((response) => response.json()
+                        .then((json) => this.parseData(json)))
+                .catch ((error) => {
+                console.log(error);
+                vueapp.errorPrint=error;
+                return;
+            });
+            this.selected_skill = "Indagare";
+            this.selected_ts = "Strength";
+        },
         // parseStats(){
         //     this.statsPrint = [];
         //     this.statsPrint.push({label: "Forza", value: this.pg.stats.str});
@@ -608,6 +623,12 @@ var vueapp = new Vue({
             }
             this.updated = true;
         },
+        resetSlots(){
+            for(slot of this.pg.slots){
+                console.log(slot.level);
+                slot.used = 0;
+            }
+        },
         spellMod(){
             var mod = 0;
             switch (this.pg.castingStat){
@@ -688,7 +709,7 @@ Vue.component("modal", {
 
   // check if leaving without saving
 window.addEventListener("beforeunload", function (e) {
-    if(vueapp.updated){
+    if(vueapp.updated && !help){
         var confirmationMessage = 'It looks like you have been editing something. '
                             + 'If you leave before saving, your changes will be lost.';
     (e || window.event).returnValue = confirmationMessage; //Gecko + IE
@@ -699,13 +720,13 @@ window.addEventListener("beforeunload", function (e) {
 
 async function loadSpellsJson(){
     var jsonSpells = [];
-    var phb = await  fetch("data/phb.json");
+    var phb = await  fetch("../data/phb.json");
     phb = await phb.json();
-    var tce = await fetch("data/tasha.json");
+    var tce = await fetch("../data/tasha.json");
     tce = await tce.json();
-    var xge = await fetch("data/xanathar.json");
+    var xge = await fetch("../data/xanathar.json");
     xge = await xge.json();
-    var hb = await fetch("data/homebrew.json");
+    var hb = await fetch("../data/homebrew.json");
     hb = await hb.json();
     jsonSpells = jsonSpells.concat(await phb, await tce, await xge, await hb);
     return jsonSpells;

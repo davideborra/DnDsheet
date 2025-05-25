@@ -296,7 +296,7 @@ textarea.large{
     border-radius: 0.5rem;
     margin: 0rem;
     padding: 0.5rem !important;
-    width: 20vw;
+    width: 15vw;
 }
 
 .diceRollerResult{
@@ -323,4 +323,31 @@ button.noborder{
     .onlyOnLargerScreens{
         display: none;
     }
+}
+
+.helpCard{
+    background-color: var(--bs-gray-400);
+}
+
+.mergeleft{
+    margin-left: 0;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+.mergeright{
+    margin-right: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+h4.fw-bolder{
+    margin-bottom: 0;
+}
+
+.attackdata.clickable:hover{
+    background-color: var(--bs-gray-400);
+}
+
+.diceRollerButton:hover{
+    background-color: var(--bs-gray-400);
 }

@@ -1,8 +1,8 @@
 {
-    "name": "Name",
+    "name": "D&D Character Sheet Help",
     "class": "",
-    "class_points" : 0,
-    "max_class_points" : 0,
+    "class_points" : 6,
+    "max_class_points" : 10,
     "show_class_points": false,
     "level": 1,
     "race": "",
@@ -12,12 +12,12 @@
     "maxHP": 10,
     "tempHP": 0,
     "stats": {
-        "str": 10,
-        "dex": 10,
-        "con": 10,
-        "int": 10,
+        "str": 12,
+        "dex": 15,
+        "con": 16,
+        "int": 18,
         "wis": 10,
-        "cha": 10
+        "cha": 8
     },
     "castingStat": "int",
     "ca": 15,
@@ -40,6 +40,8 @@
     "other_comps": [
     ],
     "inventory": [
+        "Inventory item 1",
+        "Inventory item 2"
     ],
     "wallet": [
         {
@@ -66,7 +68,7 @@
     "attack_bonus": [
         {
             "name": "Dagger",
-            "bonus": "1",
+            "bonus": "+1",
             "danni": "1d4+1",
             "tipo": "Piercing"
         }
@@ -130,7 +132,7 @@
         {
             "stat": "int",
             "label": "Indagare",
-            "comp": 0
+            "comp": 2
         },
         {
             "stat": "cha",
@@ -199,6 +201,18 @@
         }
     ],
     "spells": [
+        {
+            "name": "Deflagrazione Occulta",
+            "prepared": "false"
+        },
+        {
+            "name": "Palla di Fuoco",
+            "prepared": "false"
+        },
+        {
+            "name": "Dardo Incantato",
+            "prepared": "true"
+        }
     ],
     "slots": [
         {
@@ -209,13 +223,13 @@
         },
         {
             "level": 1,
-            "max": 0,
-            "used": 0,
+            "max": 4,
+            "used": 1,
             "known": 0
         },
         {
             "level": 2,
-            "max": 0,
+            "max": 3,
             "used": 0,
             "known": 0
         },
