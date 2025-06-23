@@ -45,6 +45,7 @@ var vueapp = new Vue({
             dadi_vita_massimi: "6d8",
             ts_morte: {successi: 0, fallimenti: 0},
             compBonus: 2,
+            factotum: false,
             ispirazione: 0,
             affaticamento : 0,
             talenti: [],
@@ -230,8 +231,8 @@ var vueapp = new Vue({
                             console.log("ahia-modificatori");
 
                         }
-                        
-                    return {value: (this.pg.skills[i].comp*this.pg.compBonus)+mod, image: this.pg.skills[i].comp};
+                    var factotumBonus = this.pg.factotum?Math.floor(this.pg.compBonus/2):0
+                    return {value: (this.pg.skills[i].comp*this.pg.compBonus)+mod + factotumBonus, image: this.pg.skills[i].comp};
                 }
             }
             return {value: "", image: -10};
