@@ -30,7 +30,7 @@
         "fallimenti": 0
     },
     "compBonus": 2,
-    "factotum" : "false",
+    "factotum" : false,
     "ispirazione": 0,
     "affaticamento" : 0,
     "talenti": [],
