@@ -721,14 +721,25 @@ window.addEventListener("beforeunload", function (e) {
 
 async function loadSpellsJson(){
     var jsonSpells = [];
-    var phb = await  fetch("data/phb.json");
-    phb = await phb.json();
-    var tce = await fetch("data/tasha.json");
-    tce = await tce.json();
-    var xge = await fetch("data/xanathar.json");
-    xge = await xge.json();
-    var hb = await fetch("data/homebrew.json");
-    hb = await hb.json();
+    if(vueapp.help){
+        var phb = await  fetch("../data/phb.json");
+        phb = await phb.json();
+        var tce = await fetch("../data/tasha.json");
+        tce = await tce.json();
+        var xge = await fetch("../data/xanathar.json");
+        xge = await xge.json();
+        var hb = await fetch("../data/homebrew.json");
+        hb = await hb.json();
+    }else{
+        var phb = await  fetch("data/phb.json");
+        phb = await phb.json();
+        var tce = await fetch("data/tasha.json");
+        tce = await tce.json();
+        var xge = await fetch("data/xanathar.json");
+        xge = await xge.json();
+        var hb = await fetch("data/homebrew.json");
+        hb = await hb.json();
+    }
     jsonSpells = jsonSpells.concat(await phb, await tce, await xge, await hb);
     return jsonSpells;
 }
