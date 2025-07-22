@@ -721,7 +721,7 @@ window.addEventListener("beforeunload", function (e) {
 
 async function loadSpellsJson(){
     var jsonSpells = [];
-    if(vueapp.help){
+    if(help){
         var phb = await  fetch("../data/phb.json");
         phb = await phb.json();
         var tce = await fetch("../data/tasha.json");
