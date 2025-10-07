@@ -299,7 +299,7 @@
                                         <div class="progressBar_outer">
                                             <div class="progressBar_inner" :style="widthStyleHP()"></div>
                                         </div>
-                                        <input v-model="pg.hp" @input="updated = true;" class="hp" id="hp" type="number" :value="pg.hp" @input="checkHP()">/<input v-model="pg.maxHP" @input="updated = true;" class="hp" id = "hpmax" type="number" :value="pg.maxHP" @input="checkHP()"> + <input v-model="pg.tempHP" @input="updated = true;" class="hp" style="width:10%;" id = "hptemp" type="number" @input="checkHP()">
+                                        <input v-model="pg.hp" @input="updated = true; checkHP();" class="hp" id="hp" type="number" :value="pg.hp" >/<input v-model="pg.maxHP" @input="updated = true; checkHP();" class="hp" id = "hpmax" type="number" :value="pg.maxHP" @input="checkHP()"> + <input v-model="pg.tempHP" @input="updated = true;" class="hp" style="width:10%;" id = "hptemp" type="number" @input="checkHP()">
                                         <i class="bi bi-plus-slash-minus" @click="modifyHP = !modifyHP;"></i>
                                     </div>
                                     <div class="hpbarContainer justify-content-end" v-if="modifyHP">

@@ -449,6 +449,7 @@ var vueapp = new Vue({
             if (this.pg.hp > this.pg.maxHP)
                 this.pg.hp = this.pg.maxHP;
             this.updated = true;
+            this.checkHP();
         },
         tsMorteFail(n){
             if(this.pg.ts_morte.fallimenti >= n)
