@@ -330,7 +330,7 @@
                                             <div class="progressBar_inner" :style="widthStyleHP()"></div>
                                         </div>
                                         <input readonly = "true"v-model="pg.hp" @input="updated = true;" class="hp" id="hp" type="number" :value="pg.hp" @input="checkHP()">/<input readonly = "true"v-model="pg.maxHP" @input="updated = true;" class="hp" id = "hpmax" type="number" :value="pg.maxHP" @input="checkHP()"> + <input readonly = "true"v-model="pg.tempHP" @input="updated = true;" class="hp" style="width:10%;" id = "hptemp" type="number" @input="checkHP()">
-                                        <i class="bi bi-plus-slash-minus" @click="modifyHP = !modifyHP;"></i>
+                                        <i class="bi bi-plus-slash-minus clickable" @click="modifyHP = !modifyHP;"></i>
                                     </div>
                                     <div class="hpbarContainer justify-content-end" v-if="modifyHP">
                                         <input readonly = "true"v-model="deltaHP" class="hp" id="hp" type="number" > 
