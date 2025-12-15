@@ -1,4 +1,4 @@
-var debug  = true;
+var debug  = false;
 var file = null;
 var fileHandle = null;
 var help = false;

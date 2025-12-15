@@ -11821,6 +11821,8 @@ tt {
     --bs-body-color: var(--bs-light);
     --bs-secondary: var(--bs-orange);
     --bs-secondary-rgb: var(--bs-gray-500-rgb);
+    --bs-red: rgb(200, 0, 0);
+    --bs-primary-rgb: 200, 0, 0;
   }
 
   .nav-link{
