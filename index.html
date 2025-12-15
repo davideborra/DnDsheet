@@ -329,7 +329,7 @@
                                 </div>
                             </div>
                             <div>
-                                <div class = "card overflow-hidden shadow rounded-4 border-0 mb-5">
+                                <div class = "card overflow-hidden shadow rounded-4 border-0 mb-5 subcard">
                                     <div class="card-body p0">
                                         <div class = "cardtitlerow">
                                             <div>  Attack Bonuses</div>  
@@ -372,7 +372,7 @@
                                 </div>
                             </div>
                             <div>
-                                <div class = "card overflow-hidden shadow rounded-4 border-0 mb-5">
+                                <div class = "card overflow-hidden shadow rounded-4 border-0 mb-5 subcard">
                                     <div class="card-body p0">
                                         <div class = "cardtitlerow">
                                             <div>  Inventory</div>  
@@ -518,7 +518,7 @@
                             <div class = cardtitlerow>
                                 <h2 class="fw-bolder">Spells</h2>
                                 <div class= "d-flex">
-                                    <select id = "castingStat" class = "attackdata clickable" v-model="pg.castingStat" @click = "updated = true">
+                                    <select id = "castingStat" class = "attackdata clickable attackdataDarker" v-model="pg.castingStat" @click = "updated = true">
                                         <option value = "str"> Strength </option>
                                         <option value = "dex"> Dexterity </option>
                                         <option value = "con"> Constitution </option>
@@ -526,16 +526,16 @@
                                         <option value = "wis"> Wisdom </option>
                                         <option value = "cha"> Charisma </option>
                                     </select>
-                                    <div class = "attackdata clickable" @click="setRollString('1d20'+nozero(spellMod()))"> 
+                                    <div class = "attackdata clickable attackdataDarker" @click="setRollString('1d20'+nozero(spellMod()))"> 
                                         {{spellMod()}}
                                     </div>
-                                    <div class = attackdata>
+                                    <div class = "attackdata attackdataDarker">
                                         {{spellTS()}}
                                     </div>
-                                    <div class = "attackdata clickable"  @click= "resetSlots()">
+                                    <div class = "attackdata clickable attackdataDarker"  @click= "resetSlots()">
                                         <i class="bi bi-arrow-counterclockwise"></i>
                                     </div>
-                                    <div class = "attackdata clickable"  @click= "showSpellsSettings = true;">
+                                    <div class = "attackdata clickable attackdataDarker"  @click= "showSpellsSettings = true;">
                                         <i class="bi bi-gear-fill"></i>
                                     </div>
                                 </div>
@@ -631,18 +631,18 @@
                             <div class="spellsContainer">
                                 <div v-for="level in pg.slots" v-if="level.level>0">
                                     
-                                    <div class = "attackdata text-center" > 
+                                    <div class = "attackdata attackdataDarker text-center" > 
                                         {{level.level}}
                                     </div>
-                                    <input class = "attackdata clickable text-center" style = "width:4rem;" type = number v-model = "level.max" @input="checkSlots(level)" @input="updated = true;">
+                                    <input class = "attackdata attackdataDarker clickable text-center" style = "width:4rem;" type = number v-model = "level.max" @input="checkSlots(level)" @input="updated = true;">
                                 </div>
                             </div>
                         </div>
                         <p></p>
                         <h5>Add Spell</h5>
-                        <div class = "attackdata" @click= "addSpell()">
+                        <div class = "attackdata attackdataDarker" @click= "addSpell()">
                             <i class="bi bi-plus-circle clickable margin-right-1rem margin-left-1rem" ></i> 
-                                <input class="attackdata" style = "width: 85%" list="addSpells" placeholder="Spell Name" v-model="spellToAdd">
+                                <input class="attackdata attackdataDarker" style = "width: 85%" list="addSpells" placeholder="Spell Name" v-model="spellToAdd">
                             <datalist id="addSpells">
                                 <select>
                                     <option v-for="spell in allSpells" :value="spell.name">{{spell.name}}
@@ -651,9 +651,9 @@
                         </div>
                         <p></p>
                         <h5>Remove Spell</h5>
-                        <div class = "attackdata clickable" >
+                        <div class = "attackdata attackdataDarker clickable" >
                             <i class="bi bi-x-circle margin-right-1rem margin-left-1rem" @click= "removeSpell()" ></i>
-                            <input class="attackdata" style = "width: 85%" list="removeSpells" placeholder="Spell Name" v-model="spellToRemove">
+                            <input class="attackdata attackdataDarker" style = "width: 85%" list="removeSpells" placeholder="Spell Name" v-model="spellToRemove">
                             <datalist id="removeSpells">
                                 <select>
                                     <option v-for="spell in spells_print" :value="spell.name">{{spell.name}}

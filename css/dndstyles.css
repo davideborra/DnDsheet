@@ -40,6 +40,8 @@ input{
     overflow-x: hidden;
 }
 
+
+
 @media (max-width: 1198px){
     .pageContainer{
         padding-left: 3vw;
@@ -60,6 +62,55 @@ input{
     display: flex;
     flex-direction: column;
     justify-content: center;
+}
+
+@media (prefers-color-scheme: dark) {
+    .card{
+        background-color: var(--bs-gray-dark);
+    }
+    .statsCard{
+        background-color: var(--bs-dark)!important; 
+    }
+    .largeStatsCard{
+        background-color: var(--bs-dark)!important; 
+    }
+    .dropdownCard{
+        background-color: var(--bs-dark)!important; 
+    }
+    .largeDropdownCard{
+        background-color: var(--bs-dark)!important; 
+    }
+    .subcard{
+        background-color: var(--bs-dark)!important; 
+    }
+    input{
+        background-color: var(--bs-dark)!important; 
+        color: white;
+    }
+    .attackdata{
+        background-color: var(--bs-gray-dark)!important; 
+    }
+    .attackdataDarker{
+        background-color: var(--bs-dark)!important; 
+    }
+    .diceRollerButton{
+        background-color: var(--bs-gray-dark)!important; 
+    }
+    .diceRollerContainer{
+        background-color: var(--bs-gray-dark)!important; 
+    }
+    .diceRollerResult{
+        background-color: var(--bs-gray-dark)!important; 
+    }
+    .progressBar_outer{
+        background-color: var(--bs-gray-dark)!important;
+    }
+    .helpCard{
+        background-color: var(--bs-gray-700)!important;
+    }
+    select{
+        color: var(--bs-white)
+    }
 }
 
 .statsCard{
